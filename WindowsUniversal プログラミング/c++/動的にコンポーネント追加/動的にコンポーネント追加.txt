@@ -1,0 +1,4 @@
+	Button^ button1 = ref new Button();//インスタンス
+	button1->Content = "コードから追加";
+	button1->Margin = Thickness(0, 0, 0, y);//位置変更
+	jkl->Children->Append(button1);//グリッドに割り当てる

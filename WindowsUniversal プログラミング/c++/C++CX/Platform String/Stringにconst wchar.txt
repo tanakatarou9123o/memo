@@ -1,0 +1,3 @@
+Platform::String^ str1 = L"初期文字列";//Platform::Stringをインスタンス
+const wchar_t *wstr = str1->Data();//Platform::Stringからconst wchar_t * で文字列取り出す
+Platform::String ^str2 = ref new Platform::String(wstr);//const wchar_t *からString ^を作成

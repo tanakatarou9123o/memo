@@ -1,0 +1,37 @@
+マニフェスト
+Packge.appxmanifest
+
+宣言
+
+名前 にURLスキーム を入力
+例
+bttey
+
+
+//UWPのコード
+
+
+App.xmal.cs
+//URLスキームで起動されると↓のコードが実行される
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame = new Frame();
+            Window.Current.Content = rootFrame;
+            rootFrame.Navigate(typeof(MainPage), args);
+            Window.Current.Activate();
+
+        }
+
+
+
+
+//フォームアプリのコード
+
+            Process[] pn =Process.GetProcessesByName("battery");//ファイル名 起動しているか
+            if (pn.Length==0)//存在しない
+            {
+                Process.Start("bttey://");//uwp urlスキームから起動
+            }

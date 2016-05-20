@@ -1,0 +1,18 @@
+	    var folderPicker = new Windows.Storage.Pickers.FolderPicker();//インスタンス化
+            folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.Desktop;//フォルダの選択開始位置
+            folderPicker.FileTypeFilter.Add(".cia");//表示するファイル
+            folderPicker.FileTypeFilter.Add(".3ds");//表示するファイル
+
+            var folder = await folderPicker.PickSingleFolderAsync(); 
+
+            var subfo = await folder.GetFoldersAsync();//現在のディレクトリのフォルダのパスのリスト取得
+            foreach (var item in subfo)
+            {
+                te.Text = te.Text + "\r\n" + item.Path+"\\";
+            }
+
+            var list=  await folder.GetFilesAsync();//フォルダのファイルのパスのリスト取得
+            foreach (var item in list)
+            {
+                te.Text=te.Text+"\r\n"+item.Path;
+            }

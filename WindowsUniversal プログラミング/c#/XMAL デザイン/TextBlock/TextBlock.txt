@@ -1,0 +1,6 @@
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="50,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top">
+            ‰üs‚³‚ê‚éƒLineBreak/„<LineBreak/>
+            <Run FontSize="60" FontStyle="Oblique">ƒRun„‚Å‘®•ÏX‚Å‚«‚é</Run>
+            
+        
+        </TextBlock>

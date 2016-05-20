@@ -1,0 +1,9 @@
+GpioController gpio = GpioController.GetDefault();//GpioController Œ^
+
+GpioPin pin2 = gpio.OpenPin(26);//gpio26 ŠJ‚­
+
+pin2.SetDriveMode(GpioPinDriveMode.Input);//pin2‚ð“ü—Í‚É
+
+var gf = pin2.Read();
+//gpio26 ‚É 3,3v‚ª‚©‚©‚Á‚Ä‚¢‚½‚çgf‚ªhigh‚É
+//gpio26 ‚É 0v‚ª‚©‚©‚Á‚Ä‚¢‚½‚çgf‚ªlow‚É

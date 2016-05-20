@@ -1,0 +1,8 @@
+        <RichTextBlock HorizontalAlignment="Left" Height="513" Margin="50,50,0,0" VerticalAlignment="Top" Width="1227">
+            <Paragraph>
+                <InlineUIContainer>
+                    <Image Source="http://pic.prepics-cdn.com/3780646/17796103.jpeg" Margin="-5,31,5,218" />
+                </InlineUIContainer>
+
+            </Paragraph>
+        </RichTextBlock>

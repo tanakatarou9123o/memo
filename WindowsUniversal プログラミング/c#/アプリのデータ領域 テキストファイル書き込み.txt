@@ -1,0 +1,4 @@
+            StorageFolder folder = ApplicationData.Current.LocalFolder;//アプリのデータ領域取得
+            StorageFile file = await folder.CreateFileAsync("buttey.txt", CreationCollisionOption.ReplaceExisting);
+
+            await FileIO.WriteTextAsync(file, i.ToString());//テキスト書き込み

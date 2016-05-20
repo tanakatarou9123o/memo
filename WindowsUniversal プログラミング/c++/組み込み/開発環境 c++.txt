@@ -1,0 +1,10 @@
+参照を右クリック
+参照の追加を選択
+Windows Universal 
+拡張を選択
+
+Windows IoT Extension SDK をチェックしてOK
+
+
+
+using namespace Windows::Devices::Gpio;

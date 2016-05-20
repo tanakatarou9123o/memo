@@ -1,0 +1,4 @@
+using namespace Windows::UI::Popups;
+
+MessageDialog j("本文", "タイトル");//本文とタイトルをコンストラクタで設定
+j.ShowAsync();//表示

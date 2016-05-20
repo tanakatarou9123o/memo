@@ -1,0 +1,7 @@
+using namespace Windows::Foundation;//Uri
+
+
+Windows::UI::Xaml::Controls::WebView^ webvi;
+
+	Uri^ j = ref new Uri("https://www.youtube.com/");//urlセット
+	webvi->Navigate(j);//ロード

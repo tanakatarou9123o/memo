@@ -1,0 +1,25 @@
+
+            var filter = new HttpBaseProtocolFilter();
+            filter.AllowAutoRedirect = false;//リダイレクトできるようにする
+            filter.CacheControl.ReadBehavior = HttpCacheReadBehavior.MostRecent;//キャッシュを無効化
+
+            HttpClient client = new HttpClient(filter);//HTTP設定
+
+            //リクエストヘッダ追加
+            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.3; WOW64; rv:38.0) Gecko/20100101 Firefox/38.0"); // ユーザーエージェント文字列をセット（オプション）
+            client.DefaultRequestHeaders.Add("Accept-Language", "ja,en-US;q=0.7,en;q=0.3");// 受け入れ言語をセット（オプション）
+            client.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");//Accept（オプション）
+                                                                                                                          //client.DefaultRequestHeaders.Add("Host", "yun.cup.com");//Host: ドメイン名 uriのドメインと一致してなくてはならない 省略すると自動で補間される
+            Uri uri = new Uri("http://localhost:31971/WebForm1.aspx");//接続するURI
+
+            HttpResponseMessage s = await client.GetAsync(uri);//HttpResponseMessageで受け取る ステータスコードなどが見れる
+
+            string respon = s.ToString();//ステータスコードライン メッセージヘッダが見れる
+            string rhtml = s.Content.ToString();//HTML
+            string gs = s.StatusCode.ToString();//ステータスコード
+            gs = s.ReasonPhrase;//ステータスコード
+            string hvar = s.Version.ToString();//HTTPバージョン
+            string ssou = s.Source.ToString();//受信元 Network Cache
+            bool f = s.IsSuccessStatusCode;//アクセスに成功したか 成功したらtrueに
+            //s.RequestMessage.Headers.  リクエストヘッダの内容が見れる   
+            string date = s.Headers.Date.ToString();//取得日時

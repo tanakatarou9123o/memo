@@ -1,0 +1,9 @@
+まず 参照を右クリック 参照の追加
+Universal Windows 
+拡張
+
+Windows IoT Extensions for the UWP にチェックを入れ
+OK
+
+using Windows.Devices.Gpio;//名前空間
+

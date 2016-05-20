@@ -1,0 +1,31 @@
+using namespace Windows::Devices::Gpio;
+
+
+	const int LED1_PIN = 5;
+	const int LED2_PIN = 26;
+	[=]() 
+	{
+		auto gpio = GpioController::GetDefault();//GpioController^ 型
+		auto LED1 = gpio->OpenPin(LED1_PIN);//GpioPin^ 型 ピンを開く
+		auto LED2 = gpio->OpenPin(LED2_PIN);//ピンを開く
+
+		LED1->SetDriveMode(GpioPinDriveMode::Output);//ピンを出力に
+		LED2->SetDriveMode(GpioPinDriveMode::Input);//ピンを入力に
+
+		LED1->Write(GpioPinValue::Low);//ピンをLowに
+		LED2->Write(GpioPinValue::Low);//ピンをLowに
+
+	
+		while (true)
+		{
+			LED1->Write(GpioPinValue::High);
+			Sleep(1000);
+			LED1->Write(GpioPinValue::Low);
+			Sleep(1000);
+			LED2->Write(GpioPinValue::High);
+			Sleep(1000);
+			LED2->Write(GpioPinValue::Low);
+		}
+		
+
+	}();

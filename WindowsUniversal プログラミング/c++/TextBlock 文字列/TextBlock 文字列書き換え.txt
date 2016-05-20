@@ -1,0 +1,5 @@
+	Platform::String^ h;
+	h = L"aiueo";
+	h = "fg";
+
+	textBlock->Text = h;//‘‚«Š·‚¦

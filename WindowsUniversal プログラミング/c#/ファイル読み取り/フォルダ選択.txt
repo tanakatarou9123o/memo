@@ -1,0 +1,12 @@
+using Windows.Storage.Pickers;//FolderPicker
+using Windows.Storage;//StorageFolder
+
+
+            FolderPicker folderPicker = new FolderPicker();//インスタンス
+            folderPicker.SuggestedStartLocation = PickerLocationId.Desktop;//開始位置
+            folderPicker.FileTypeFilter.Add(".3ds");
+            folderPicker.FileTypeFilter.Add(".cia");
+            folderPicker.FileTypeFilter.Add(".txt");
+            folderPicker.FileTypeFilter.Add(".jpg");
+
+            StorageFolder folder = await folderPicker.PickSingleFolderAsync();//選択画面表示

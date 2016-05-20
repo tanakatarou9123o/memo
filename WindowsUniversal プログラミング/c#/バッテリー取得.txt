@@ -1,0 +1,38 @@
+
+            var a = Battery.AggregateBattery;
+            var b = a.GetReport();
+            //b.FullChargeCapacityInMilliwattHours;//バッテリー最大値
+            //b.RemainingCapacityInMilliwattHours;//バッテリー現在値
+
+            StorageFolder folder = ApplicationData.Current.LocalFolder;//アプリのデータ領域取得
+            StorageFile file = await folder.CreateFileAsync("buttey.txt", CreationCollisionOption.ReplaceExisting);
+
+            await FileIO.WriteTextAsync(file, i.ToString());//テキスト書き込み
+            i++;
+
+            var ff = PowerManager.PowerSupplyStatus;
+            if (b.RemainingCapacityInMilliwattHours > 35000)
+            {
+
+                await FileIO.WriteTextAsync(file, "80");
+                listBox.Items.Add("80");
+                timer.Interval = TimeSpan.FromSeconds(60);//1hun
+                if (PowerSupplyStatus.Adequate == PowerManager.PowerSupplyStatus)//90パーセント以上かつ充電されている
+                {
+                    await FileIO.WriteTextAsync(file, "100");
+                    listBox.Items.Add("100");
+                }
+            }
+            else if ((b.RemainingCapacityInMilliwattHours>30000)&& (b.RemainingCapacityInMilliwattHours < 34999))
+            {
+                await FileIO.WriteTextAsync(file, "50");
+                listBox.Items.Add("50");
+                timer.Interval = TimeSpan.FromSeconds(120);//2hun
+                
+            }
+            else
+            {
+                await FileIO.WriteTextAsync(file, "0");
+                listBox.Items.Add("0");
+                timer.Interval = TimeSpan.FromSeconds(1200);//20hun
+            }

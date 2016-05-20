@@ -1,0 +1,4 @@
+Platform::String^ h;
+h = "fg";
+
+button->Content = h;//•¶š—ñ•ÏX

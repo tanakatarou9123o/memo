@@ -1,0 +1,9 @@
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(3);//5•ª.
+            timer.Tick += (o, s) =>
+            {
+                object sende = null; RoutedEventArgs hh = null;
+                button_Click(sende, hh);
+            };
+            timer.Start();

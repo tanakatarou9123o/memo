@@ -1,0 +1,5 @@
+Windows.Storage.StorageFile sampleFile = await folder.GetFileAsync("ゲーム概要.txt");//戻り値はStorageFileのオブジェクト
+
+var buffer = await Windows.Storage.FileIO.ReadBufferAsync(sampleFile);//バイナリ読み込み
+
+var buf=buffer.ToArray();//byte[]

@@ -1,0 +1,31 @@
+
+using Windows.Devices.Gpio;
+using System.Threading.Tasks
+
+            GpioController gpio = GpioController.GetDefault();//GpioController 型
+            GpioPin pin1 = gpio.OpenPin(13);//gpio13 開く
+            GpioPin pin2 = gpio.OpenPin(26);//gpio26 開く
+            GpioPin pin3 = gpio.OpenPin(27);//gpio27 開く
+
+            pin1.SetDriveMode(GpioPinDriveMode.Output);//pin1を出力に
+            pin2.SetDriveMode(GpioPinDriveMode.Output);//pin2を出力に
+            pin3.SetDriveMode(GpioPinDriveMode.Input);//pin3を入力に
+
+            pin1.Write(GpioPinValue.Low);//Lowに
+            pin2.Write(GpioPinValue.Low);//Lowに
+            pin3.Write(GpioPinValue.Low);//Lowに
+
+
+            new Task(async () => {
+                while (true)
+                {
+                    pin1.Write(GpioPinValue.High);
+                    await Task.Delay(500);
+                    pin1.Write(GpioPinValue.Low);
+                    await Task.Delay(500);
+                    pin2.Write(GpioPinValue.High);
+                    await Task.Delay(500);
+                    pin2.Write(GpioPinValue.Low);
+                    await Task.Delay(500);
+                }
+            }).Start();

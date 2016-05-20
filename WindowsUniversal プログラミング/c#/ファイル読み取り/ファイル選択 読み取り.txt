@@ -1,0 +1,6 @@
+
+
+            var ffg = await folder.GetFileAsync(textBox1.Text);//ファイル選択
+            var buffer=await FileIO.ReadBufferAsync(ffg);//byte読み取り
+
+            var buf=buffer.ToArray();//byte配列取得

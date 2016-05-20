@@ -1,0 +1,5 @@
+webv.Navigate(new Uri("http://games24.blog.fc2.com/"));//html‚ðŽæ“¾‚µ•\Ž¦
+
+
+
+webv.NavigateToString("0004000000132600<br>ver1.00");//•¶Žš—ñ‚ðHTML‚Å•\Ž¦

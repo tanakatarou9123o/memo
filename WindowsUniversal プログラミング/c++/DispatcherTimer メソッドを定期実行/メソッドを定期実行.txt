@@ -1,0 +1,23 @@
+
+using namespace Windows::UI::Xaml;
+
+
+DispatcherTimer ^timer_;
+void timerroop(Platform::Object ^sender, Platform::Object ^args);//繰り返されるメソッド
+
+
+
+TimeSpan ts;//タイマー刻みの間隔の時間を設定
+ts.Duration = 500 * 1000 * 10;//時間間隔
+
+timer_ = ref new DispatcherTimer;//インスタンス化 ガベージコレクション
+timer_->Interval = ts;//時間間隔設定
+timer_->Tick += ref new EventHandler<Object^>(this, &MainPage::timerroop);//コールバック関数登録
+timer_->Start();//開始
+
+
+
+void App2::MainPage::timerroop(Platform::Object ^sender, Platform::Object ^args)//繰り返されるメソッド
+{
+	return;
+}
