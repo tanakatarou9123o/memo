@@ -1,0 +1,45 @@
+#include <tlhelp32.h>
+
+void InjectionDll(DWORD pid, LPCSTR dll);
+
+
+	HANDLE hSnap;
+	PROCESSENTRY32 pe;					//プロセス情報格納構造体
+	pe.dwSize = sizeof(pe);					//構造体サイズ
+	BOOL bResult = 0;					//Process32First成否
+
+	hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);    //プロセスのスナップショット取得
+	bResult = Process32First(hSnap, &pe);					//最初のプロセスの情報をpeに格納
+
+	while (bResult)//ヌルになるまで繰り返し
+	{
+		if (0 == wcscmp(pe.szExeFile, L"デバッグcode.exe"))//ファイル名が一致するとループを抜ける
+		{
+			break;
+		}
+
+
+		bResult = Process32Next(hSnap, &pe);
+	}
+
+	InjectionDll(pe.th32ProcessID, "c:\\インジェクションDLL.dll");
+
+
+void InjectionDll(DWORD pid, LPCSTR dll)
+{
+	HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, false, pid);											//ターゲットのプロセスハンドル取得
+	LPVOID lpAddr = VirtualAllocEx(hProcess, NULL, strlen(dll) + 1, MEM_COMMIT, PAGE_READWRITE);			//ターゲットのメモリアクセス属性変更,確保
+	WriteProcessMemory(hProcess, lpAddr, dll, strlen(dll) + 1, NULL);										//ターゲットのメモリにファイルパス書き込む
+
+	LPTHREAD_START_ROUTINE pfnLoadLibraryA = (LPTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandle(L"kernel32.dll"), "LoadLibraryA");//スレッドに実行させる関数のアドレス
+	HANDLE hThread = CreateRemoteThreadEx(hProcess, NULL, 0, pfnLoadLibraryA, lpAddr, 0, NULL, NULL);		//ターゲットのプロセスでスレッド実行
+	
+	WaitForSingleObject(hThread, INFINITE);//スレッド終了まで待つ
+	CloseHandle(hThread);//閉じる
+
+	VirtualFreeEx(hProcess, lpAddr, 0, MEM_RELEASE);//解放
+
+	CloseHandle(hProcess);//閉じる
+
+
+}

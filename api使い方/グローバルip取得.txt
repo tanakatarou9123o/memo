@@ -1,0 +1,59 @@
+	int gip;	
+
+	WSADATA wsaData;		//WSADATA構造体　バージョンなどが格納される
+	SOCKET sock;			//自ソケット
+
+
+	WSAStartup(MAKEWORD(2,2), &wsaData);	//winsockの初期化
+
+	sock=socket(AF_INET, SOCK_STREAM, 0);	//ソケット作成
+	if(INVALID_SOCKET==sock){MessageBox(NULL,TEXT("ソケット作成失敗"),TEXT(""),MB_OK);return 1;}	//エラーチェック　ソケットが作成できたか
+
+	SOCKADDR_IN addr;
+	LPHOSTENT lphost;
+	char hosutomei[256];
+
+	lphost=gethostbyname("www.openspc2.org");
+	
+	/*		ソケットの設定			*/
+	memset(&addr,0,sizeof(addr));
+	addr.sin_family = AF_INET;						//アドレスファミリ
+	addr.sin_port = htons(80);								//ポート番号
+	addr.sin_addr = *((LPIN_ADDR)*lphost->h_addr_list);		//phosipアドレス	
+	/*		ソケットの設定			*/
+
+	if(SOCKET_ERROR==connect(sock, (struct sockaddr *)&addr, sizeof(addr))){MessageBox(NULL,TEXT("connect失敗"),TEXT(""),MB_OK);};
+
+	char szstr[256],szbuf[10000],szurl[256]={"http://www.openspc2.org/reibun/SSI/special/004/sample/code.html"};
+	
+	wsprintf(szstr,"GET %s HTTP/1.0\r\n\r\n",szurl);
+	if(SOCKET_ERROR==send(sock,szstr,(int)strlen(szstr),0)){MessageBox(NULL,TEXT("send失敗"),TEXT(""),MB_OK);}
+
+	memset(szbuf,'\0',sizeof(szbuf));
+	recv(sock,szbuf,(int)sizeof(szbuf)-1,0);
+	char *slen,s2[]={"IPアドレス表示<b"};
+	slen=strstr(szbuf,s2);		//サーチ箇所の戻り値がslenに代入される
+	slen=slen+27;			//IPアドレスの所に移動
+	char kp[50],*kp2,siz;
+	memcpy(kp,slen,20);		//kpにIPアドレスをコピー
+	kp2=strstr(kp,"\r");		//\rを発見　余分なのを落とす
+	siz=kp2-kp;			//IPアドレスのサイズ計算
+	siz++;
+	char *str;
+	str= (char *)malloc(sizeof(char)*siz);	//IPアドレス分の配列を用意
+	memcpy(str,slen,siz);			//配列にIPアドレスをコピー
+
+	str[siz]='\0';
+
+	gip =inet_addr(str);
+
+	SOCKADDR_IN addr1;
+	LPHOSTENT lphost1;
+
+	lphost1=gethostbyaddr((char*)&gip,4,AF_INET);
+
+	memset(&addr1,0,sizeof(addr1));
+	addr1.sin_family = AF_INET;						//アドレスファミリ
+	addr1.sin_port = htons(80);								//ポート番号
+	addr1.sin_addr = *((LPIN_ADDR)*lphost1->h_addr_list);		//phosipアドレス
+

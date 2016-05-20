@@ -1,0 +1,12 @@
+WCHAR s1[]={TEXT( "‚ ‚ ‚ ‚ –`Œ¯ŽÒ‚Ì’¬‚ðì‚ë‚¤2 Ver1.03")},s2[]={TEXT("–`Œ¯ŽÒ‚Ì’¬‚ðì‚ë‚¤2")};
+	WCHAR *s5;
+
+	s5=wcsstr(s1,s2);		//s1‚ªŒŸõ‚³‚ê‚é•¶Žš—ñ s2‚ªŒŸõ‚·‚é•¶Žš—ñ 	–ß‚è’l Ž¸”s‚·‚é‚ÆNULL‚ª–ß‚é
+
+
+
+
+
+
+
+‘å•¶Žš¬•¶Žš‹æ•Ê‚µ‚Ü‚·B

@@ -1,0 +1,4 @@
+#ifndef HOGE_H
+#define HOGE_H
+ // ヘッダファイルの中身
+#endif

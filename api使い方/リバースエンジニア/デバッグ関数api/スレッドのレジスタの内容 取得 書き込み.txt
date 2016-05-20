@@ -1,0 +1,25 @@
+HANDLE hsure;
+hsure = OpenThread(THREAD_ALL_ACCESS, false, evDebug.dwThreadId);//スレッドハンドル取得 スレッドIDで
+
+
+
+if (-1 != SuspendThread(hsure))	//スレッドを停止
+{
+
+CONTEXT ctx = { CONTEXT_CONTROL | CONTEXT_INTEGER | CONTEXT_DEBUG_REGISTERS };
+GetThreadContext(hsure, &ctx);//レジスタの内容を取得
+
+
+
+ctx.Eip = ctx.Eip + 1;//EIP(プログラムカウンタ)を1足してる
+
+
+
+if (!SetThreadContext(hsure, &ctx))//レジスタの内容をセット
+{
+	MessageBox(hWnd, L"SetThreadContext失敗", L"", MB_OK);
+};
+
+ResumeThread(hsurei);			//スレッド再開
+
+}

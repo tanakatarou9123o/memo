@@ -1,0 +1,9 @@
+#include <shellapi.h>
+
+	TCHAR szDropFile[MAX_PATH + 1];
+
+	case WM_DROPFILES:
+
+			DragQueryFile((HDROP)wParam,0,szDropFile,MAX_PATH);
+			MessageBox(hWnd,szDropFile,TEXT("tt"),MB_OK);
+		break;

@@ -1,0 +1,5 @@
+HANDLE sureh = OpenThread(THREAD_ALL_ACCESS, false, evDebug.dwThreadId);
+
+1 アクセス権限
+2
+3 スレッドid

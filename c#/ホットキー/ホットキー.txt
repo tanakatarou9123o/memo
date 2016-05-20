@@ -1,0 +1,48 @@
+        [System.Runtime.InteropServices.DllImport("user32")]
+        static extern int RegisterHotKey(IntPtr hwnd, int id, int fsModifiers, Keys vKey);
+        [DllImport("user32")]
+        static extern int UnregisterHotKey(IntPtr hwnd, int id);
+        [DllImport("kernel32", EntryPoint = "GlobalAddAtomA")]
+        static extern short GlobalAddAtom(string lpString);
+        [DllImport("kernel32")]
+        static extern short GlobalDeleteAtom(short nAtom);
+
+        private const int MOD_CONTROL = 0x02;
+        private const int WM_HOTKEY = 0x312;
+
+        short hotkeyID;
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            base.Load += OnLoad;
+        }
+
+        private void OnLoad(object sender, EventArgs e)
+        {
+            // ÉzÉbÉgÉLÅ[ÇÃìoò^
+            // IDÇÃê∂ê¨
+            hotkeyID = GlobalAddAtom("GlobalHotKey" + GetHashCode().ToString());
+            // ìoò^ (Ctrl + A)
+            RegisterHotKey(base.Handle, hotkeyID, MOD_CONTROL, Keys.A);
+        }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            // ÉzÉbÉgÉLÅ[ÇÃìoò^âèú
+            UnregisterHotKey(base.Handle, hotkeyID);
+            GlobalDeleteAtom(hotkeyID);
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+
+            if (m.Msg == WM_HOTKEY)
+            {
+                this.Visible = !this.Visible;
+            }
+        }

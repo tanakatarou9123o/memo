@@ -1,0 +1,15 @@
+            Timer a = new Timer();
+            a.Interval = 300000;//300•b
+
+            a.Tick += (o, s) =>
+            {
+                object sende = null; EventArgs hh = null;
+                button1_Click(sende, hh);
+            };
+            a.Start();
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            webBrowser1.Navigate("http://bbs.duowan.com/forum-1333-1.html");
+        }

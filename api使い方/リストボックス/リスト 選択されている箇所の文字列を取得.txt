@@ -1,0 +1,5 @@
+int mgf = SendMessage(hlis, LB_GETCURSEL, 0, 0);	//listbox インデックス取得
+
+WCHAR tlis[50];
+
+SendMessage(hlis, LB_GETTEXT, mgf, (LPARAM)tlis);//リストボックスの選択されている箇所の文字列を取得

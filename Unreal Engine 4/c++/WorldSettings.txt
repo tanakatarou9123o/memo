@@ -1,0 +1,25 @@
+MyWorldSettings : WorldSettings 
+
+新規クラスを作成
+WorldSettings を継承する
+
+//MyWorldSettings.h
+UCLASS()
+class MYPROJECT_API AMyWorldSettings : public AWorldSettings
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+	UStaticMesh* BallMesh;//スタティックメッシュ
+
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+	UStaticMesh* PaddleMesh;//スタティックメッシュ
+
+	
+	
+};
+
+
+[編集] -> [プロジェクト設定]-> エンジン ->基本設定 -> 
+
+World Settings Class で作成したclassを選択

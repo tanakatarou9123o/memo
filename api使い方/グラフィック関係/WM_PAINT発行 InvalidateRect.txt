@@ -1,0 +1,13 @@
+InvalidateRect(hWnd, NULL, 1);//WM_PAINT発行
+
+1引数
+ウィンドウハンドル
+
+2引数
+無効領域にする範囲
+NULLで全体
+
+
+3引数
+TRUE  背景消去する
+FALSE 背景消去しない

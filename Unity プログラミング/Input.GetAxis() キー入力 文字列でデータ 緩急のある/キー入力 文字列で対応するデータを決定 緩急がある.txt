@@ -1,0 +1,13 @@
+Input.GetAxis("Horizontal");//左右
+//"Vertical 前後
+
+ "Horizontal"の場合、
+
+    左右どちらも入力されていない
+        0
+    左が入力されている
+        -1
+    右が入力されている
+        1
+
+が、(float型の値として)返ってきます。

@@ -1,0 +1,13 @@
+1.対象をデバッグフラグをセットして起動
+	STARTUPINFO si;
+	PROCESS_INFORMATION pi;
+	DEBUG_EVENT de;
+
+	memset(&si, 0, sizeof(STARTUPINFO));
+	si.cb = sizeof(STARTUPINFO);
+	CreateProcess(L"C:\\Users\\koeho\\Desktop\\FSC_Level2\\FSC_Level2.exe", NULL, NULL, NULL, 0,  DEBUG_ONLY_THIS_PROCESS | DEBUG_PROCESS, NULL, NULL, &si, &pi);
+
+2.デバッガでアタッチする
+DebugActiveProcess(pi.dwProcessId);// デバッグ対象のプロセスID
+
+3.デバッグイベントを処理

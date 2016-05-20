@@ -1,0 +1,28 @@
+
+HWND hWnd, hlis, hhan, hlist[500];
+WCHAR buf[500][100];	//ウィンドウタイトル
+int kau;
+
+hlis=CreateWindow(TEXT("LISTBOX"), TEXT("ここをクリックしてください"), WS_CHILD | WS_VISIBLE | LBS_NOTIFY|WS_BORDER|WS_VSCROLL, 20, 20, 300, 400, hWnd, NULL, hInst, NULL);
+hhan = CreateWindow(TEXT("LISTBOX"), TEXT("ここをクリックしてください"), WS_CHILD | WS_VISIBLE | LBS_NOTIFY | WS_BORDER | WS_VSCROLL, 400, 20, 300, 400, hWnd, NULL, hInst, NULL);
+
+
+		for (size_t i = 0; i < kau; i++)
+		{
+			SendMessage(hlis, LB_ADDSTRING, 0, (LPARAM)buf[i]);	//listbox 項目追加 ウィンドウタイトル
+
+			int s5 = 1000;
+			WCHAR s1[500];
+
+			 wsprintf(s1, TEXT("%x"),hlist[i]);
+			SendMessage(hhan, LB_ADDSTRING, 0, (LPARAM)s1);//listbox 項目追加 ウィンドウハンドル
+		}
+
+
+選択箇所 は indexでわかる
+
+int mgf;
+		mgf=SendMessage(hlis, LB_GETCURSEL, 0, 0);	//listbox インデックス取得
+
+		SendMessage(hlis, LB_SETCURSEL, mgf, 0);	//listbox インデックスセット
+		SendMessage(hhan, LB_SETCURSEL, mgf, 0);	//listbox インデックスセット

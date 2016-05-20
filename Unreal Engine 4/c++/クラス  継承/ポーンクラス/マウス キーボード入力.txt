@@ -1,0 +1,15 @@
+Action 押した 離した
+Axis 押されている 離されている
+
+
+プロジェクト設定
+エンジン インプット
+Action Mapping
+Zoom
+
+InputComponent->BindAction("Zoom", EInputEvent::IE_Pressed, this, &AMyPawn::Zoom);//押された
+
+void AMyPawn::Zoom()
+{
+	MessageBoxA(nullptr, "", "", MB_OK);
+}

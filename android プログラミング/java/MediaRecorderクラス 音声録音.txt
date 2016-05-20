@@ -1,0 +1,42 @@
+パーミッションでファイルを保存する,録音を行う 許可をとる
+    <uses-permission android:name="android.permission.VIBRATE"/>//バイブレーション
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>//ファイル書き込み
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>//録音
+
+
+
+	MediaRecorder reco;
+	String fps;//ファイルパス
+
+		File fil=new File(Environment.getExternalStorageDirectory(),"MREC");//SDカード取得
+		tv.setText(fil.getPath());
+		
+		if (!fil.exists()) //存在しなかったら
+		{
+			fil.mkdir();//フォルダ作成
+		}
+		
+		File recf=new File(fil,"rec.3gp");//保存データ先
+		fps=recf.getAbsolutePath();//保存ファイルパスの文字列取得
+		
+		try 
+		{
+			reco=new MediaRecorder();//インスタンス作成
+			reco.setAudioSource(MediaRecorder.AudioSource.MIC);//音源
+			reco.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);//フォーマット
+			reco.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);//エンコーダ
+			reco.setOutputFile(fps);//保存先
+		
+			reco.prepare();//録音準備
+		} 
+		catch (Exception e) 
+		{
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
+		reco.start();//録音開始
+		
+		
+		reco.stop();//録音ストップ
+		reco.release();//リソースの解放

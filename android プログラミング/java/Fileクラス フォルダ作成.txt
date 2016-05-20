@@ -1,0 +1,7 @@
+File fil=new File(Environment.getExternalStorageDirectory(),"MREC");//SDカード取得
+tv.setText(fil.getPath());
+		
+if (!fil.exists()) //存在しなかったら
+{
+	fil.mkdir();//フォルダ作成
+}

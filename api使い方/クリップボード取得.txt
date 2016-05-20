@@ -1,0 +1,16 @@
+HGLOBAL hMem; // 取得用のメモリ変数 
+		LPSTR lpBuff; // 参照用のポインタ // クリップボードのデータを取得 
+		if ( OpenClipboard(hkon) )
+		{ 
+			if ( (hMem = GetClipboardData(CF_TEXT)) != NULL )
+			{ 
+				if ( (lpBuff = (LPSTR)GlobalLock(hMem)) != NULL )
+				{ /* ここでテキストデータの lpBuff を参照 */
+					GlobalUnlock(hMem); 
+					WCHAR ipwtxet[50];
+					CHAR iptxet[50];
+					mbstowcs_s(NULL, ipwtxet, 49, lpBuff, _TRUNCATE);//CHARをWCHARに変換している
+					TextOut(hdc, 20, 40, ipwtxet, 50);
+				}
+			} CloseClipboard(); 
+		}

@@ -1,0 +1,5 @@
+#ifdef _WIN64
+#pragma comment(lib, "Resource\\Lib\\x64\\d3dx11.lib")				//テクスチャ取得	D3DXは11.1で廃止された x64
+#else
+#pragma comment(lib, "Resource\\Lib\\x86\\d3dx11.lib")				//テクスチャ取得	D3DXは11.1で廃止された x86
+#endif // _WIN64

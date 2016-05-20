@@ -1,0 +1,76 @@
+
+HWND hWnd, hlis, hhan, hlist[500];
+WCHAR buf[500][100];	//ウィンドウタイトル
+int kau;
+
+
+
+
+	HWND htar;
+	//HWND hlist[500];	//ウィンドウハンドル
+	//WCHAR buf[500][100];	//ウィンドウタイトル
+	//int kau=0;
+
+	kau = 0;
+	htar = GetTopWindow(NULL);
+
+	while (!htar == NULL)
+	{
+		GetWindowText(htar, buf[kau], 100);		//ウィンドウタイトルを2次元配列に入れてる
+		hlist[kau] = htar;		//ウィンドウハンドルを配列に入れてる
+
+
+		//if (0 == wcscmp(buf, TEXT("Quick Console Manager (CCAPI) by Enstone for CEX/DEX"))){ break; }
+		htar = GetNextWindow(htar, GW_HWNDNEXT);  //次のウィンドウハンドル取得 失敗するとNULLが返る
+
+		//if (IDYES == MessageBox(NULL, buf, TEXT("このタイトル？"), MB_YESNO)){  break; }
+
+		kau++;
+	}
+	//if (htar == NULL){ exit(NULL); }
+
+
+	//SetForegroundWindow(htar); //ウィンドウをアクティブに
+
+
+
+
+
+case WM_CREATE:
+	
+
+
+		hlis=CreateWindow(TEXT("LISTBOX"), TEXT("ここをクリックしてください"), WS_CHILD | WS_VISIBLE | LBS_NOTIFY|WS_BORDER|WS_VSCROLL, 20, 20, 300, 400, hWnd, NULL, hInst, NULL);
+
+		hhan = CreateWindow(TEXT("LISTBOX"), TEXT("ここをクリックしてください"), WS_CHILD | WS_VISIBLE | LBS_NOTIFY | WS_BORDER | WS_VSCROLL, 400, 20, 300, 400, hWnd, NULL, hInst, NULL);
+
+
+			break;
+
+case WM_RBUTTONDOWN:
+		for (size_t i = 0; i < kau; i++)
+		{
+			SendMessage(hlis, LB_ADDSTRING, 0, (LPARAM)buf[i]);	//listbox 項目追加 ウィンドウタイトル
+
+			int s5 = 1000;
+			WCHAR s1[500];
+
+			 wsprintf(s1, TEXT("%x"),hlist[i]);
+			SendMessage(hhan, LB_ADDSTRING, 0, (LPARAM)s1);//listbox 項目追加 ウィンドウハンドル
+		}
+		break;
+
+	case WM_LBUTTONDOWN:
+		int mgf;
+		mgf=SendMessage(hlis, LB_GETCURSEL, 0, 0);	//listbox インデックス取得
+
+		SendMessage(hlis, LB_SETCURSEL, mgf, 0);	//listbox インデックスセット
+		SendMessage(hhan, LB_SETCURSEL, mgf, 0);	//listbox インデックスセット
+		break;
+
+	case WM_MBUTTONDOWN:
+		mgf = SendMessage(hlis, LB_GETCURSEL, 0, 0);	//listbox インデックス取得
+		ShowWindow(hlist[mgf],SW_HIDE);//window hukasi
+
+
+		break;

@@ -1,0 +1,5 @@
+WCHAR wcn[50];
+HWND href=FindWindow(NULL, TEXT("PS3 CEX/DEX Memory dump"));//親ウィンドウ検索
+HWND hrec = FindWindowEx(href, NULL, NULL, NULL);//子ウィンドウ検索
+
+GetClassName(hrec, wcn, 50);//クラス名取得

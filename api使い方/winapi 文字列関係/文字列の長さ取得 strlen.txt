@@ -1,0 +1,8 @@
+#include <string.h>
+
+int len;
+char s[] = "today";
+char *d = "today";
+
+len = strlen(s);
+len = strlen(d);

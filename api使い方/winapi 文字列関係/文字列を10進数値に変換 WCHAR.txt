@@ -1,0 +1,4 @@
+WCHAR iptxet[50];
+GetWindowText(koch, iptxet, 50);
+int s1;
+s1=_wtoi(iptxet);

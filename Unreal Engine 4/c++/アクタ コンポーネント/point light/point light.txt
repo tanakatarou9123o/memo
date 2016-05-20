@@ -1,0 +1,18 @@
+	/** point light コンポーネント*/ //エディタに公開される
+	UPROPERTY(VisibleAnywhere, Category = "Switch Components")
+	class UPointLightComponent* PointLight1;//UPointLightComponent ポインタ
+
+	PointLight1 = CreateDefaultSubobject<UPointLightComponent>(TEXT("PointLight1"));//UPointLightComponentコンポーネント作成
+	PointLight1->Intensity = 100000;//明るさ
+	PointLight1->bVisible = true;//表示
+	PointLight1->ToggleVisibility();//オンオフ
+	RootComponent = PointLight1;
+
+
+	/** sphere コンポーネント */
+	UPROPERTY(VisibleAnywhere, Category = "Switch Components")
+	class USphereComponent* Sphere1;
+
+	Sphere1 = CreateDefaultSubobject<USphereComponent>(TEXT("Sphere1"));//コンポーネント作成
+	Sphere1->InitSphereRadius(2500.0f);//トリガーの大きさ
+	Sphere1->AttachParent = RootComponent;

@@ -1,0 +1,3 @@
+WCHAR gg[50];
+_stprintf_s(gg, L"%f", ly);
+SetWindowText(hWnd, gg);

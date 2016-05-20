@@ -1,0 +1,8 @@
+#pragma warning(disable : 4996)
+
+
+WCHAR iptxet[50];
+int s1=0;
+
+
+swscanf(iptxet, L"%x", &s1);//•¶š—ñ‚ğ”’l‚É 16

@@ -1,0 +1,41 @@
+
+#define HOT_KEY_ID 500
+#define HOT_KEY_ID2 501
+
+UINT	uiID = VK_F1;
+UINT	uiID1 = VK_F2;
+UINT	uiMod = MOD_CONTROL | MOD_SHIFT;
+
+
+if(FALSE==RegisterHotKey(hWnd,HOT_KEY_ID,uiMod,uiID)){MessageBox(NULL,TEXT("1ÉzÉbÉgÉLÅ[ìoò^é∏îs"),NULL,MB_OK);}
+if(FALSE==RegisterHotKey(hWnd,HOT_KEY_ID2,uiMod,uiID1)){MessageBox(NULL,TEXT("2ÉzÉbÉgÉLÅ[ìoò^é∏îs"),NULL,MB_OK);}
+
+
+
+
+case WM_HOTKEY:
+		switch (wParam)
+		{
+		case HOT_KEY_ID:
+		
+			//if(on[30]==0){on[30]=1;SendMessage(hWnd,WM_COMMAND,ID_32771,NULL);}
+			//if(on[30]==1){on[30]=0;SendMessage(hWnd,WM_COMMAND,ID_32772,NULL);}
+			SendMessage(hWnd,WM_COMMAND,ID_32773,NULL);
+			break;
+
+		case HOT_KEY_ID2:
+		
+			//if(on[31]==0){on[30]=1;SendMessage(hWnd,WM_COMMAND,ID_32773,NULL);}
+			//if(on[31]==1){on[30]=0;SendMessage(hWnd,WM_COMMAND,ID_32774,NULL);}
+			SendMessage(hWnd,WM_COMMAND,ID_32774,NULL);
+			break;
+		}
+	break;
+
+
+
+
+
+case WM_DESTROY:
+		UnregisterHotKey(hWnd,HOT_KEY_ID);
+		UnregisterHotKey(hWnd,HOT_KEY_ID2);

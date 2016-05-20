@@ -1,0 +1,8 @@
+Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        if (direction.sqrMagnitude > 0.01f) 
+        {
+            Vector3 forward = Vector3.Slerp(transform.forward, direction, rotationspead * Time.deltaTime / Vector3.Angle(transform.forward, direction));//Œü‚«æ“¾
+
+
+            transform.LookAt(transform.position + forward);//Œü‚«•ÏX
+        }

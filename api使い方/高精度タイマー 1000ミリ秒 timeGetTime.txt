@@ -1,0 +1,7 @@
+#pragma comment(lib, "winmm.lib")	
+#include <mmsystem.h>
+
+timeGetTime();
+
+戻り値
+システム時刻をミリ秒単位で取得します。システム時刻は Windows が起動してから経過した時間です

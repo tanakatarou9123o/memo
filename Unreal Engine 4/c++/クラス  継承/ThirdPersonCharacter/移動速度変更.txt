@@ -1,0 +1,1 @@
+GetCharacterMovement()->MaxWalkSpeed = 1800.f;//ˆÚ“®‘¬“x

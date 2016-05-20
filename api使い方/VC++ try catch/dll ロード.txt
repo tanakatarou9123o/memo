@@ -1,0 +1,6 @@
+HMODULE hmju;	//モジュールハンドル
+FARPROC hmdo;	//関数アドレスの格納先
+hmju=LoadLibrary(TEXT("d1.dll"));	//dllロード 成功したらモジュールハンドルを返す
+hmdo=GetProcAddress(hmju, "tes");	//関数のアドレスを取得
+
+hmdo();//関数実行

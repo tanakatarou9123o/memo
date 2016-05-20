@@ -1,0 +1,66 @@
+1.対象のプロセスIDを取得する
+具体的にはCreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,0)を使ってスナップを取得
+PROCESSENTRY32 pe;
+pe.szExeFile でファイル名を比較して対象のプロセスIDを特定 wcscmpを使う
+
+2.アクセス権限を取得
+OpenProcess(PROCESS_ALL_ACCESS, TRUE, pe.th32ProcessID); //アクセス権限, ,プロセスID アクセス権限を設定してプロセスハンドル取得
+
+3.デバッガでアタッチする
+BOOL DebugActiveProcess(
+  pe.th32ProcessID   // デバッグ対象のプロセスID
+);
+
+4.デバッグイベントを処理
+DEBUG_EVENT evDebug;
+WaitForDebugEvent(&evDebug, INFINITE);
+switch (evDebug.dwDebugEventCode)
+	{
+	case CREATE_PROCESS_DEBUG_EVENT://プロセス作成 最初のスレッドハンドル取得
+	{
+		CONTEXT ctx = { CONTEXT_CONTROL | CONTEXT_INTEGER };//アクセスフラグ
+		if (!GetThreadContext(evDebug.u.CreateProcessInfo.hThread, &ctx))
+		{
+		};
+
+
+		ContinueDebugEvent(evDebug.dwProcessId, evDebug.dwThreadId, DBG_CONTINUE);//続行
+	}
+
+		break;
+
+	case CREATE_THREAD_DEBUG_EVENT://スレッド作成
+	{
+		CONTEXT ctx = { CONTEXT_CONTROL | CONTEXT_INTEGER };
+		if (!GetThreadContext(evDebug.u.CreateThread.hThread, &ctx))
+		{
+		};
+
+
+		ContinueDebugEvent(evDebug.dwProcessId, evDebug.dwThreadId, DBG_CONTINUE);//続行
+	}
+		break;
+
+	case EXCEPTION_DEBUG_EVENT://メモリの不正アクセス、0割り、ブレークポイント 例外
+	{
+		CONTEXT ctx = { CONTEXT_CONTROL | CONTEXT_INTEGER };
+		GetThreadContext(evDebug.u.CreateThread.hThread, &ctx);
+
+		WCHAR s1[500];
+		wsprintf(s1, L"%x", ctx.Edx);
+
+
+		ContinueDebugEvent(evDebug.dwProcessId, evDebug.dwThreadId, DBG_CONTINUE);//続行
+	}
+		break;
+
+	case EXIT_PROCESS_DEBUG_EVENT://プロセス終了時
+
+		return 1;//プロシージャを抜ける
+		break;
+
+	default:
+		ContinueDebugEvent(evDebug.dwProcessId, evDebug.dwThreadId, DBG_CONTINUE);//続行
+		break;
+	}
+

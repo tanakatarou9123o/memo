@@ -1,0 +1,56 @@
+プロジェクト設定
+エンジン インプット
+Action Mappings
+Zoom
+
+
+	InputComponent->BindAction("Zoom", IE_Pressed, this, &AMyProjectCharacter::ZoomIn);
+	InputComponent->BindAction("Zoom", IE_Released, this, &AMyProjectCharacter::ZoomOut);
+	InputComponent->BindAxis("ZoomV", this, &AMyProjectCharacter::ZoomV);
+
+
+void AMyProjectCharacter::ZoomIn()
+{
+	CameraBoom->TargetArmLength = -80.0f;//カメラ位置を前に移動
+	FollowCamera->FieldOfView = GameIns->SzoomValue;//ズーム値
+}
+
+void AMyProjectCharacter::ZoomOut()
+{
+	CameraBoom->TargetArmLength = 300.0f;//カメラ位置を元の位置に移動
+	FollowCamera->FieldOfView = 90;//ズーム値
+}
+
+void AMyProjectCharacter::ZoomV(float Value)
+{
+	GameIns->SzoomValue -= Value;
+	
+	if ((GameIns->SzoomValue)>85)
+	{
+		GameIns->SzoomValue = 85;
+	}
+	else if ((GameIns->SzoomValue)<5)
+	{
+		GameIns->SzoomValue = 5;
+	}
+}
+
+void AMyProjectCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	GetCharacterMovement()->JumpZVelocity = GameIns->Sjump;
+	GetCharacterMovement()->MaxWalkSpeed = GameIns->Sspeed;
+
+	if (pc->IsInputKeyDown(EKeys::RightMouseButton))//右クリック 押されてる
+	{
+		FollowCamera->FieldOfView = GameIns->SzoomValue;//ズーム値
+	
+	}
+}
+
+
+.h
+	void ZoomIn();
+	void ZoomOut();
+	void ZoomV(float Value);

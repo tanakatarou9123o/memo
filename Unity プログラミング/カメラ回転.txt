@@ -1,0 +1,4 @@
+if (Input.GetMouseButton(1))//右クリックカメラ回転
+        {
+            Camera.main.transform.Rotate(Input.GetAxisRaw("Mouse Y") * 10, Input.GetAxisRaw("Mouse X") * 10, 0);
+        }

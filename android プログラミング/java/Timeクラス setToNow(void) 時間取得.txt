@@ -1,0 +1,4 @@
+		Time ti=new  Time("Asia/Tokyo");
+
+		ti.setToNow();//Œ»İ“úæ“¾
+		te.setText(ti.hour+""+ti.minute+"•ª"+ti.second+"•b");

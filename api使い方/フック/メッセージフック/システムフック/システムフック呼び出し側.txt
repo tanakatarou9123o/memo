@@ -1,0 +1,2 @@
+#pragma comment(lib, "Resource\\システムAPIHOOK DLL.lib")//libロード
+#include "Resource\\APIHOOKDLL.h"//dllヘッダ

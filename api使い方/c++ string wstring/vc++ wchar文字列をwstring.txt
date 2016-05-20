@@ -1,0 +1,6 @@
+		wstring a=pe.szExeFile;
+
+		if (a==L" ")
+		{
+
+		}

@@ -1,0 +1,5 @@
+Calendar cal;
+
+cal=Calendar.getInstance();
+
+te.setText(cal.get(Calendar.YEAR)+"”N"+cal.get(Calendar.HOUR_OF_DAY)+"Žž"+cal.get(Calendar.MINUTE)+"•ª"+cal.get(Calendar.SECOND)+"•b"+cal.get(Calendar.MILLISECOND)+"ƒ~ƒŠ");

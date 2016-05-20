@@ -1,0 +1,12 @@
+#include <string>
+using namespace std;
+
+	string ab;
+	
+
+	for (size_t i = 0; i < size; i++)
+	{
+		ab += to_string(i);
+	}
+
+	MessageBox(nullptr, ab.c_str(), "", MB_OK);

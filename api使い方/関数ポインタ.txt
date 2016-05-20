@@ -1,0 +1,46 @@
+普通の関数ポインタは次のようになるのでしたね。
+void Func();
+void (*fpFunc)() = Func;
+
+void *fpFunc(); だと戻り値の型が void* の関数のプロトタイプと判断されるのでカッコをつけるのでした。
+
+
+オブジェクトの関数ポインタ
+
+静的メンバ関数なら普通の関数ポインタに代入できるということも分かると思います。
+class CTest 
+{ 
+public: 
+static void Func(); 
+};
+
+void (*fpFunc)() = CTest::Func;  // ＯＫ
+
+class CTest 
+{ 
+public: 
+void Func(); 
+};
+
+void (CTest::*fpFunc)() = CTest::Func;
+
+<戻り値の型> (<クラス名>::*<変数名>(<引数リスト>);
+
+
+呼び出し方法
+
+CTest c, *p = &c;
+(c.*fpFunc)();
+(p->*fpFunc)();
+
+
+
+
+
+
+
+
+
+	LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);//コールバック関数 スタティック
+
+	LRESULT(CALLBACK WinClass::*A)(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) = WinClass::WndProc;

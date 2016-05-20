@@ -1,0 +1,9 @@
+Func<引数1,引数2,戻り値> 関数名 = (引数1,引数2) =>{return 戻り値; };
+
+
+            Func<int, int,float> func = (int h,int k) =>//Func<引数1,引数2,戻り値> 関数名 = (引数1,引数2) =>{return 戻り値; };
+            {
+                return 3.14f;
+            };
+
+            func(1,2);

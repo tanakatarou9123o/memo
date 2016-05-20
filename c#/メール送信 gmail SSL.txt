@@ -1,0 +1,35 @@
+            //MailMessageの作成
+            System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage
+                (
+                "baterytari1243@gmail.com",//送信元
+                "wpcnnni9z436@docomo.ne.jp",//宛先
+                "充電切断",
+                "このメールは、テストです。"
+                );
+            
+
+            //SmtpClientオブジェクトを作成する 
+            System.Net.Mail.SmtpClient sc = new System.Net.Mail.SmtpClient();
+
+            //SMTPサーバーを指定する 
+            sc.Host = "smtp.gmail.com";
+
+            //ポート番号を指定する（既定値は25） 
+            sc.Port = 587;
+
+            //SMTPサーバーに送信する設定にする（既定はNetwork） 
+            sc.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+
+            sc.Credentials = new NetworkCredential("baterytari123@gmail.com", "kouhei1192");
+
+            //SSLを使用する
+            sc.EnableSsl = true;
+
+            //メールを送信する 
+            sc.Send(msg);
+            
+            //後始末
+            msg.Dispose();
+
+            //後始末（.NET Framework 4.0以降） 
+            sc.Dispose();

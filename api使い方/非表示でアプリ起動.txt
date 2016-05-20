@@ -1,0 +1,9 @@
+PROCESS_INFORMATION pi;
+	STARTUPINFO si;
+	ZeroMemory(&si, sizeof(si));
+	si.cb = sizeof(si);
+
+	si.dwFlags = STARTF_USESHOWWINDOW;//非表示で起動
+	si.wShowWindow = SW_HIDE;//非表示で起動
+
+	CreateProcess(TEXT("新しいフォルダー\\CCAPI-Demo.exe"), NULL, NULL, NULL, FALSE, REALTIME_PRIORITY_CLASS, NULL, NULL, &si, &pi);

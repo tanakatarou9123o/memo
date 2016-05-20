@@ -1,0 +1,28 @@
+	APlayerController* pc=UGameplayStatics::GetPlayerController(GetWorld(), 0);
+	pc->ConsoleCommand(FString("slomo 5.0"), true);
+
+
+レベル開く
+Open NewMap
+
+レベルリセット
+RestartLevel
+
+ゲーム速度
+slomo 5.0
+
+終了
+quit
+
+デバッグカメラ
+ToggleDebugCamera
+
+FPS表示
+stat fps
+
+
+
+
+次の方法でC++からもコマンドを送れる。PCはPlayerController。
+PC->ConsoleCommand(<Command>, true);
+

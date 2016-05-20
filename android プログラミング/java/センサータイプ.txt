@@ -1,0 +1,42 @@
+				switch (sen.getType()) 
+				{
+				
+				case Sensor.TYPE_ACCELEROMETER://加速度
+					break;
+					
+				case Sensor.TYPE_AMBIENT_TEMPERATURE://温度
+					break;
+					
+				case Sensor.TYPE_GRAVITY://重力
+					break;
+					
+				case Sensor.TYPE_GYROSCOPE://ジャイロセンサー
+					break;
+					
+				case Sensor.TYPE_HEART_RATE://脈拍計
+					break;
+				
+				case Sensor.TYPE_LIGHT://ライト
+					break;
+					
+				case Sensor.TYPE_LINEAR_ACCELERATION://直線加速度
+					break;
+					
+				case Sensor.TYPE_MAGNETIC_FIELD://方位
+					break;
+					
+				case Sensor.TYPE_PRESSURE://気圧
+					break;
+					
+				case Sensor.TYPE_PROXIMITY://近傍センサー
+					break;
+					
+				case Sensor.TYPE_RELATIVE_HUMIDITY://湿度
+					break;
+					
+				case Sensor.TYPE_ROTATION_VECTOR://回転ベクトルセンサー
+					break;
+					
+				default:
+					break;
+				}

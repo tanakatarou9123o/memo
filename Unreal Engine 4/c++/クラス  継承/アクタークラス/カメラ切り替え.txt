@@ -1,0 +1,4 @@
+	APlayerController* OurPlayerController = UGameplayStatics::GetPlayerController(this, 0);//PlayerControllerを取得
+	AActor* plec= OurPlayerController->GetViewTarget();//設定されているカメラ取得
+	OurPlayerController->SetViewTarget(CameraOne);//カメラを瞬時に変更
+	OurPlayerController->SetViewTargetWithBlend(CameraOne, 10);//カメラを徐々に変更 カメラ,切り替わる時間

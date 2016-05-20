@@ -1,0 +1,2 @@
+HANDLE ourMutex = CreateMutex(NULL, true, L"directxsamp141");//多重起動チェック
+	if (GetLastError()==ERROR_ALREADY_EXISTS){MessageBox(NULL, L"処理を中断します", L"多重起動", MB_OK);return 1;}

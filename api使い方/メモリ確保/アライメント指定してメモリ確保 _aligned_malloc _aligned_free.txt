@@ -1,0 +1,12 @@
+g_World1 = (XMMATRIX*)_aligned_malloc(sizeof(XMMATRIX), 16);
+	
+g_View = (XMMATRIX*)_aligned_malloc(sizeof(XMMATRIX), 16);
+	
+g_Projection = (XMMATRIX*)_aligned_malloc(sizeof(XMMATRIX), 16);
+
+
+_aligned_free(g_World1);
+	
+_aligned_free(g_View);
+	
+_aligned_free(g_Projection);

@@ -1,0 +1,42 @@
+スタック調整から引数の数がわかる
+
+int tes(int g, int b, int c)
+
+__cdecl		//call呼び出し後戻った所でスタックを調整
+push 64h  
+push 32h  
+push 28h  
+call 009A1BAE
+add  esp,0Ch 	//12byteのスタックをプラスして使ったスタックを減らしてる 3つの引数があることが分かる
+
+__stdcall	//call内のretのオペランドが引数の数 数値の数だけスタックをプラス
+mov esp,ebp 
+pop ebp  
+ret 0Ch  
+
+//callの後にadd esp,xがなくてretに数値がなかったら、その関数はstdcallの引数なし関数だとわかる
+
+
+__fastcall	//call前にedx,ecxに引数を入れる 引数が三つ以上ある場合三つ目からpush retでスタック調整
+push 64h  //第三引数
+mov  edx,32h  
+mov  ecx,28h  
+call 01161BB8 
+
+mov esp,ebp  
+pop ebp  
+ret 4  //スタック調整
+
+
+__thiscall	//call前にオブジェクトのポインタをecxに入れる [ECX+x]という形で変数にアクセスできる
+//オブジェクト定義
+lea         ecx,[ebp-18h] 
+call        00DD5564  
+
+//プライベート関数呼び出し
+push 3  
+push 2  
+push 1  
+mov  ecx,dword ptr [ebp-8]  
+call 00291BC7  
+mov  ecx,dword ptr [ebp-8]  

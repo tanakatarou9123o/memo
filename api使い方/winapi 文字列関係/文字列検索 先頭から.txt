@@ -1,0 +1,7 @@
+WCHAR *modoripo;//検索箇所のポインタ格納先
+modoripo = _tcsstr(buf, TEXT(" "));//検索箇所の先頭ポインタが返る
+if (modoripo == 0)//見つからなかったらbreak;
+{
+	break;
+}
+//見つからなかったら0が戻る

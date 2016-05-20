@@ -1,0 +1,11 @@
+
+public float movespeed = 5f;
+
+CharacterController characterController;//キャラのフィジックス
+characterController = GetComponent<CharacterController>();//インスタンス取得 ゲームオブジェクトに設定されてるコンポーネントを取得
+	
+
+Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+characterController.Move(direction * movespeed * Time.deltaTime);//キャラを移動
+        
+        

@@ -1,0 +1,6 @@
+Regex regex = new Regex(@"\d.*\.ts$");
+MatchCollection matchCol = regex.Matches("asdfg0000.ts");
+                foreach (Match match in matchCol)
+                {
+                    Match xxx = match;
+                }

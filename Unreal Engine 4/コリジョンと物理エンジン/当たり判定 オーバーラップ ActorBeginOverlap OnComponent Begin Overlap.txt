@@ -1,0 +1,29 @@
+bspからブラシを作成
+詳細-Brush Settings からスタティックメッシュ作成
+
+方法1
+スタティックメッシュにコリジョンを設定作成
+作成したスタティックメッシュにブループリントを追加
+collision から
+オーバーラップイベントを発生させるにチェック
+コリジョンプリセットをOverlapAllに変更
+
+コリジョンに当たると
+ActorBeginOverlap イベントが発生する
+
+ActorBeginOverlap DestroyActorとするとアクターが削除される
+
+
+
+方法2
+スタティックメッシュにブループリントを追加
+ブループリントを開いて
+コンポーネントを追加をクリック
+例Box Collisionを選択
+ビューポートでサイズ位置を調整
+
+Box Collisionを選択 
+詳細 イベントから OnComponent Begin Overlap をクリック
+
+コリジョンに当たると
+OnComponent Begin Overlap イベントが発生する

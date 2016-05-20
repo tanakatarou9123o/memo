@@ -1,0 +1,75 @@
+#include "cuda_runtime.h"
+#include "device_launch_parameters.h"
+
+//#include <stdio.h>
+
+__global__ void cudaKernel(int *gpu)//カーネル
+{
+	gpu[threadIdx.x] += 15;//hreadIdx.xは実行するたびに増える
+}
+
+class cudaclass
+{
+public:
+	cudaclass(int size,int* x);
+	~cudaclass();
+	void cudarun(int* x);
+
+private:
+	cudaError_t cudaStatus;
+	int *dev_a = 0;
+	int size;
+};
+
+cudaclass::cudaclass(int sizee,int* x)
+{
+	size = sizee;
+
+	cudaStatus = cudaSetDevice(0);
+	if (cudaStatus != cudaSuccess)
+	{
+		//fprintf(stderr, "cudaSetDevice failed!  Do you have a CUDA-capable GPU installed?");
+	}
+
+	cudaStatus = cudaMalloc((void**)&dev_a, size * sizeof(int));//グラボのメモリ確保
+	if (cudaStatus != cudaSuccess) {}
+
+	cudaStatus = cudaMemcpy(dev_a, x, size * sizeof(int), cudaMemcpyHostToDevice);//グラボのメモリにメインメモリの内容をコピー
+	if (cudaStatus != cudaSuccess) {}
+
+}
+
+void cudaclass::cudarun(int* x)
+{
+	dim3 threads(size, 1); //スレッド数 (実行する回数),次元
+	// カーネル(GPUの関数)実行 
+	cudaKernel <<< 1, threads >>>(dev_a);
+
+	cudaStatus = cudaMemcpy(x, dev_a, size * sizeof(int), cudaMemcpyDeviceToHost);//メインメモリにグラボのメモリの内容をコピー
+	if (cudaStatus != cudaSuccess) {
+		//fprintf(stderr, "cudaMemcpy failed!");
+	}
+}
+
+cudaclass::~cudaclass()
+{
+	cudaFree(dev_a);
+}
+
+int main()
+{
+	int size = 100;
+
+	int *x;
+	x = new int[size];
+	for (int i = 0; i < size; i++)
+	{
+		x[i] = i;
+	}
+
+	cudaclass *a = new cudaclass(size,x);//グラボのメモリをsize分確保 グラボのメモリにxの内容をコピー 
+	a->cudarun(x);//カーネルを実行しxに反映
+	
+	
+    return 0;
+}

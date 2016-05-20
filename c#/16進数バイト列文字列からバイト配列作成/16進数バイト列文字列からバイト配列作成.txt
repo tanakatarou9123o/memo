@@ -1,0 +1,13 @@
+byte[] stringTobytes(string bytest)
+        {
+            int length = bytest.Length / 2;//文字数からバイト数取得
+            byte[] bytes = new byte[length];//バイト数分の配列
+            int j = 0;
+            for (int i = 0; i < length; i++)
+            {
+                bytes[i] = Convert.ToByte(bytest.Substring(j, 2), 16);
+                j += 2;
+            }
+
+            return bytes;
+        }

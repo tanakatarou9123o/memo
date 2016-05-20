@@ -1,0 +1,26 @@
+typedef struct _IMAGE_FILE_HEADER {
+    WORD    Machine;
+    WORD    NumberOfSections;
+    DWORD   TimeDateStamp;
+    DWORD   PointerToSymbolTable;
+    DWORD   NumberOfSymbols;
+    WORD    SizeOfOptionalHeader;
+    WORD    Characteristics;
+} IMAGE_FILE_HEADER, *PIMAGE_FILE_HEADER;
+
+WORD    Machine;
+どのCPUで実行できるか
+
+WORD    NumberOfSections;
+セクション数
+
+DWORD   TimeDateStamp;
+ビルドされた時間
+
+WORD    SizeOfOptionalHeader;
+IMAGE_OPTIONAL_HEADERのサイズ
+
+WORD    Characteristics;
+ファイル形式 EXEかDLLかなどを区別
+
+

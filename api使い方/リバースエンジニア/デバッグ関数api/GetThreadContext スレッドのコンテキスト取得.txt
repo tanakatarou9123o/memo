@@ -1,0 +1,21 @@
+BOOL GetThreadContext(
+  HANDLE hThread,       // コンテキストを持つスレッドのハンドル
+  LPCONTEXT lpContext   // コンテキストを受け取る構造体のアドレス
+);
+
+
+    hThread
+    コンテキストを取得したいスレッドハンドル
+
+    lpContext
+    CONTEXT構造体のアドレスで、この関数が成功したら値が格納されている。 
+
+戻り値
+
+関数が成功すると、0 以外の値が返ります。
+関数が失敗すると、0 が返ります。拡張エラー情報を取得するには、GetLastError 関数を使います。
+
+
+if (!GetThreadContext(evDebug.u.CreateProcessInfo.hThread, &ctx))
+{
+};

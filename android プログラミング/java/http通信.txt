@@ -1,0 +1,36 @@
+
+    <uses-permission android:name="android.permission.INTERNET"/>//インターネット
+
+		TextView te=(TextView) findViewById(R.id.textView1);//テキストヴィー取得
+		
+		URL url;
+		
+		try 
+		{
+			url=new URL("http://cgi20.plala.or.jp/baharasa/index.php");//オブジェクト取得
+			HttpURLConnection conect=(HttpURLConnection)url.openConnection();//オブジェクト取得
+			conect.setRequestMethod("GET");//コマンド入力
+			conect.connect();//URLに接続
+			
+			InputStream str=conect.getInputStream();//InputStreamを取得 データを取得
+			BufferedReader reade=new BufferedReader(new InputStreamReader(str));//文字列として取得
+			
+			String ip;
+			while ((ip=reade.readLine())!=null)//readlineがnullでないなら
+			{
+				te.setText(ip);
+			}
+			
+			
+		} 
+		catch (MalformedURLException e) 
+		{
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		} 
+		catch (IOException e) 
+		{
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		

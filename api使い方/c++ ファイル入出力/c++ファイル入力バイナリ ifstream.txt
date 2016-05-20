@@ -1,0 +1,31 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int ReadPE::ReadFilePE(WCHAR* fn)
+{
+
+	
+	int i = 0;
+
+	ifstream RPE(fn,ios::in | ios::binary);
+	if (!RPE)
+	{
+		return 0;//失敗
+	}
+
+	RPE.seekg(0, ios::end);//seekを最後に移動
+	size_t fileSize = (size_t)RPE.tellg();//サイズ取得 現在位置を調べる関数
+	//size_t fileSize = (size_t)RPE.seekg(0, ios::end).tellg();//サイズ取得
+	RPE.seekg(0, ios_base::beg);//seek最初に
+
+	pbuf = new char[fileSize];
+
+	while (!RPE.eof())
+	{
+		RPE.read(&pbuf[i], 1);
+		i++;
+	}
+
+	return 1;
+}

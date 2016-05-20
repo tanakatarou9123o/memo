@@ -1,0 +1,45 @@
+#pragma comment(lib, "Wsock32.Lib")
+#define WIN32_LEAN_AND_MEAN
+#include <WinSock2.h>
+
+
+
+
+
+WSADATA wsad;//DLL情報格納構造体
+	int err = WSAStartup(MAKEWORD(2, 2), &wsad);//初期化 使うver 指定
+	if (err!=0)
+	{
+		MessageBox(NULL, L"WSAStartup", L"", MB_OK);
+	}
+
+
+	SOCKET hsock = socket(AF_INET, SOCK_STREAM, 0);//TCPソケット作成
+
+SOCKADDR_IN sockadd;
+	LPHOSTENT lphost;
+	lphost = gethostbyname("live.nicovideo.jp");
+	memset(&sockadd, 0, sizeof(sockadd));
+	sockadd.sin_family = AF_INET;
+	sockadd.sin_port = htons(80);
+	sockadd.sin_addr = *((LPIN_ADDR)*lphost->h_addr_list);
+
+	if (0 != connect(hsock, (PSOCKADDR)&sockadd, sizeof(sockadd)))//接続
+	{
+		MessageBox(NULL, L"connect", L"", MB_OK);
+	}
+
+	char buf[500],rbuf[500000];
+	sprintf_s(buf, "GET %s HTTP/1.0\r\n\r\n", "http://live.nicovideo.jp/?header");
+	if (SOCKET_ERROR == send(hsock, buf, (int)sizeof(buf), 0)){ MessageBox(NULL, L"send", L"", MB_OK); }
+
+	recv(hsock, buf, sizeof(buf), 0);
+
+
+	if (0 != shutdown(hsock, SD_BOTH)){ MessageBox(NULL, L"shutdown", L"", MB_OK); };//送受信無効に
+	if (0 != closesocket(hsock)){ MessageBox(NULL, L"closesocket", L"", MB_OK); };//ソケットをクローズ
+
+
+
+	if (-1 == WSACleanup()){ MessageBox(NULL, L"WSACleanup", L"", MB_OK); };//解放
+

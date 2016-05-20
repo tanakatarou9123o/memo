@@ -1,0 +1,44 @@
+	HWND hwindo = FindWindow(NULL, L"Stirling");	//対象プロセスのウィンドウハンドル取得
+	int tins = GetWindowLong(hwindo, GWL_HINSTANCE);	//対象プロセスのインスタンスハンドル取得 (ベースアドレス)
+
+	HANDLE hSnap, hProcess;				//スナップハンドルとプロセスハンドル
+	PROCESSENTRY32 pe;					//プロセス情報格納構造体
+	pe.dwSize = sizeof(pe);				//構造体サイズ
+	BOOL bResult = 0;					//Process32First成否
+
+	hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);    //プロセスのスナップショット取得
+	bResult = Process32First(hSnap, &pe);						//最初のプロセスの情報をpeに格納
+	while (bResult)//ヌルになるまで繰り返し
+	{
+
+		if (!wcscmp(pe.szExeFile, L"Stirling.exe"))//プロセス特定　ファイル名一致したらbreak
+		{
+			break;
+		}
+
+
+		bResult = Process32Next(hSnap, &pe);	//次のプロセスの情報をpeに格納
+	}
+	hProcess = OpenProcess(PROCESS_ALL_ACCESS, 0, pe.th32ProcessID);	//アクセス権限取得
+
+	char bidh[sizeof(IMAGE_DOS_HEADER)];		//IMAGE_DOS_HEADERヘッダ一時バッファ
+	char binh[sizeof(IMAGE_NT_HEADERS)];		//IMAGE_NT_HEADERSヘッダ一時バッファ
+	char bish[sizeof(IMAGE_SECTION_HEADER)];	//IMAGE_SECTION_HEADERヘッダ一時バッファ
+
+	ReadProcessMemory(hProcess, (LPVOID)tins, bidh, sizeof(IMAGE_DOS_HEADER), NULL);//IMAGE_DOS_HEADER取得
+	PIMAGE_DOS_HEADER pSIDH = (PIMAGE_DOS_HEADER)bidh;//IMAGE_DOS_HEADER構造体にセット
+
+	ReadProcessMemory(hProcess, (LPVOID)(tins + pSIDH->e_lfanew), binh, sizeof(IMAGE_NT_HEADERS), NULL);//IMAGE_NT_HEADERS取得
+	PIMAGE_NT_HEADERS pSINH = (PIMAGE_NT_HEADERS)binh;//IMAGE_NT_HEADERのアドレスを作る e_lfanewはIMAGE_NT_HEADERのオフセット
+
+	PIMAGE_OPTIONAL_HEADER pIOH = (PIMAGE_OPTIONAL_HEADER)&pSINH->OptionalHeader;//IMAGE_OPTIONAL_HEADERのアドレスを作る
+
+	for (size_t i = 0; i < pSINH->FileHeader.NumberOfSections; i++)//セクション数と比較
+	{
+		ReadProcessMemory(hProcess, (LPVOID)(tins + pSIDH->e_lfanew + sizeof(IMAGE_NT_HEADERS)+(sizeof(IMAGE_SECTION_HEADER)*i)), bish, sizeof(IMAGE_SECTION_HEADER), NULL);//IMAGE_SECTION_HEADER取得
+		PIMAGE_SECTION_HEADER pISH = (PIMAGE_SECTION_HEADER)bish;//IMAGE_SECTION_HEADER構造体にセット
+		getchar();
+	}
+	
+
+	pIOH->DataDirectory[12].VirtualAddress;//IATのアドレス

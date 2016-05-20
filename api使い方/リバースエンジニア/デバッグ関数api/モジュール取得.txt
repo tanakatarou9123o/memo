@@ -1,0 +1,21 @@
+int DebugaC::GetModule(DWORD pid)
+{
+	vme.clear();//初期化
+	MODULEENTRY32 me;					//モジュール情報格納構造体
+	me.dwSize = sizeof(me);					//構造体サイズ
+	BOOL bResult = 0;					//モジュール32First成否
+	HANDLE hSnap;
+
+	hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, pid);    //モジュールのスナップショット取得
+	bResult = Module32First(hSnap, &me);					//最初のモジュールの情報をmeに格納
+
+	while (bResult)//ヌルになるまで繰り返し
+	{
+		vme.push_back(me);//モジュール追加
+
+		bResult = Module32Next(hSnap, &me);
+	}
+
+	CloseHandle(hSnap);
+	return 1;
+}

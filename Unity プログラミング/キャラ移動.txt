@@ -1,0 +1,22 @@
+
+    CharacterController c;
+    public float mobes=5f;
+    public float rot = 360f;
+
+void Start () 
+{
+        c = GetComponent<CharacterController>();
+	
+	
+}
+	
+	// Update is called once per frame
+	
+void Update () 
+{
+        Vector3 di = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        c.Move(di * mobes * Time.deltaTime);
+	
+	
+}

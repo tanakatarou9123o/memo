@@ -1,0 +1,2 @@
+	std::string a=std::to_string(RunningTime);//float ‚ðstring‚É•ÏŠ·
+	MessageBoxA(nullptr, a.c_str(), "", MB_OK);//string‚ðchar”z—ñ‚É

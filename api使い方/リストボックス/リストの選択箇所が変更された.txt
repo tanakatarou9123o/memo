@@ -1,0 +1,24 @@
+hlis1 = CreateWindow(TEXT("LISTBOX"), TEXT("ここをクリックしてください"), LBS_NOTIFY | WS_CHILD | WS_VISIBLE | LBS_NOTIFY | WS_BORDER | WS_VSCROLL | WS_HSCROLL, 20, 20, 500, 450, hWnd, (HMENU)IDC_LIST1, hInst, NULL);//LISTBOX1
+//LBS_NOTIFY COMMANDに通知される		
+
+
+	switch (message)
+	{
+	case WM_COMMAND:
+
+		if (HIWORD(wParam) == LBN_SELCHANGE)//選択が変更された
+		{
+			SendMessage(hlis1, LB_RESETCONTENT, 0, 0);
+
+			mgf = SendMessage(hlis1, LB_GETCURSEL, 0, 0);	//listbox インデックス取得
+			if (LB_ERR==mgf)
+			{
+				break;
+			}
+			WCHAR s1[50];
+
+			wsprintf(s1, TEXT("プロセスID 0x%08x"), deb->v[mgf].pe.th32ProcessID);
+
+			SendMessage(hlis2, LB_ADDSTRING, 0, (LPARAM)s1);//listbox 項目追加 
+	
+		}

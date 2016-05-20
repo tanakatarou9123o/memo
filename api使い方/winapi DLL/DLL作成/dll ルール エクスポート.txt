@@ -1,0 +1,16 @@
+#ifdef __cplusplus
+#define EXPORT extern "C" __declspec(dllexport)		//CŒÄ‚Ño‚µ‚Ìê‡
+#else
+#define EXPORT __declspec(dllexport)				//C++ŒÄ‚Ño‚µ‚Ìê‡
+#endif
+
+
+
+
+EXPORT BOOL messge()
+{
+
+	MessageBox(NULL, TEXT("dll"), TEXT(""), MB_OK);
+
+	return true;
+}

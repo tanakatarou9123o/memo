@@ -1,0 +1,17 @@
+#pragma comment(lib, "Wsock32.Lib")
+#define WIN32_LEAN_AND_MEAN
+#include <WinSock2.h>
+
+
+
+
+WSADATA wsad;//DLLî•ñŠi”[\‘¢‘Ì
+int err = WSAStartup(MAKEWORD(2, 2), &wsad);//‰Šú‰» g‚¤ver w’è
+if (err != 0)
+{
+	MessageBox(NULL, L"WSAStartup", L"", MB_OK);
+}
+
+
+
+if (-1 == WSACleanup()){ MessageBox(NULL, L"WSACleanup", L"", MB_OK); };//‰ğ•ú

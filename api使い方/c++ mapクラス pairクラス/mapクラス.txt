@@ -1,0 +1,8 @@
+#include <map>//マップクラス
+
+
+	map<char*, int>a;//マップオブジェクト作成
+	a.insert(pair<char*, int>("あ",1));キーと値を設定
+	a.insert(pair<char*, int>("い", 1));キーと値を設定
+
+	int m=a["あ"];//キーで値にアクセス

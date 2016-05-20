@@ -1,0 +1,4 @@
+List<string> strData = new List<string>();
+
+string syutu = "asd";
+strData.Add(syutu);

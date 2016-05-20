@@ -1,0 +1,9 @@
+
+            string a="Axx";
+
+            if (string.Compare(a, "axx",true) == 0)//‘å•¶š¬•¶š‚ğ–³‹ ˆê’v‚µ‚½‚ç0‚ª•Ô‚é
+            {
+                Console.WriteLine("ˆê’v‚µ‚½‚æ");
+                Console.Read();
+            }
+

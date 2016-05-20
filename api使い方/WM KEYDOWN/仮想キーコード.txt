@@ -1,0 +1,184 @@
+仮想キーコード
+
+以下の表は、ウィンドウの仮想キーコードの一覧です。
+定数名	値（16進数）	意味
+VK_LBUTTON	01	マウス左ボタン
+VK_RBUTTON	02	マウス右ボタン
+VK_CANCEL	03	[Cancel]
+VK_MBUTTON	04	マウス中央ボタン
+VK_XBUTTON1	05	Windows 2000/XP： マウス X1 ボタン
+VK_XBUTTON2	06	Windows 2000/XP： マウス X2 ボタン
+-	07	未定義
+VK_BACK	08	[Back space]
+VK_TAB	09	[Tab]
+-	0A ～ 0B	予約
+VK_CLEAR	0C	[Clear]
+VK_RETURN	0D	[Enter]
+-	0E ～ 0F	未定義
+VK_SHIFT	10	[Shift]
+VK_CONTROL	11	[Ctrl]
+VK_MENU	12	[Alt]
+VK_PAUSE	13	[Pause]
+VK_CAPITAL	14	[Caps Lock]
+VK_KANA	15	IME カナモード
+VK_HANGUEL, VK_HANGUL	15	IME ハングルモード
+-	16	未定義
+VK_JUNJA	17	
+VK_FINAL	18	
+VK_HANJA	19	
+VK_KANJI	19	IME 漢字モード
+-	1A	未定義
+VK_ESCAPE	1B	[Esc]
+VK_CONVERT	1C	IME 変換
+VK_NONCONVERT	1D	IME 無変換
+VK_ACCEPT	1E	
+VK_MODECHANGE	1F	IME モード変更
+VK_SPACE	20	スペースキー
+VK_PRIOR	21	[Page Up]
+VK_NEXT	22	[Page Down]
+VK_END	23	[End]
+VK_HOME	24	[Home]
+VK_LEFT	25	[←]
+VK_UP	26	[↑]
+VK_RIGHT	27	[→]
+VK_DOWN	28	[↓]
+VK_SELECT	29	[Select]
+VK_PRINT	2A	[Print]
+VK_EXECUTE	2B	[Execute]
+VK_SNAPSHOT	2C	[Print Screen]
+VK_INSERT	2D	[Insert]
+VK_DELETE	2E	[Delete]
+VK_HELP	2F	[Help]
+（ASCII コード '0' ～ '9' と同じ）	30 ～ 39	[0] ～ [9]
+	3A ～ 40	未定義
+（ASCII コード 'A' ～ 'Z' と同じ）	41 ～ 5A	[A] ～ [Z]
+VK_LWIN	5B	左の Windows キー
+VK_RWIN	5C	右の Windows キー
+VK_APPS	5D	アプリケーションキー
+-	5E	予約
+VK_SLEEP	5F	コンピュータスリープキー
+VK_NUMPAD0 ～ VK_NUMPAD9	60 ～ 69	テンキーの [0] ～ [9]
+VK_MULTIPLY	6A	テンキーの [ * ]
+VK_ADD	6B	テンキーの [ + ]
+VK_SEPARATOR	6C	テンキーの [Enter]
+VK_SUBTRACT	6D	テンキーの [ - ]
+VK_DECIMAL	6E	テンキーの [ . ]
+VK_DIVIDE	6F	テンキーの [ / ]
+VK_F1	70	[F1]
+VK_F2	71	[F2]
+VK_F3	72	[F3]
+VK_F4	73	[F4]
+VK_F5	74	[F5]
+VK_F6	75	[F6]
+VK_F7	76	[F7]
+VK_F8	77	[F8]
+VK_F9	78	[F9]
+VK_F10	79	[F10]
+VK_F11	7A	[F11]
+VK_F12	7B	[F12]
+VK_F13	7C	[F13]
+VK_F14	7D	[F14]
+VK_F15	7E	[F15]
+VK_F16	7F	[F16]
+VK_F17	80	[F17]
+VK_F18	81	[F18]
+VK_F19	82	[F19]
+VK_F20	83	[F20]
+VK_F21	84	[F21]
+VK_F22	85	[F22]
+VK_F23	86	[F23]
+VK_F24	87	[F24]
+-	88 ～ 8F	割り当てなし
+VK_NUMLOCK	90	[Num Lock]
+VK_SCROLL	91	[Scroll Lock]
+	92 ～ 96	OEM 固有コード
+	97 ～ 9F	割り当てなし
+VK_LSHIFT	A0	左の [Shift]
+VK_RSHIFT	A1	右の [Shift]
+VK_LCONTROL	A2	左の [Ctrl]
+VK_RCONTROL	A3	右の [Ctrl]
+VK_LMENU	A4	左の [Alt]
+VK_RMENU	A5	右の [Alt]
+VK_BROWSER_BACK	A6	Windows 2000/XP： ブラウザの「戻る」キー
+VK_BROWSER_FORWARD	A7	Windows 2000/XP： ブラウザの「次へ」キー
+VK_BROWSER_REFRESH	A8	Windows 2000/XP： ブラウザの「更新」キー
+VK_BROWSER_STOP	A9	Windows 2000/XP： ブラウザの「中止」キー
+VK_BROWSER_SEARCH	AA	Windows 2000/XP： ブラウザの「検索」キー
+VK_BROWSER_FAVORITES	AB	Windows 2000/XP： ブラウザの「お気に入り」キー
+VK_BROWSER_HOME	AC	Windows 2000/XP： ブラウザの「ホーム」キー
+VK_VOLUME_MUTE	AD	Windows 2000/XP： ボリュームのミュートキー
+VK_VOLUME_DOWN	AE	Windows 2000/XP： ボリュームダウンキー
+VK_VOLUME_UP	AF	Windows 2000/XP： ボリュームアップキー
+VK_MEDIA_NEXT_TRACK	B0	Windows 2000/XP： 「次のトラック」キー
+VK_MEDIA_PREV_TRACK	B1	Windows 2000/XP： 「前のトラック」キー
+VK_MEDIA_STOP	B2	Windows 2000/XP： 「メディア停止」キー
+VK_MEDIA_PLAY_PAUSE	B3	Windows 2000/XP： 「メディア Start / Stop 」キー
+VK_LAUNCH_MAIL	B4	Windows 2000/XP： 「メール開始」キー
+VK_LAUNCH_MEDIA_SELECT	B5	Windows 2000/XP： 「メディア選択」キー
+VK_LAUNCH_APP1	B6	Windows 2000/XP： 「アプリケーション 1 起動」キー
+VK_LAUNCH_APP2	B7	Windows 2000/XP： 「アプリケーション 2 起動」キー
+	B8 ～ B9	予約
+VK_OEM_1	BA	
+
+さまざまな文字のために使用できます。
+
+Windows 2000/XP： U.S. 標準キーボードでは [ :; ]
+VK_OEM_PLUS	BB	Windows 2000/XP： [ + ]
+VK_OEM_COMMA	BC	Windows 2000/XP： [ , ]
+VK_OEM_MINUS	BD	Windows 2000/XP： [ - ]
+VK_OEM_PERIOD	BE	Windows 2000/XP： [ . ]
+VK_OEM_2	BF	
+
+さまざまな文字のために使用できます。
+
+Windows 2000/XP： U.S. 標準キーボードでは [ /? ]
+VK_OEM_3	C0	
+
+さまざまな文字のために使用できます。
+
+Windows 2000/XP： U.S. 標準キーボードでは [ `~ ]
+	C1 ～ D7	予約
+	D8 ～ DA	割り当てなし
+VK_OEM_4	DB	
+
+さまざまな文字のために使用できます。
+
+Windows 2000/XP： U.S. 標準キーボードでは [ [{ ]
+VK_OEM_5	DC	
+
+さまざまな文字のために使用できます。
+
+Windows 2000/XP： U.S. 標準キーボードでは [ \| ]
+VK_OEM_6	DD	
+
+さまざまな文字のために使用できます。
+
+Windows 2000/XP： U.S. 標準キーボードでは [ ]} ]
+VK_OEM_7	DE	
+
+さまざまな文字のために使用できます。
+
+Windows 2000/XP： U.S. 標準キーボードでは [ '" ]
+VK_OEM_8	DF	
+
+さまざまな文字のために使用できます。
+-	E0	予約
+	E1	OEM 固有コード
+VK_OEM_102	E2	Windows 2000/XP： RT 102-key キーボードの角カッコまたはバックスラッシュ
+	E3 ～ E4	OEM 固有コード
+VK_PROCESSKEY	E5	Windows 95/98/Me/NT 4.0/2000/XP： IME Process
+	E6	OEM 固有コード
+VK_PACKET	E7	
+
+Windows 2000/XP： Unicode 文字がキーストロークであるかのように通すために使用されます。
+-	E8	割り当てなし
+	E9 ～ F5	OEM 固有コード
+VK_ATTN	F6	Attn
+VK_CRSEL	F7	CrSel
+VK_EXSEL	F8	ExSel
+VK_EREOF	F9	Erase EOF
+VK_PLAY	FA	Play
+VK_ZOOM	FB	Zoom
+VK_NONAME	FC	予約
+VK_PA1	FD	PA1
+VK_OEM_CLEAR	FE	Clear

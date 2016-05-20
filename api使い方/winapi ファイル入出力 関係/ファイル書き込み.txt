@@ -1,0 +1,7 @@
+HANDLE hfipo = CreateFile(TEXT("1.txt"), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);//IPファイルを作成
+	if (hfipo == INVALID_HANDLE_VALUE)//ファイル存在しない エラー
+	{
+	}
+
+	WriteFile(hfipo, indices, tyou.menindex, NULL, NULL);
+	CloseHandle(hfipo);//ハンドル閉じる

@@ -1,0 +1,43 @@
+/*対象プロセスの全てのスレッド*/
+	HANDLE hSnap,hsurei;				//スナップショットのハンドル  スレッドハンドル
+	THREADENTRY32 tko;					//スレッド情報格納構造体
+	DWORD thid[1000];					//スレッドid格納
+	tko.dwSize = sizeof(tko);			//構造体サイズ
+	BOOL bResult = 0;					//Process32First成否
+	int ss = 0;							//スレッドカウンタ
+	CONTEXT ctf = { CONTEXT_CONTROL | CONTEXT_INTEGER | CONTEXT_DEBUG_REGISTERS };	//レジスタの内容格納先
+	WCHAR ttex[50];						//アドレス受け取り
+	int adore = 0;						//アドレス数値に変換
+	GetWindowText(hedit, ttex, 50);		//ウィンドウハンドルのテキストを取得 wchar
+	swscanf(ttex, L"%x", &adore);		//文字列を数値に
+
+	hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, 0);					//全てのスレッドのスナップ取得
+	bResult = Thread32First(hSnap, &tko);									//最初のスレッドの情報をtkoに格納
+	while (bResult)//ヌルになるまで繰り返し
+	{
+		if (tko.th32OwnerProcessID == prosid[mgf])//対象プロセスのプロセスIDか比較
+		{
+			thid[ss] = tko.th32ThreadID;//スレッドID 配列に
+			if (hsurei = OpenThread(THREAD_ALL_ACCESS, false, tko.th32ThreadID))//スレッドハンドル取得
+			{
+				if (-1 != SuspendThread(hsurei))								//スレッド停止
+				{
+					GetThreadContext(hsurei, &ctf);								//スレッドのレジスタ読み込み
+
+					ctf.Dr0 = adore;											//デバッグ アドレス
+					ctf.Dr7 |= 0x00000001;										//コード実行
+					//ctf.Dr7 |= 0x000D0001;										//メモリ書き込みブレイク
+					if (!SetThreadContext(hsurei, &ctf))
+					{
+						MessageBox(hWnd, L"SetThreadContext失敗", L"", MB_OK);
+					};
+
+					ResumeThread(hsurei);			//スレッド再開
+				}
+				
+			}
+			ss++;
+		}
+
+		bResult = Thread32Next(hSnap, &tko);//次のスレッドの情報をtkoに格納
+	}

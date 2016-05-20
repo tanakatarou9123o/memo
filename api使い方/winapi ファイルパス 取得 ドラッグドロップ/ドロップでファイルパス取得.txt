@@ -1,0 +1,17 @@
+#include <shellapi.h>
+
+	
+TCHAR szDropFile[MAX_PATH + 1];//ファイルパス
+
+	case WM_CREATE:
+
+		DragAcceptFiles(hWnd, TRUE); // D&D を許可する
+		break;
+
+	case WM_DROPFILES:
+
+		
+		DragQueryFile((HDROP)wParam, 0, szDropFile, MAX_PATH);//ファイルパス取得
+		MessageBox(hWnd, szDropFile, TEXT("tt"), MB_OK);
+		break;
+

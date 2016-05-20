@@ -1,0 +1,7 @@
+FileStream file = new FileStream("ip.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            StreamReader reader = new StreamReader(file);//FileStreamのインスタンス
+            StreamWriter writer= new StreamWriter(file);//FileStreamのインスタンス;
+
+writer.WriteLine("aisu");
+
+writer.Close();

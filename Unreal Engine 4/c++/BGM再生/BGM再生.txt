@@ -1,0 +1,11 @@
+	int i = 0;
+	for (TActorIterator<AAmbientSound> It(GetWorld()); It; ++It)
+	{
+		MyActor[i] = *It;
+		MyActor[i]->Play();
+		MyActor[i]->Stop();
+		i++;
+	}
+
+	MyActor[ransu]->AudioComponent->OnAudioFinished;
+	MyActor[ransu]->Play();

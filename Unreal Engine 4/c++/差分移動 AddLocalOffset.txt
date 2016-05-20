@@ -1,0 +1,4 @@
+	FVector NewLocation;//ˆÊ’u
+	ZeroMemory(&NewLocation, sizeof(FVector));
+	NewLocation.Z += 50;
+	CameraBoom->AddLocalOffset(NewLocation);

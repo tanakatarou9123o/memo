@@ -1,0 +1,20 @@
+#include <fstream>
+
+int ReadPE::FilePut(char* pbuf,int fsize)//exe を読み込んだバッファ,ファイルサイズ ファイル書き込み
+{
+	ofstream a("a.exe", ios::out | ios::binary | ios::trunc);
+	if (!a)
+	{
+		MessageBoxA(NULL, "ファイル作成失敗", "FilePut", MB_OK);
+		return 0;
+	}
+
+	for (size_t i = 0; i < fsize; i++)
+	{
+		a.write(&pbuf[i], sizeof(char));
+	}
+
+	a.close();
+
+	return 1;
+}

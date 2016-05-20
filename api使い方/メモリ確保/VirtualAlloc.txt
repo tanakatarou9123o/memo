@@ -1,0 +1,13 @@
+LPVOID ad;
+ad=VirtualAlloc((LPVOID)0x40000,500000000,MEM_RESERVE|MEM_COMMIT,PAGE_EXECUTE_READWRITE);
+
+
+
+
+引数1　アドレス
+引数2　サイズ
+引数3　予約,コミット
+引数4　属性
+
+戻り値
+確保した先頭アドレス

@@ -1,0 +1,4 @@
+メッシュにブループリントを関連つける
+
+classに指定する
+GetActorTransformで位置取得し、spawnTransformに

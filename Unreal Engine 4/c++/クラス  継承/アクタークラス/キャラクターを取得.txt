@@ -1,0 +1,13 @@
+	ACharacter* pcamera[500];
+	
+	int i=0;
+	for (TActorIterator<ACharacter> It(GetWorld()); It; ++It)
+	{
+		pcamera[0] = *It;
+		if (pcamera[0]->ActorHasTag(FName("a")))//tagåüçı
+		{
+			//MessageBoxA(nullptr, "", "", MB_OK);
+			break;
+		}
+		i++;
+	}

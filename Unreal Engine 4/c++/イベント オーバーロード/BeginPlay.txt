@@ -1,0 +1,7 @@
+virtual void BeginPlay() override;
+
+void AMyProjectCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	GameIns = Cast<UMyGameInstance>(GetGameInstance());
+}

@@ -1,0 +1,6 @@
+
+            string a = "daaacd,bbb,c,d,e";//','で区切ってる 前後にdがある
+
+            string[] abuf = a.Split(',');//文字列取り出し
+
+            abuf[0] = abuf[0].Trim('d');//トリム 前後のdを削除

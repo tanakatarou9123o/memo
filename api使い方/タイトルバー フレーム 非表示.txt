@@ -1,0 +1,11 @@
+hWnd = CreateWindowEx(WS_EX_LAYERED | WS_EX_TOPMOST, szWindowClass, szTitle, 0,//WS_OVERLAPPEDWINDOW  WS_EX_TOPMOST topに表示
+      CW_USEDEFAULT, 0, 330, 120, NULL, NULL, hInstance, NULL);
+
+
+
+   LONG lStyle;
+   lStyle = GetWindowLong(hWnd, GWL_STYLE);
+   lStyle &= ~WS_CAPTION;
+   lStyle = SetWindowLong(hWnd, GWL_STYLE, lStyle);//フレーム タイトル 非表示
+
+SetWindowPos(hWnd, 0, 500, 500, 0, 0, SWP_NOSIZE );// サイズ維持 表示

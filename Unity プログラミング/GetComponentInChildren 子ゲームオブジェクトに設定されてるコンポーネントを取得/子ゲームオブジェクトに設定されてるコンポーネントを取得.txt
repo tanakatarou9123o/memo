@@ -1,0 +1,3 @@
+Animator animator;
+
+animator = GetComponentInChildren<Animator>();//インスタンス取得 子ゲームオブジェクトに設定されてるコンポーネントを取得

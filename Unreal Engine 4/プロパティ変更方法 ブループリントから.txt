@@ -1,0 +1,5 @@
+状況に合わせた表示をOFFにする
+
+プロパティ名を入力
+Max Walk Speed
+Jump Z Velocity

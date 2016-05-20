@@ -1,0 +1,5 @@
+TCHAR lpBuffer[512];
+DWORD dwRet;
+int err = GetLastError();
+dwRet = FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM,NULL,err,0,lpBuffer,sizeof(lpBuffer) / sizeof(lpBuffer[0]),NULL);
+SetWindowText(hWnd, lpBuffer);

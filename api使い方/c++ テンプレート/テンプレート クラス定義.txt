@@ -1,0 +1,16 @@
+template<typename オブジェクト名>class MyClass
+{
+オブジェクト名 a;
+}
+
+template<typename A>class MyClass
+{
+	A a;//テンプレートの変数
+
+public:
+	MyClass(A x){a=x};
+	~MyClass(){};
+
+private:
+
+};

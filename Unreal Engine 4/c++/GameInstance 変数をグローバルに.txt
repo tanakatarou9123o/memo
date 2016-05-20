@@ -1,0 +1,45 @@
+全てのクラスを表示にチェック
+
+GameInstance と入力
+
+
+//MyGameInstance.h
+#pragma once
+
+#include "Engine/GameInstance.h"
+#include "MyGameInstance.generated.h"
+
+/**
+ * 
+ */
+UCLASS()
+class TESC_API UMyGameInstance : public UGameInstance
+{
+	GENERATED_BODY()
+
+public:	
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+	int Scoin=0;
+	
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+	float Sspeed=1200;
+	
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+	float Sjunmp=1800;
+	
+};
+
+
+
+使う側
+#include "MyGameInstance.h"
+
+	UMyGameInstance* a=Cast<UMyGameInstance>(GetGameInstance());
+
+
+
+//
+編集
+プロジェクト設定
+マップ＆モード
+Game Instance を作成したGameInstanceを設定する

@@ -1,0 +1,4 @@
+GetGameInstance()
+
+コンストラクタで使ってはいけない
+AActor を継承していないと使えない

@@ -1,0 +1,15 @@
+Handler mHandler;
+
+
+mHandler =  new Handler()
+{
+//メッセージ受信
+	@Override
+        public void handleMessage(Message message) 
+        {
+               //メッセージの表示
+               //tv.setText((String) message.obj);
+               //メッセージの種類に応じてswitch文で制御すれば
+               //イベント制御に利用できます
+        };
+};

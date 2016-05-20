@@ -1,0 +1,133 @@
+AndroidManifest.xml 権限
+RECORD_AUDIO
+
+
+IRecognitionListenerを継承
+
+    public class MainActivity : Activity, TextToSpeech.IOnInitListener, IRecognitionListener
+
+
+private SpeechRecognizer mSpeechRec;
+
+
+
+
+            mSpeechRec = SpeechRecognizer.CreateSpeechRecognizer(ApplicationContext);
+            mSpeechRec.SetRecognitionListener(this);
+            mSpeechRec.StartListening(RecognizerIntent.GetVoiceDetailsIntent(Android.App.Application.Context));
+
+
+
+        public void OnBeginningOfSpeech()//しゃべり始め
+        {
+            //tts.Speak("開始", QueueMode.Flush, null);
+            
+        }
+
+        public void OnBufferReceived(byte[] buffer)
+        {
+            //tts.Speak("OnBufferReceivedだよ", QueueMode.Flush, null);
+            
+        }
+
+        public void OnEndOfSpeech()//しゃべり終わり
+        {
+            //tts.Speak("停止", QueueMode.Flush, null);
+            
+        }
+
+        public void OnError([GeneratedEnum] SpeechRecognizerError error)
+        {
+            switch (error)
+            {
+                case SpeechRecognizerError.Audio:
+                    // 音声データ保存失敗
+                    //tts.Speak("音声データ保存失敗", QueueMode.Flush, null);
+                    
+                    break;
+                case SpeechRecognizerError.Client:
+                    // Android端末内のエラー(その他)
+                    //tts.Speak("Android端末内のエラー(その他)", QueueMode.Flush, null);
+                    break;
+                case SpeechRecognizerError.InsufficientPermissions:
+                    // 権限無し
+                    //tts.Speak("権限無し", QueueMode.Flush, null);
+                    break;
+                case SpeechRecognizerError.Network:
+                    // ネットワークエラー(その他)
+
+                    //tts.Speak("ネットワークエラー(その他)", QueueMode.Flush, null);
+                    break;
+                case SpeechRecognizerError.NetworkTimeout:
+                    // ネットワークタイムアウトエラー
+
+                    //tts.Speak("ネットワークタイムアウトエラー", QueueMode.Flush, null);
+                    break;
+                case SpeechRecognizerError.NoMatch:
+                    // 音声認識結果無し
+
+                    //tts.Speak("音声認識結果無し", QueueMode.Flush, null);
+                    break;
+                case SpeechRecognizerError.RecognizerBusy:
+                    // RecognitionServiceへ要求出せず
+
+                    //tts.Speak("RecognitionServiceへ要求出せず", QueueMode.Flush, null);
+                    break;
+                case SpeechRecognizerError.Server:
+                    // Server側からエラー通知
+
+                    //tts.Speak("Server側からエラー通知", QueueMode.Flush, null);
+                    break;
+                case SpeechRecognizerError.SpeechTimeout:
+                    // 音声入力無し
+
+                    //tts.Speak("音声入力無し", QueueMode.Flush, null);
+                    break;
+                default:
+                    break;
+            }
+
+            //tts.Speak("OnErrorだよ", QueueMode.Flush, null);
+
+            mSpeechRec.StartListening(RecognizerIntent.GetVoiceDetailsIntent(Android.App.Application.Context));
+        }
+
+
+        public void OnEvent(int eventType, Bundle @params)
+        {
+            //tts.Speak("OnEventだよ", QueueMode.Flush, null);
+            
+        }
+
+        public void OnPartialResults(Bundle partialResults)
+        {
+
+            //tts.Speak("OnPartialResultsだよ", QueueMode.Flush, null);
+        }
+
+        public void OnReadyForSpeech(Bundle @params)
+        {
+
+            //tts.Speak("音声認識準備完了だよ", QueueMode.Flush, null);
+            //throw new NotImplementedException();
+        }
+
+        public void OnResults(Bundle results)
+        {
+            // 音声検索結果
+            IList<String> reslurtWordList = results.GetStringArrayList(SpeechRecognizer.ResultsRecognition);
+
+            // 候補の一つ目を表示
+            String resultWord = reslurtWordList[0];
+
+
+            tts.Speak(resultWord, QueueMode.Flush, null);
+
+            mSpeechRec.StartListening(RecognizerIntent.GetVoiceDetailsIntent(Android.App.Application.Context));
+        }
+
+        public void OnRmsChanged(float rmsdB)
+        {
+
+            //tts.Speak("OnRmsChanged", QueueMode.Flush, null);
+        }        

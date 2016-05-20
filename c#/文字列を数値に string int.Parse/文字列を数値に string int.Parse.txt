@@ -1,0 +1,2 @@
+            string str = "123456789";
+            int num = int.Parse(str);

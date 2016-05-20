@@ -1,0 +1,11 @@
+
+HWND hWnd;
+POINT pos;
+
+SetCapture(hWnd);	//キャプチャ開始
+
+case WM_MOUSEMOVE:
+	GetCursorPos(&pos);	//座標取得
+	break;
+
+ReleaseCapture();  //キャプチャ中止

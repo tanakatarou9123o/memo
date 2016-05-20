@@ -1,0 +1,7 @@
+
+#include <fstream>
+using namespace std;
+
+	ofstream ofs("a", ios_base::out | ios_base::trunc | ios_base::binary);// バイナリ出力モードで新規ファイルオープン
+	int a[] = { 1000, 256 };
+	ofs.write(reinterpret_cast<char *>(a), sizeof(a));

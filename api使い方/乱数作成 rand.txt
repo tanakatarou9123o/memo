@@ -1,0 +1,12 @@
+int ransu;		//乱数受け取る変数
+srand(1);		//乱数の種 種が一定だと同じ値が返る 種にはtime関数を使うといい
+ransu = rand() %5;	//%x-1までの値が返る %5なら 0~4まで
+
+
+
+//timeで
+#include <time.h>
+
+int ransu;//乱数受け取る変数
+srand(time(NULL));//時間で種
+ransu = rand() %5;//%x-1までの値が返る %5なら 0~4まで

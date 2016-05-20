@@ -1,0 +1,29 @@
+#include "shellapi.h"
+
+#define ID_MYTRAY 300
+#define MYTRAY_MESSAGE (WM_APP +1)
+
+//グローバル変数
+HWND hWnd;
+NOTIFYICONDATA ni;
+
+
+
+
+		//タスクバーに表示
+		memset(&ni,0,sizeof(NOTIFYICONDATA));
+		ni.cbSize=sizeof(NOTIFYICONDATA);
+		ni.hWnd=hWnd;
+		ni.uID=ID_MYTRAY;
+		ni.uFlags=NIF_ICON|NIF_MESSAGE|NIF_TIP;
+		ni.hIcon=LoadIcon(hInst, MAKEINTRESOURCE(IDI_WINDOUW8));
+		ni.uCallbackMessage=MYTRAY_MESSAGE;
+		lstrcpy(ni.szTip,TEXT("再"));
+
+		Shell_NotifyIcon(NIM_ADD,&ni);
+		//タスクバーに表示
+
+
+		//タスクバーから削除
+		Shell_NotifyIcon(NIM_DELETE,&ni);
+		//タスクバーから削除

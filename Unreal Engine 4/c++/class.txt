@@ -1,0 +1,8 @@
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Level")
+	int32 MyLevel;
+
+
+
+	UFUNCTION(BlueprintCallable, Category = "Level") 
+	void PrintMyLevel();

@@ -1,0 +1,21 @@
+POINT pt;
+
+
+
+case MYTRAY_MESSAGE:
+		switch (lParam)
+		{
+		case WM_RBUTTONDOWN:
+		case WM_LBUTTONDOWN:
+			
+
+			HMENU hMenu1,subMenu;
+			hMenu1=LoadMenu(NULL,MAKEINTRESOURCE(IDR_MENU1));		//リソースロード
+			if(!hMenu1){MessageBox(NULL,TEXT(""),NULL,MB_OK);}
+			subMenu=GetSubMenu(hMenu1,0);					//サブメニュー
+			
+			GetCursorPos(&pt);		//マウス位置取得
+
+			TrackPopupMenu(subMenu,TPM_LEFTALIGN,pt.x,pt.y,0,hWnd,NULL);	//ポップアップ表示
+
+			break;

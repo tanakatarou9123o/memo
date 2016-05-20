@@ -1,0 +1,11 @@
+			HKEY hKey;
+			DWORD dwDisposition;
+			TCHAR lpData[] = TEXT("\"C:\Program Files (x86)\DAEMON Tools Pro\DTAgent.exe2\"");	//データ
+			DWORD dwNumberOfBytes = sizeof(lpData);		//サイズ
+
+			//キー作成
+			if(!ERROR_SUCCESS==RegCreateKeyEx(HKEY_CURRENT_USER,TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Run"),
+				0,NULL,0,KEY_ALL_ACCESS,NULL,&hKey,&dwDisposition)){MessageBox(NULL,TEXT("登録失敗"),NULL,0);}
+
+			//データ作成
+			RegSetKeyValue(hKey,NULL,TEXT("winsaikidou"),REG_SZ,lpData,dwNumberOfBytes);

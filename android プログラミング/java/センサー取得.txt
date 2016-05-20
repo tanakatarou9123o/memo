@@ -1,0 +1,54 @@
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import java.util.List;
+
+
+implements SensorEventListener
+
+
+SensorManager manager;//センサーマネージャ
+
+manager=(SensorManager)getSystemService(SENSOR_SERVICE);//インスタンス取得
+
+	@Override
+	protected void onPause()
+	{
+		// TODO 自動生成されたメソッド・スタブ
+		super.onPause();
+		this.manager.unregisterListener(this);//センサー解除
+
+
+	}		
+
+		Sensor sen;
+
+		List<Sensor> sensors=this.manager.getSensorList(Sensor.TYPE_ALL);//センサー全部取得
+		if (sensors.size()>0)//一つ以上見つけた
+		{
+			for (int i = 0; i < sensors.size(); i++) 
+			{
+
+				sen=sensors.get(i);
+
+				this.manager.registerListener(this, sensors.get(i),SensorManager.SENSOR_DELAY_NORMAL);//センサー登録
+				
+
+				
+			}
+		}
+
+
+	@Override
+	public void onSensorChanged(SensorEvent event) //センサーの値が変更されるとき
+	{
+		// TODO 自動生成されたメソッド・スタブ
+		float v=event.values[0];
+
+	}
+
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) //センサーの制度が変更されるとき
+	{
+		// TODO 自動生成されたメソッド・スタブ
+
+	}

@@ -1,0 +1,56 @@
+
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+
+            // Get our button from the layout resource,
+            // and attach an event to it
+            Button button = FindViewById<Button>(Resource.Id.MyButton);
+
+            button.Click += delegate 
+            {
+
+                Intent intent = new Intent();
+                intent.SetAction(RecognizerIntent.ActionRecognizeSpeech);
+                intent.PutExtra(RecognizerIntent.ExtraLanguageModel, RecognizerIntent.LanguageModelFreeForm);
+                StartActivityForResult(intent, 1);//インテント起動 リクエストコード1
+
+
+            };
+
+        }
+
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)//インテント終了取得
+        {
+            // 自分が投げたインテントであれば応答する
+            if (requestCode == 1)
+            {
+                String resultsString = "";
+
+                if (data==null)
+                {
+                    return;
+                }
+
+                // 結果文字列リスト
+                var results = data.GetStringArrayListExtra(RecognizerIntent.ExtraResults);
+
+                for (int i = 0; i < results.Count; i++)
+                {
+                    // ここでは、文字列が複数あった場合に結合しています
+                    //resultsString += results[i];
+                }
+
+                // トーストを使って結果を表示
+                var to=Toast.MakeText(this, results[0],ToastLength.Long);//this,string 
+                to.Show();
+            }
+
+
+            base.OnActivityResult(requestCode,resultCode,data);
+
+        }

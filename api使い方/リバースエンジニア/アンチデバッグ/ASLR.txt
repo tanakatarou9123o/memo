@@ -1,0 +1,100 @@
+IMAGE_NT_HEADER‚ÌIMAGE_OPTIONAL_HEADER‚ÌDllCharacteristics‚ª0x40‚É‚È‚Á‚Ä‚¢‚½‚çASLR‚ªON
+
+DllCharacteristics
+
+    The DLL characteristics of the image. The following values are defined.
+    Value	Meaning
+
+    0x0001
+
+    	
+
+    Reserved.
+
+    0x0002
+
+    	
+
+    Reserved.
+
+    0x0004
+
+    	
+
+    Reserved.
+
+    0x0008
+
+    	
+
+    Reserved.
+
+    IMAGE_DLLCHARACTERISTICS_DYNAMIC_BASE
+    0x0040
+
+    	
+
+    The DLL can be relocated at load time.
+
+    IMAGE_DLLCHARACTERISTICS_FORCE_INTEGRITY
+    0x0080
+
+    	
+
+    Code integrity checks are forced. If you set this flag and a section contains only uninitialized data, set the PointerToRawData member of IMAGE_SECTION_HEADER for that section to zero; otherwise, the image will fail to load because the digital signature cannot be verified.
+
+    IMAGE_DLLCHARACTERISTICS_NX_COMPAT
+    0x0100
+
+    	
+
+    The image is compatible with data execution prevention (DEP).
+
+    IMAGE_DLLCHARACTERISTICS_NO_ISOLATION
+    0x0200
+
+    	
+
+    The image is isolation aware, but should not be isolated.
+
+    IMAGE_DLLCHARACTERISTICS_NO_SEH
+    0x0400
+
+    	
+
+    The image does not use structured exception handling (SEH). No handlers can be called in this image.
+
+    IMAGE_DLLCHARACTERISTICS_NO_BIND
+    0x0800
+
+    	
+
+    Do not bind the image.
+
+    0x1000
+
+    	
+
+    Reserved.
+
+    IMAGE_DLLCHARACTERISTICS_WDM_DRIVER
+    0x2000
+
+    	
+
+    A WDM driver.
+
+    0x4000
+
+    	
+
+    Reserved.
+
+    IMAGE_DLLCHARACTERISTICS_TERMINAL_SERVER_AWARE
+    0x8000
+
+    	
+
+    The image is terminal server aware.
+
+     

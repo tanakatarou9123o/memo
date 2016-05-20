@@ -1,0 +1,16 @@
+BOOL dflug = false;
+CheckRemoteDebuggerPresent(GetCurrentProcess(), &dflug);
+if (dflug)//デバッグされてる
+{
+
+}
+else//されてない
+{
+
+}
+
+第二引数がtureだとデバッグされてる falseだとされてない
+
+戻り値
+成功するとture
+失敗false

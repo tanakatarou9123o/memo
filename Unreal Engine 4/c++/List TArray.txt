@@ -1,0 +1,3 @@
+TArray<ACameraActor*> c1;
+
+c1.Add(*It);

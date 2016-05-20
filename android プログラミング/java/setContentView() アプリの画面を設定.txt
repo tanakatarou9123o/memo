@@ -1,0 +1,5 @@
+//setContentView(R.layout.activity_main);
+//setContentView() 
+//Androidアプリの画面を設定するメソッド
+setContentView(R.layout.activity_main2);
+		

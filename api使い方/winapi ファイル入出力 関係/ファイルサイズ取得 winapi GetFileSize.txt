@@ -1,0 +1,5 @@
+filesize = GetFileSize//ファイルサイズ下位ワード
+		(
+		hfipo,           // ファイルのハンドル
+		&hisi			// ファイルサイズの上位ワード
+		);

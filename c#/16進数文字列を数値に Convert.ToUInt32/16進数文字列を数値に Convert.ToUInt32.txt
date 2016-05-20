@@ -1,0 +1,1 @@
+ulong a = Convert.ToUInt32(textBox1.Text, 16);//16i”•¶š—ñ ‚ğ”’l‚É

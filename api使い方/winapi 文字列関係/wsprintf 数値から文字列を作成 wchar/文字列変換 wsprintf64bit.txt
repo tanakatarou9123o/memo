@@ -1,0 +1,2 @@
+WCHAR ib[60];
+wsprintf(ib, L"0x%016I64x", a->OptionalHeader.ImageBase);//イメージベース

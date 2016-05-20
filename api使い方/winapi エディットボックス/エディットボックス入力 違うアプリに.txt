@@ -1,0 +1,5 @@
+エディットボックスのウィンドウハンドルを取得しておく
+
+SendMessage(hofse, EM_SETSEL, 0, 50);//文字列選択
+SendMessage(hofse, WM_CLEAR, 0, 0);//選択箇所クリア
+SendMessage(hofse, EM_REPLACESEL, 0, (LPARAM)adpoi);//エディットボックスに入力　adpoiが入力文字列

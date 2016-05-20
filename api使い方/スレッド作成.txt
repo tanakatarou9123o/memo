@@ -1,0 +1,31 @@
+DWORD WINAPI ThreadProc(LPVOID arg);  //プロトタイプ宣言
+
+
+
+			HANDLE hThread;
+			DWORD dwThreadId;
+
+			//スレッド起動
+			hThread = CreateThread(NULL,0,ThreadProc,NULL,0,&dwThreadId);//セキュリティ,スレッドのスタックサイズ,関数のアドレス,スレッドに渡す追加情報,スレッドの状態,スレッドid
+
+
+
+
+
+DWORD WINAPI ThreadProc(LPVOID arg)
+{
+	PROCESS_INFORMATION pi;
+				STARTUPINFO si;
+				ZeroMemory(&si,sizeof(si));
+				si.cb=sizeof(si);
+				int gh;
+	CreateProcess(TEXT("C:\\Users\\games24\\Documents\\Visual Studio 2010\\Projects\\100\\x64\\Debug\\100.exe"),NULL,NULL,NULL,FALSE,REALTIME_PRIORITY_CLASS,NULL,NULL,&si,&pi);
+
+	WaitForSingleObject(pi.hProcess,INFINITE);
+
+	return 0;
+}
+
+
+
+CloseHandle(hThread);

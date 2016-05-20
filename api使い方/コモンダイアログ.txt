@@ -1,0 +1,77 @@
+ファイルを開く
+//file構造体設定
+	OPENFILENAME on;
+	static TCHAR filename_full[MAX_PATH];   // ファイル名(フルパス)を受け取る領域
+	static TCHAR filename[MAX_PATH];        // ファイル名を受け取る領域
+
+	memset(&on,0,sizeof(OPENFILENAME));
+	on.lStructSize = sizeof(on);         // 構造体のサイズ
+	on.hwndOwner = hWnd;                  // コモンダイアログの親ウィンドウハンドル
+	on.lpstrFilter = TEXT("text(*.txt)\0*.txt\0All files(*.*)\0*.*\0\0"); // ファイルの種類
+	on.lpstrFile = filename_full;         // 選択されたファイル名(フルパス)を受け取る変数のアドレス
+	on.lpstrFileTitle = filename;         // 選択されたファイル名を受け取る変数のアドレス
+	on.nMaxFile = sizeof(filename_full);  // lpstrFileに指定した変数のサイズ
+	on.nMaxFileTitle = sizeof(filename);  // lpstrFileTitleに指定した変数のサイズ
+	on.Flags = OFN_FILEMUSTEXIST;         // フラグ指定
+	on.lpstrTitle = TEXT("ファイルを開く"); // コモンダイアログのキャプション
+	on.lpstrDefExt = TEXT("txt");           // デフォルトのファイルの種類
+//file構造体設定
+
+	GetOpenFileName(&on); //コモンダイアログ呼び出し
+
+
+
+音楽再生
+//mci構造体設定
+	static MCI_OPEN_PARMS openParam;
+	static MCI_PLAY_PARMS playParam;
+	static MCI_GENERIC_PARMS genericParam;
+	openParam.lpstrDeviceType = TEXT("MPEGVideo");   // ファイル種類
+
+	openParam.lpstrElementName = filename_full;  // 開くファイル名
+	mciSendCommand(0, MCI_OPEN, MCI_OPEN_TYPE | MCI_OPEN_ELEMENT, (DWORD_PTR)&openParam );//ファイルを開く
+	mciSendCommand(openParam.wDeviceID, MCI_PLAY, 0, (DWORD_PTR)&playParam );//ファイル再生
+	mciSendCommand(openParam.wDeviceID, MCI_CLOSE,0,0);//ファイルを閉じる
+//mci構造体設定
+
+
+
+ウィンドウ作成
+//ボタン作成
+#define ID_HIRAKU 120
+
+CreateWindow(TEXT("button"),TEXT("開く"),WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,   // スタイル指定
+20, 20,    // 座標
+60, 40,    // サイズ
+hWnd,    // 親ウィンドウのハンドル
+(HMENU)ID_HIRAKU,        // メニューハンドル
+hInst,      // インスタンスハンドル
+NULL );
+//ボタン作成
+
+
+
+
+
+バイナリ読み込み
+//file読み込み
+	HANDLE hFile;
+	DWORD readsize;
+	CHAR *buf;
+//file読み込み
+
+//file読み込み
+			if(huragu==0){buf=(CHAR*)malloc(sizeof(CHAR)*3200000000);memset(buf,0xaa,3200000);huragu++;}
+			hFile=CreateFile(filename_full,GENERIC_READ,FILE_SHARE_READ,NULL,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,NULL);
+			ReadFile( hFile, buf,3200000000, &readsize, NULL );
+			MessageBox(NULL,(LPCWSTR)&buf,TEXT("&buf"),MB_OK);
+//file読み込み
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+TArray<UStaticMeshComponent*> allMoveComp;//コンポーネントを入れる配列作成
+	GetComponents<UStaticMeshComponent>(allMoveComp);//アクターのコンポーネント取得
+	//allMoveComp[0]->AddForce(FVector(1000,1000,0));
+	allMoveComp[0]->SetPhysicsLinearVelocity(FVector(0,-10000,-100));//横,前,上 

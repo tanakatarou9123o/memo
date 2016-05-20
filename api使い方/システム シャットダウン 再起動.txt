@@ -1,0 +1,22 @@
+//変数
+			HANDLE hToken;
+			TOKEN_PRIVILEGES tokenPriv;
+			BOOL bRet;
+//変数
+
+
+//アクセストークンを開く
+			bRet = OpenProcessToken(GetCurrentProcess(),TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY,&hToken);
+//アクセストークンを開く
+
+//シャットダウン権限のLUIDを取得する
+			LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME, &(tokenPriv.Privileges[0].Luid));
+			tokenPriv.PrivilegeCount = 1;
+			tokenPriv.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+//シャットダウン権限のLUIDを取得する
+
+//シャットダウン権限のLUIDで、シャットダウン権限を有効にする
+			bRet = AdjustTokenPrivileges(hToken, FALSE, &tokenPriv, 0, NULL, NULL);
+//シャットダウン権限のLUIDで、シャットダウン権限を有効にする
+
+			ExitWindowsEx(EWX_REBOOT,0);

@@ -1,0 +1,7 @@
+hdc = BeginPaint(hWnd, &ps);
+
+
+HGDIOBJ fon = GetStockObject(ANSI_VAR_FONT);
+SelectObject(hdc, fon);
+
+DeleteObject(fon);

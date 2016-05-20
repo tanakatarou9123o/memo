@@ -1,0 +1,6 @@
+HANDLE hThread;
+DWORD dwProcessId;
+DWORD dwThreadId;
+HWND hWnd = FindWindow(L"Win32Project2", NULL);  //ウィンドウハンドル取得
+dwThreadId = GetWindowThreadProcessId(hWnd, &dwProcessId); //スレッドIDを取得するついでにプロセスIdも取得。
+Thread = OpenThread(THREAD_ALL_ACCESS, false, dwThreadId);//スレッドハンドル取得

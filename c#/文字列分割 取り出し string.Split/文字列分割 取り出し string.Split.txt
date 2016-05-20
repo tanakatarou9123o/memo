@@ -1,0 +1,15 @@
+
+            string a = "a,b,c,d,e";//','で区切ってる
+            string b = "aa bb cc dd ee";//半角スペースで区切られてる
+
+            string[] abuf = a.Split(',');//文字列取り出し
+            string[] bbuf = b.Split(' ');//文字列取り出し
+
+            foreach (var item in abuf)
+            {
+                Console.WriteLine(item);
+            }
+            foreach (var item in bbuf)
+            {
+                Console.WriteLine(item);
+            }

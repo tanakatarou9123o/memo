@@ -1,0 +1,19 @@
+éQè∆ÇÃí«â¡
+System.Net.Http
+
+
+
+            button.Click += async delegate
+            {
+                var str = await Download();
+
+                str = "";
+
+            };
+
+
+        async Task<String> Download()
+        {
+            var httpClient = new HttpClient();
+            return await httpClient.GetStringAsync("http://bbs.duowan.com/forum-1333-1.html");
+        }

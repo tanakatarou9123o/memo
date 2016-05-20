@@ -1,0 +1,14 @@
+コンパイラは独自のコードを一切作成しない
+スタックを確保するコードも戻り値も作らない
+
+__declspec(naked) plus(int a,int b)
+{
+	__asm
+	{
+		mov ebx,dword ptr ss:[esp+8]
+		mov edx,dword ptr ss:[esp+4]
+		add edx,ebx
+		mov eax,ebx
+		retn
+	}
+} 

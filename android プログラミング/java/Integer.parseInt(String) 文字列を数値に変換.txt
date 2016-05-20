@@ -1,0 +1,3 @@
+CharSequence ti;//gui‚Ì•¶š—ñƒNƒ‰ƒX .toString‚ÅString‚Ì•¶š—ñæ“¾
+
+int ii = Integer.parseInt(ti.toString());//•¶š—ñ‚ğ”’l‚É

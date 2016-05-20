@@ -1,0 +1,12 @@
+ReadProcessMemory
+
+    hProcess
+    メモリを読みたいプロセスのハンドル
+    lpBaseAddress
+    読み始めたいプロセスのアドレスで、例えば、40100hから4バイト読みたければ、この変数を401000hにする。
+    lpBuffer
+    読み取ったデータを受け取るためのバッファ
+    nSize
+    読み取りたいバイト数
+    lpNumberOfBytesRead
+    実際に読み込まれたバイト数を格納するバッファ。必要なければNULLを指定すればよい 

@@ -1,0 +1,14 @@
+	UFUNCTION(BlueprintCallable, Category = "BC++")
+	void a();
+
+
+
+void AMyActor::a()
+{
+
+	UMyGameInstance* a = Cast<UMyGameInstance>(GetGameInstance());
+
+}
+
+
+ブループリントで状況に合わせた表示のチェックをオフに

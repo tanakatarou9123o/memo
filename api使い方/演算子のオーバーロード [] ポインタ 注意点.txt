@@ -1,0 +1,8 @@
+map<char*, HWND>* hwn;
+
+DumpSearch::DumpSearch(map<char*, HWND>* h)
+{
+hwn=h;//ウィンドウハンドルのコンテナのアドレス受け取る 
+(*hwn)["HBUTTON1"];
+
+}

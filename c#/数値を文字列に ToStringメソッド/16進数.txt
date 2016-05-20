@@ -1,0 +1,3 @@
+item.ToString("X")//16進数で表示
+
+item.ToString("X2")//一ケタの場合0で埋める

@@ -1,0 +1,22 @@
+typedef HANDLE(*NtQueryInformationProcess)(HANDLE, DWORD, PVOID, DWORD, PVOID);//関数ポインタ typedef 戻り値の型(*関数ポインタ名)(引数1の型,引数2の型,,,)
+
+
+
+	typedef BOOL(*LPMES)(TCHAR*, TCHAR*);//関数ポインタ  戻り値 関数ポインタ 引数1 引数2
+	LPMES mes;							//関数ポインタ 変数
+
+
+	//DLL読み込み モジュールハンドル取得
+	HMODULE ldll = LoadLibrary(L"dll作成.dll");
+	if (!ldll)
+	{
+		MessageBox(NULL, L"DLL読み込み失敗", L"", MB_OK);
+	}
+
+	//DLL関数読み込み
+	mes = (LPMES)GetProcAddress(ldll, "messge");//型キャスト
+
+	mes(L"dll",L"dll");
+
+	//DLLのモジュールハンドル開放
+	FreeLibrary(ldll);

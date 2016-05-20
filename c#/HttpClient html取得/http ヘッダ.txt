@@ -1,0 +1,66 @@
+リクエストメッセージ		構成
+リクエストライン
+メッセージヘッダ
+空行
+メッセージボディ
+
+レスポンスメッセージ 		構成
+ステータスコードライン
+メッセージヘッダ
+空行
+メッセージボディ
+
+
+メッセージヘッダ リクエスト|レスポンス
+フィールド名:フィールド値
+
+Content-Type: text/html; charset=utf-8
+
+リクエストメッセージ例
+GET /test.html HTTP/1.1		//リクエストライン HTTPメソッド URIのパスとクエリ HTTPのバージョン
+Host: www.example.ac.jp		//メッセージヘッダ Hostヘッダ
+				//空行
+
+レスポンスメッセージ例
+HTTP/1.1 200 OK		//ステータスライン HTTPバージョン ステータスコード ステータスコードの説明 200 
+Date: Tue,01 Oct 2013 09:17:32 GMT	//Dateヘッダ メッセージが作成された日時
+Content-Length: 244			//リソースサイズ byte 
+Content-Type: text/html; charset=utf-8	//メディアのタイプ
+					//空行
+<!>...					//メッセージボディ
+
+
+メッセージヘッダ
+
+//持続的接続
+Connection: keep-alive//keep-alive close
+
+//移動先
+Location:		//移動先
+
+//再度アクセスする時間
+Retry-After:
+
+post
+Content-Length:xx//送信サイズ
+
+
+チャンク転送
+Transfer-Encoding:chunked
+
+
+
+GET		//リソースの取得
+POST		//リクエストを送信
+HEAD
+PUT		//リソース作成		//権限必要
+DELETE		//リソースの削除	//権限必要
+
+ステータスコード
+2XX 成功
+3XX
+4XX 失敗
+
+301//移動した
+
+503//

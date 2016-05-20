@@ -1,0 +1,3 @@
+	    int su = 17;
+            string ur = "http://ositcpip.blog.fc2.com/blog-entry-xxxx.html";
+            string syutu = ur.Replace("xxxx", su.ToString());//íuä∑Ç∑ÇÈ

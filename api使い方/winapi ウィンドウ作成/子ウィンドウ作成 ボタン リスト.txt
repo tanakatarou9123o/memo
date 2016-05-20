@@ -1,0 +1,32 @@
+//Resource.h
+
+#define IDC_BUTTON1 600
+#define IDC_EDIT1 601
+#define IDC_EDIT2 602
+#define IDC_LIST1 603
+#define IDC_LIST2 604
+
+
+//main.c
+
+HWND hedit;//EDIT
+HWND hbot1;//BUTTON
+HWND hlis1;//LISTBOX1
+HWND hlis2;//LISTBOX2
+
+
+hlis1 = CreateWindow(TEXT("LISTBOX"), TEXT("ここをクリックしてください"), WS_CHILD | WS_VISIBLE | LBS_NOTIFY | WS_BORDER | WS_VSCROLL | WS_HSCROLL, 20, 20, 500, 450, hWnd, (HMENU)IDC_LIST1, hInst, NULL);//LISTBOX1
+hlis2 = CreateWindow(TEXT("LISTBOX"), TEXT("ここをクリックしてください"), LBS_EXTENDEDSEL | WS_CHILD | WS_VISIBLE | LBS_NOTIFY | WS_BORDER | WS_VSCROLL, 540, 20, 450, 350, hWnd, (HMENU)IDC_LIST2, hInst, NULL);//LISTBOX2
+hedit = CreateWindow(TEXT("EDIT"), TEXT("初期表示文字列"), WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | ES_LEFT | WS_BORDER, 820, 400, 130, 20, hWnd, (HMENU)IDC_EDIT1, hInst, NULL);//EDITボックス
+hbot1 = CreateWindow(TEXT("BUTTON"), TEXT("ボタン"), WS_CHILD | WS_VISIBLE | WS_BORDER, 820, 428, 100, 30, hWnd, (HMENU)IDC_BUTTON1, hInst, NULL);//BUTTON
+
+
+
+
+
+case IDC_BUTTON1://ボタンクリックでテキスト取得
+			WCHAR iptxet[50];
+			GetWindowText(hedit, iptxet, 50);//ウィンドウハンドルのテキストを取得
+
+
+			break;

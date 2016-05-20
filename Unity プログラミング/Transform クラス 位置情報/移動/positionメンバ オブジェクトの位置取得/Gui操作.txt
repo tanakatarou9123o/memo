@@ -1,0 +1,5 @@
+GameObject-CreateEmpty を押す
+
+Scriptsを右クリック c#作成
+ソースをGameObjectにドロップして割り当て
+GameObjectをクリック Aにオブジェクトを割り当てる

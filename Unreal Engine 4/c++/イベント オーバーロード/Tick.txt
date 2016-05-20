@@ -1,0 +1,9 @@
+virtual void Tick( float DeltaSeconds ) override;
+
+void AMyProjectCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	GetCharacterMovement()->JumpZVelocity = GameIns->Sjump;
+	GetCharacterMovement()->MaxWalkSpeed = GameIns->Sspeed;
+}

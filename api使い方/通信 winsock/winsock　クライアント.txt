@@ -1,0 +1,42 @@
+#include <winsock2.h>
+#include <Windows.h>
+#include <stdio.h>
+
+int main()
+{
+	WSADATA wsaData;						//WSADATA構造体　バージョンなどが格納される
+	SOCKET csock;							//自ソケット
+	struct sockaddr_in addr;				//sockaddr_in構造体　ipアドレス ポート番号など
+	char buf[32];							//受け取り用buf
+	HOSTENT *lphost;						//ホスト情報格納
+	unsigned int roadd;						//ローカルアドレス格納変数
+
+	WSAStartup(MAKEWORD(2,2), &wsaData);			//winsockの初期化
+	csock=socket(AF_INET, SOCK_STREAM, 0);			//ソケット作成
+	if(INVALID_SOCKET==csock){MessageBox(NULL,"ソケット作成失敗","",MB_OK);return 1;}	//エラーチェック　ソケットが作成できたか
+	
+	roadd =inet_addr("192.168.24.63");				//ローカルアドレス格納
+	lphost=gethostbyaddr((char*)&roadd,4,AF_INET);	//ローカルアドレスからホスト情報取得
+
+	/*		ソケットの設定			*/
+	addr.sin_family = lphost->h_addrtype;						//アドレスファミリ
+	addr.sin_port = htons(12345);								//ポート番号
+	addr.sin_addr.S_un.S_addr = *((u_long*)lphost->h_addr);		//ipアドレス	
+	/*		ソケットの設定			*/
+
+	
+	
+	connect(csock, (struct sockaddr *)&addr, sizeof(addr));		//サーバに接続
+	
+	memset(buf, 0, sizeof(buf));				//buf初期化
+	recv(csock,buf,sizeof(buf),0);				//データを受信
+	
+
+
+	WSACleanup();							//winsockを終了
+
+	printf("%s\n", buf);
+	getchar();
+
+	return 0;
+}

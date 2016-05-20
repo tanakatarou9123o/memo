@@ -1,0 +1,23 @@
+#include <thread>
+
+
+DWORD ThreadProc(Debugapu*,int);  //プロトタイプ宣言
+
+
+
+
+std::thread th(ThreadProc, deb,mgf);//関数のアドレス,引数...
+
+
+
+
+
+
+
+
+DWORD ThreadProc(Debugapu *a,int i)
+{
+	a->debugacsece(i);
+
+	return 0;
+}

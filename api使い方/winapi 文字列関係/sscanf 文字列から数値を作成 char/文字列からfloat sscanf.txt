@@ -1,0 +1,8 @@
+
+#pragma warning(disable : 4996)
+
+char gyou[500];
+float tyoute[3];
+ifs.getline(gyou, 500);//ˆês“Ç‚İ‚İ
+
+sscanf(gyou + 2, "%f %f %f", &tyoute[0], &tyoute[1], &tyoute[2]);

@@ -1,0 +1,5 @@
+		TActorIterator<APlayerCameraManager> a(GetWorld());//プレイヤーのカメラ取得
+		auto b = a->GetCameraRotation();
+		b.Roll = 0;
+		b.Pitch = 0;
+		SetActorRotation(b);//カメラの向きにキャラを回転

@@ -1,0 +1,17 @@
+typedef DWORD (WINAPI *NtSetInformationThreadd)(HANDLE, UINT, PVOID, ULONG);//関数ポインタ typedef 戻り値の型(*関数ポインタ名)(引数1の型,引数2の型,,,)
+
+NtSetInformationThreadd a;
+
+HANDLE hThread;
+DWORD status;
+
+HMODULE ldll = LoadLibrary(L"Ntdll.dll");//ライブラリロード
+a = (NtSetInformationThreadd)GetProcAddress(ldll, "NtSetInformationThread");//関数のアドレス取得
+
+DWORD dwProcessId;
+DWORD dwThreadId;
+HWND hWnd = FindWindow(L"Win32Project2", NULL);  //ウィンドウハンドル取得
+dwThreadId = GetWindowThreadProcessId(hWnd, &dwProcessId); //スレッドIDを取得するついでにプロセスIdも取得。
+hThread = OpenThread(THREAD_ALL_ACCESS, false, dwThreadId);//スレッドハンドル取得
+
+status = a(hThread, 0x11, 0, 0);//NtSetInformationThread実行 以降デバッガにイベントを送信しない

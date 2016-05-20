@@ -1,0 +1,6 @@
+CHAR iptxet[50];
+GetWindowTextA(hedit, iptxet,50);//ウィンドウハンドルのテキストを取得
+
+
+WCHAR iptxet[50];
+GetWindowText(hedit, iptxet, 50);//ウィンドウハンドルのテキストを取得 wchar

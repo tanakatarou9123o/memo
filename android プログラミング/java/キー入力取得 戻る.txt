@@ -1,0 +1,28 @@
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) 
+	{
+		
+		// TODO 自動生成されたメソッド・スタブ
+		
+		switch (keyCode) 
+		{
+		case KeyEvent.KEYCODE_BACK://戻るボタン
+			
+			if (te.getText()=="終わるの？") 
+			{
+				
+				finish();//終了
+				
+			}
+
+			break;
+
+		default:
+			break;
+		}
+		
+		//super.onKeyDown(keyCode, event);
+		return true;
+	}
+	
+	

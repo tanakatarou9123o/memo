@@ -1,0 +1,21 @@
+#include <vector>
+using namespace std;//名前空間
+
+vector<int> a;//コンテナ作成 サイズは決まってない
+	for (size_t i = 0; i < 100; i++)
+	{
+		a.push_back(i);//データ追加
+	}
+	
+	
+	vector<int>::iterator pa;//コンテナの位置を格納する変数
+	pa = a.begin();//コンテナの最初の要素を示す
+	
+	a[0];//要素にアクセスする方法
+
+	while (pa!=a.end())//最後でないなら繰り返す
+	{
+		*pa;//アクセス
+
+		++pa;//次の要素に
+	}

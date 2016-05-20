@@ -1,0 +1,6 @@
+//サロゲートペア非対応
+
+
+string a="a";
+Console.WriteLine(a.Length);//文字数を調べる 
+            

@@ -1,0 +1,34 @@
+
+	mHandler =  new Handler()//ハンドラ作成
+	{
+            //メッセージ受信
+			@Override
+            public void handleMessage(Message message) //メッセージを受け取る
+            {
+                //メッセージの表示
+                te.setText((String) message.obj);
+                //メッセージの種類に応じてswitch文で制御すれば
+                //イベント制御に利用できます
+            };
+        };
+
+	//ネストクラス メインアクティビティにアクセスするために
+	public class MyTimer extends Thread//TimerTaskを継承
+	{
+		
+		@Override
+		public void run()
+		{
+			// TODO 自動生成されたメソッド・スタブ
+			//MainActivity.this.runOnUiThread(this);//メインアクティビティのrunを呼ぶ
+		
+
+				String ip;
+				Message msg = Message.obtain(); //推奨
+	                	msg.obj = ip;
+	                
+	                	//ハンドラへのメッセージ送信
+	                	mHandler.sendMessage(msg);
+		
+		}
+	}

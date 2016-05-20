@@ -1,0 +1,4 @@
+HWND href=FindWindow(NULL, TEXT("PS3 CEX/DEX Memory dump"));//親ウィンドウハンドル取得
+HWND hrec = FindWindowEx(href, NULL, NULL, NULL);//子ウィンドウハンドル　トップ　取得
+
+hrec=FindWindowEx(href, hrec, NULL, NULL);//次の子ウィンドウハンドル

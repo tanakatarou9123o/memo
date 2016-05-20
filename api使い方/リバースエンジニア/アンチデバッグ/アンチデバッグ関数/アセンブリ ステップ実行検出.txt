@@ -1,0 +1,26 @@
+bool debugSS();
+
+bool debugSS()//デバッグチェック ステップ実行検出
+{
+	int chek = 0;
+	__asm
+	{
+			push ss
+			pop ss			//ここでステップ実行すればEAXに100が入る
+			//pushf			//フラグレジスタをスタックにpush 16bit
+			pushfd			//フラグレジスタをスタックにpush 32bit
+			pop eax			//フラグレジスタの内容をeaxにpop
+			and eax, 0x100	//EAXに入れたステータスフラグの8bit目(0から数えて)のトラップフラグ、トレースフラグを調べてる
+			//or eax, eax
+			mov chek, eax
+	}
+
+	if (chek)
+	{
+		return true;//ステップ実行された
+	}
+	else
+	{
+		return false;//ステップ実行されていない
+	}
+}

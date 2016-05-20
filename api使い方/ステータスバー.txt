@@ -1,0 +1,18 @@
+ComCtl32.lib		を追加
+
+#include <commctrl.h>		//ステータスバー
+#define MY_STATUS 101
+
+
+static HWND hstat;
+
+
+	case WM_CREATE :
+		
+		hstat=CreateStatusWindow(WS_CHILD|WS_VISIBLE,TEXT(""),hWnd,MY_STATUS);	//作成
+		SendMessage(hstat,SB_SETTEXT,0|0,(LPARAM)TEXT("o"));		//テキストを表示
+		break;
+
+	case WM_SIZE :
+		SendMessage(hstat,message,wParam,lParam);			//サイズが変更されたときウィンドウ下部について行く
+		break;

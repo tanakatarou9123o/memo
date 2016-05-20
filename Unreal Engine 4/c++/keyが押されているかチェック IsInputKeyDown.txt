@@ -1,0 +1,7 @@
+APlayerController* pc=UGameplayStatics::GetPlayerController(GetWorld(), 0);
+
+	if (pc->IsInputKeyDown(EKeys::RightMouseButton))//右クリック 押されてる
+	{
+		FollowCamera->FieldOfView = GameIns->SzoomValue;//ズーム値
+	
+	}

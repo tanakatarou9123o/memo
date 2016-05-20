@@ -1,0 +1,1 @@
+int feof=SetFilePointer(hfipo, NULL, NULL, FILE_END);//ファイルポインタ移動

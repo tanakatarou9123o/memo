@@ -1,0 +1,6 @@
+<script>
+	var h=new Date().getHours();
+alert(h);
+alert("hyouzi");
+
+</script>

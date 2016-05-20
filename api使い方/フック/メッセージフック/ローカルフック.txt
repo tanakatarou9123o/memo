@@ -1,0 +1,44 @@
+LRESULT CALLBACK MyHookProc(int nCode, WPARAM wp, LPARAM lp); //フックプロシージャ プロトタイプ
+HHOOK hhok;
+HWND hWnd;
+
+	
+
+
+hhok= SetWindowsHookEx				//ローカルフック開始
+		(
+		WH_KEYBOARD | WH_MOUSE, // インストールするフックのタイプ マウスとキーボード
+		(HOOKPROC)MyHookProc, // フックプロシージャのアドレス
+		hInst, // インスタンスハンドル 
+		GetWindowThreadProcessId(hWnd, 0) // スレッドID 
+		);
+
+
+if (!UnhookWindowsHookEx(hhok))// 取り除くフックプロシージャハンドル
+	{
+		MessageBox(NULL,L"",L"",MB_OK);
+	}
+
+
+
+
+LRESULT CALLBACK MyHookProc(int nCode, WPARAM wp, LPARAM lp) //フックプロシージャ
+{ 
+
+	if (nCode < 0)//マイナスなら
+	{
+		return CallNextHookEx(hhok, nCode, wp, lp);
+	}
+
+	if (wp == WM_LBUTTONUP)//左クリック取得
+	{
+		return CallNextHookEx(hhok, nCode, wp, lp);
+	}
+
+	
+
+	return CallNextHookEx(hhok, nCode, wp, lp);//本来の処理へ渡す
+	
+
+	return 0;
+}

@@ -1,0 +1,8 @@
+<script>
+var a=document.getElementById("aaa");//idがaaaのタグを取得
+a.setAttribute("href","http://gam4es246.b4log.fc2.com/");//アドレスを変更
+
+document.write("Welcom to Smart!!")
+alert("kon");
+
+</script>

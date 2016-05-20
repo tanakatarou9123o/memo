@@ -1,0 +1,9 @@
+Task.Run(() =>
+                {
+                    foreach (var item in ヒットアドレス2)
+                    {
+                        textBox3.AppendText("0x" + item.ToString("X") + "\n");
+
+                    }
+                }
+                );

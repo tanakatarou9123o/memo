@@ -1,0 +1,17 @@
+class CNum
+{
+private:
+    static int m_num;
+
+public:
+    CNum(int num){ m_num = num; }
+    void Disp()  { cout << m_num << endl; }
+};
+
+int CNum::m_num;
+
+<型> <クラス名>::<変数名>;
+
+とし、こちらには static はつけません。
+
+　ファイルを分割するときは、これは cpp ファイルの方に書きます。ヘッダファイルに書くと二重定義を引き起こします。

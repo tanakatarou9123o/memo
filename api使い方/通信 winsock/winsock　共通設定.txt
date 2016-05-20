@@ -1,0 +1,24 @@
+WSock32.lib
+
+
+
+#include <winsock2.h>
+#include <Windows.h>
+
+int main()
+{
+	WSADATA wsaData;		//WSADATA構造体　バージョンなどが格納される
+	SOCKET sock;			//自ソケット
+
+
+	WSAStartup(MAKEWORD(2,2), &wsaData);	//winsockの初期化
+
+	sock=socket(AF_INET, SOCK_STREAM, 0);	//ソケット作成
+	if(INVALID_SOCKET==sock){MessageBox(NULL,"ソケット作成失敗","",MB_OK);return 1;}	//エラーチェック　ソケットが作成できたか
+
+
+	WSACleanup();							//winsockを終了
+
+
+	return 0;
+}

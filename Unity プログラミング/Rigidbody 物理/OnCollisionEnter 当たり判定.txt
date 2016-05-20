@@ -1,0 +1,9 @@
+Rigidbodyを追加したオブジェクトに衝突するとOnCollisionEnterが呼ばれる
+
+オブジェクトのOnCollisionEnterが呼び出される
+
+void OnCollisionEnter()//衝突した
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1f);
+
+    }

@@ -1,0 +1,28 @@
+	/** point light コンポーネント*/ //エディタに公開される
+	UPROPERTY(VisibleAnywhere, Category = "Switch Components")
+	class UPointLightComponent* PointLight1;//UPointLightComponent ポインタ
+
+	/** sphere コンポーネント */
+	UPROPERTY(VisibleAnywhere, Category = "Switch Components")
+	class USphereComponent* Sphere1;
+
+	/** sphere コンポーネントに何かが入ると呼び出されます。 */
+	UFUNCTION()
+	void OnOverlapBegin(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	/** sphere コンポーネントから何かが離れると呼び出されます。 */
+	UFUNCTION()
+	void OnOverlapEnd(class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	PointLight1 = CreateDefaultSubobject<UPointLightComponent>(TEXT("PointLight1"));//UPointLightComponentコンポーネント作成
+	PointLight1->Intensity = 1000000;//明るさ
+	PointLight1->bVisible = true;//表示
+	PointLight1->ToggleVisibility();//オンオフ
+	RootComponent = PointLight1;
+	*/
+	Sphere1 = CreateDefaultSubobject<USphereComponent>(TEXT("Sphere1"));//コンポーネント作成
+	Sphere1->InitSphereRadius(250.0f);//トリガーの大きさ
+	//Sphere1->AttachParent = RootComponent;
+
+	Sphere1->OnComponentBeginOverlap.AddDynamic(this, &AMyActor::OnOverlapBegin);       // このコンポーネントが何かとオーバーラップした時の通知を設定します。
+	Sphere1->OnComponentEndOverlap.AddDynamic(this, &AMyActor::OnOverlapEnd);       // このコンポーネントが何かとオーバーラップした時の通知を設定します。

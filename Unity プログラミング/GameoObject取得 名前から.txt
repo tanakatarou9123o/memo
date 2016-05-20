@@ -1,0 +1,5 @@
+   GameObject hand;
+
+
+        hand = GameObject.Find("player");//e‚Ì
+        hand = GameObject.Find("/player");//‰º‚Ì

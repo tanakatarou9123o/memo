@@ -1,0 +1,49 @@
+	@Override
+	public boolean onTouchEvent(MotionEvent event) 
+	{
+		// TODO 自動生成されたメソッド・スタブ
+	
+		int ac=event.getAction()&MotionEvent.ACTION_MASK;//マスクしてアクションを計算
+		float x,y;
+		
+		switch (ac) 
+		{
+		case MotionEvent.ACTION_DOWN://タップ
+			
+			x=event.getX();//タッチされた場所 x
+			y=event.getY();//タッチされた場所 y
+			
+			break;
+			
+		case MotionEvent.ACTION_UP://画面から離れた
+			
+			x=event.getX();//場所 x
+			y=event.getY();//場所 y
+			
+			
+			break;
+			
+		case MotionEvent.ACTION_MOVE://動かしてる
+		
+			x=event.getX();//場所 x
+			y=event.getY();//場所 y
+			
+			
+			break;
+
+		default:
+			
+			x=event.getX();//場所 x
+			y=event.getY();//場所 y
+			
+			
+			break;
+		}
+	
+		te.setText(x+"横"+"          "+y+"縦");
+		
+		
+		
+		return super.onTouchEvent(event);
+	}
+}

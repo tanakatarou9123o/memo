@@ -1,0 +1,20 @@
+#include <fstream>
+bool OBJ(char* filename)
+{
+	std::ifstream ifs(filename);
+	if (!ifs)
+	{
+		MessageBox(hWnd, L"ì«Ç›çûÇ›é∏îs", L"", MB_OK);
+		return false;
+	}
+	char gyou[500];
+	do
+	{
+		ifs.getline(gyou, 500);
+	} while (ifs);
+	
+	
+
+
+	return true;
+}

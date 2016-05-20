@@ -1,0 +1,15 @@
+	ListView li;
+
+	li=(ListView)findViewById(R.id.listView1);//インスタンス
+	
+	
+
+	ArrayAdapter<String> adapter;
+
+
+	adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+
+
+	adapter.add("a");//リスト追加
+
+	li.setAdapter(adapter);//画面更新

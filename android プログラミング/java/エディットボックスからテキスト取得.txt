@@ -1,0 +1,4 @@
+CharSequence ti;//guiの文字列クラス .toStringでStringの文字列取得
+EditText et=(EditText)findViewById(R.id.editText1);//入力インスタンス取得
+		
+ti=et.getText();//エディットボックスから文字列取得

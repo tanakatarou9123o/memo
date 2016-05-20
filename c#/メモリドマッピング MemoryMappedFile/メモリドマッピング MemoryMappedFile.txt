@@ -1,0 +1,13 @@
+using System.IO;
+using System.IO.MemoryMappedFiles;
+
+FileStream file = new FileStream(@"D:\MyFile.dat", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+file.Close();//ファイル作成
+
+MemoryMappedFile mmf = MemoryMappedFile.CreateFromFile(@"D:\MyFile.dat", FileMode.Open, "MyFile",0x80000000);//ファイルパス ファイルモード 名前 割り当てサイズ
+MemoryMappedViewAccessor accessor = mmf.CreateViewAccessor(0,0x80000000);//どこから開始するか ビューに割り当てるサイズ
+
+int i= accessor.ReadByte(x);//byteで読み取る x番目を読み取る
+byte[] a = { 1, 2, 3 };
+accessor.Write(0,a[0]);//書き込み位置 書き込みbyte
+accessor.Write(1, 9);//

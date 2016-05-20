@@ -1,0 +1,6 @@
+
+PIMAGE_DOS_HEADER pSIDH = (PIMAGE_DOS_HEADER)GetModuleHandle(NULL);//メインモジュールのImageBaseを取得
+	PIMAGE_NT_HEADERS pSINH = (PIMAGE_NT_HEADERS)((DWORD)pSIDH + pSIDH->e_lfanew);//IMAGE_NT_HEADERのアドレスを作る e_lfanewはIMAGE_NT_HEADERのオフセット
+	PIMAGE_OPTIONAL_HEADER pIOH = (PIMAGE_OPTIONAL_HEADER)&pSINH->OptionalHeader;//IMAGE_OPTIONAL_HEADERのアドレスを作る
+
+	pIOH->DataDirectory[12].VirtualAddress;//IATのアドレス

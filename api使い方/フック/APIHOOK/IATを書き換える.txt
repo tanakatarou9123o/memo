@@ -1,0 +1,74 @@
+#include <imagehlp.h>
+#pragma comment(lib, "imagehlp.lib")
+
+int WINAPI FakeMessageBox(HWND, LPCTSTR, LPCTSTR, UINT)//hook関数
+{
+	MessageBeep(0);
+	return 1;
+}
+
+
+
+
+
+
+ULONG dwIdataSize = 0;//サイズ受け取り
+	HMODULE dwBase = GetModuleHandle(NULL); //自分のプロセスの先頭アドレスを取得
+	PIMAGE_IMPORT_DESCRIPTOR pImgDesc;//インポートセクション アドレス
+	pImgDesc = (PIMAGE_IMPORT_DESCRIPTOR)ImageDirectoryEntryToData(dwBase,TRUE, IMAGE_DIRECTORY_ENTRY_IMPORT,&dwIdataSize);//.idata(インポートセクション) 取得
+
+	while (pImgDesc->Name)//モジュール名を検索
+	{
+		int addll = (int)dwBase + pImgDesc->Name;//DLLのアドレス
+		char* lpModule = (char*)(addll);//文字列取得
+		if (!_stricmp(lpModule, "user32.dll"))//比較
+		{
+			break;
+		} 
+		pImgDesc++;//次のDLLに		
+	}
+
+
+	IMAGE_THUNK_DATA* adint,* adiat;//INT IAT アドレス変数
+	IMAGE_IMPORT_BY_NAME *pImpByName;//関数名
+
+	//INT ImportNameTable 
+	adint = (IMAGE_THUNK_DATA*)((BYTE*)dwBase + pImgDesc->OriginalFirstThunk);//INTアドレス
+
+	//IAT ImportAddressTable
+	adiat = (IMAGE_THUNK_DATA*)((BYTE*)dwBase + pImgDesc->FirstThunk);//IATアドレス
+	
+
+	while (adint->u1.Function) 
+	{ // API アドレスを出力 
+		if (adint->u1.AddressOfData & 0x80000000)
+		{ // シンボルが序数情報の場合
+			DWORD dwOrd = adint->u1.AddressOfData ^ 0x80000000;
+		}
+		else 
+		{ // シンボルが名前情報の場合 
+			pImpByName = (IMAGE_IMPORT_BY_NAME*) ((BYTE*)dwBase+ adint->u1.AddressOfData);//関数名取得
+			if (!_stricmp((const char*)pImpByName->Name, "MessageBoxA"))
+			{
+
+				//書き換える処理
+			}
+			else if (!_stricmp((const char*)pImpByName->Name, "MessageBoxW"))
+			{
+
+				FARPROC pfnImportedFunc = (FARPROC)(adiat->u1.Function);// IAT 内に記録された実際の関数アドレス
+
+				DWORD flOldProtect;
+				PVOID pfnNewFunc = FakeMessageBox;//入れる関数のアドレス
+
+				VirtualProtect(adiat, sizeof(DWORD), PAGE_READWRITE, &flOldProtect);//書き込みアクセス
+				WriteProcessMemory(GetCurrentProcess(), adiat, &pfnNewFunc, sizeof (DWORD), NULL);//関数アドレス書き換え
+				MessageBox(NULL, L"", L"", MB_OK);
+
+				//書き換える処理
+			}
+		} 
+		
+		adint++;
+		adiat++;
+	}

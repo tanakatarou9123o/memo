@@ -1,0 +1,2 @@
+File fil=new File(Environment.getExternalStorageDirectory(),"");//SDƒJ[ƒhæ“¾
+tv.setText(fil.getPath());

@@ -1,0 +1,34 @@
+クラスのプロトタイプ宣言はヘッダに書く
+定義部分をソースに書く	ソース側でプロトタイプ宣言されてるヘッダをインクルード
+呼び出す側でクラスのプロトタイプ宣言がされてるヘッダをインクルード
+
+
+例
+
+// Test1.h
+
+class CTest
+{
+public:
+    int a;
+
+    void Func();
+};
+
+// Test1.cpp
+#include "Test1.h"
+
+void CTest::Func()
+{
+    a = 0;
+}
+
+
+// Test2.cpp
+#include "Test1.h"
+
+int main()
+{
+    CTest a;
+    a.Func();
+}

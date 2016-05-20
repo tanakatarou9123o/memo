@@ -1,0 +1,8 @@
+FollowCamera 
+
+AddLocalTransform 
+x 350
+
+Set Field Of View
+
+

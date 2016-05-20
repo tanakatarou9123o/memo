@@ -1,0 +1,23 @@
+ WCHAR ipwtxet[50];
+							 CHAR iptxet[50];
+							 GetWindowTextA(hedit, iptxet,50);
+							 mbstowcs_s(NULL, ipwtxet, 49, iptxet, _TRUNCATE);//WCHARに変換
+							 BYTE    bom[2] = { 0xFF, 0xFE };//UNICODEで保存
+
+							 hipk = CreateFile(TEXT("IP.txt"), GENERIC_WRITE, FILE_SHARE_READ, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);//IPファイルを作成
+							 if (INVALID_HANDLE_VALUE == hipk)
+							 {
+								 MessageBox(hWnd, TEXT("ファイル作成失敗"), NULL, MB_OK);
+							 }
+							 if (!WriteFile(hipk, bom, (DWORD)(sizeof(bom)), NULL, NULL))////UNICODEで保存
+							 {
+								 MessageBox(hWnd, TEXT("ファイル書き込み失敗"), NULL, MB_OK);
+							 }
+							 if (!WriteFile(hipk, ipwtxet, 40, NULL, NULL))//IP書き込み)
+							 {
+								 MessageBox(hWnd, TEXT("ファイル書き込み失敗"), NULL, MB_OK);
+							 } 
+							 else
+							 {
+								 MessageBox(NULL, TEXT("PS3のローカルIPの保存に成功しました"), TEXT("更新"), MB_OK);
+							 }

@@ -1,0 +1,12 @@
+string ipa = "";
+            System.Net.IPHostEntry iphEntry = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName());
+
+            foreach (var ipAddr in iphEntry.AddressList)
+            {
+                if (ipAddr.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                {
+                    ipa = ipAddr.ToString();
+                    Label1.Text = ipa;
+                    break;
+                }
+            }

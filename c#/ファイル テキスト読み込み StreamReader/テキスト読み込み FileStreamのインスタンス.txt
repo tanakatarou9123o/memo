@@ -1,0 +1,17 @@
+FileStream file = new FileStream("ip.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+StreamReader reader = new StreamReader(file);//FileStreamのインスタンス
+
+Regex regex = new Regex(@"\d*\.\d*\.\d*\.\d*$");
+            
+
+while (reader.EndOfStream == false)//最後になるまで
+            {
+                string a = reader.ReadLine();//一行読み込み
+                MatchCollection matchCol = regex.Matches(a);
+                foreach (Match match in matchCol)
+                {
+                    Match xxx = match;
+                    textBox1.Text = xxx.Value;
+                    ip = xxx.Value;
+                }
+            }

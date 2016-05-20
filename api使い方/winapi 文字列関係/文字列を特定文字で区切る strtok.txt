@@ -1,0 +1,13 @@
+#include <string.h>
+#pragma warning( disable:4996 )
+
+char s1[] = "this is a pen. Hello-World...";
+	char s2[] = " i";  /* 文字で区切る スペースとiで区切ってる 区切ったとこはNULLになる*/
+	char *tok;
+
+	tok = strtok(s1, s2);
+
+
+戻り値
+区切られた文字列(トークン)があれば、先頭ポインタを返し、
+区切られた文字列(トークン)が無ければNULLを返します。

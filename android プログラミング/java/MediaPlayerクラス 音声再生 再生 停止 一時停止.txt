@@ -1,0 +1,14 @@
+リソースをres.raw.にセット
+
+MediaPlayer mp;
+	
+		mp=MediaPlayer.create(this,R.raw.fallbackring);//インスタンス取得 アクティビティ,リソース名 
+		//mp.setOnCompletionListener(listener);//再生終了時に呼ばれるメソッドを設定
+
+		mp.start();//再生開始
+
+		mp.pause();//一時停止
+				
+
+		mp.stop();//再生停止とリリースはセットでする
+		mp.release();//リソースを解放

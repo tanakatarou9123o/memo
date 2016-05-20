@@ -1,0 +1,16 @@
+SetTimer(hWnd, 0, 0, NULL);//タイマー作成 1ウィンドウハンドル 2タイマID 3WM_TIMERを発生させる時間間隔 ミリ秒 4プロシージャ
+
+
+case WM_TIMER:
+
+InvalidateRect(hWnd, NULL, 1);//WM_PAINT発行
+
+break;
+
+
+
+
+case WM_DESTROY:
+		KillTimer(hWnd, 0);//タイマー削除 1ハンドル 2タイマID
+		PostQuitMessage(0);
+		break;

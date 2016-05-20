@@ -1,0 +1,10 @@
+	SoundPool sp;
+	int sid;
+	
+
+sp=new SoundPool(3,AudioManager.STREAM_MUSIC,0);//格納最大数,ストリームの種類,サンプリングクオリティ
+sid=sp.load(getApplicationContext(),R.raw.fallbackring,1);//音声データのID取得 コンテキスト,音声ファイル名,互換性のために1
+
+
+
+sp.play(sid,1,1,0,0,1);//音声データのID,左右の音量,プライオリティ,ループ回数,再生速度

@@ -1,0 +1,9 @@
+fpsの速度にかかわらず移動距離を一定にする方法
+
+
+イベントティックのDeltaSecondの値を移動距離にかけてやればいい
+
+表示速度が速いとDeltaSecondsの値が小さい
+表示速度が遅いとDeltaSecondsの値が大きい
+
+VectorとDeltaSecondsを掛ける

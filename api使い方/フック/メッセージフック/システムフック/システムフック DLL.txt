@@ -1,0 +1,12 @@
+
+
+
+
+
+hhok = SetWindowsHookEx
+		(
+		WH_KEYBOARD | WH_MOUSE, // インストールするフックのタイプ マウスとキーボード
+		(HOOKPROC)MyHookProc, // フックプロシージャのアドレス
+		hInst, // インスタンスハンドル 
+		0 // スレッドID 
+		);

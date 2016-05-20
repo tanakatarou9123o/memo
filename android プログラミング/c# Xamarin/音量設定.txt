@@ -1,0 +1,5 @@
+
+                AudioManager am = (AudioManager)GetSystemService(Context.AudioService);
+
+                int ringVolume = am.GetStreamVolume(Stream.Music); //システム音量の取得
+                am.SetStreamVolume(Stream.Music, 9, 0); //システム音量の設定

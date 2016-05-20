@@ -1,0 +1,14 @@
+	HWND htarget = GetTopWindow(NULL);	//トップウィンドウのハンドル取得
+
+	do
+	{
+		WCHAR buf[50];
+		GetWindowText(htarget,buf,50);		//ターゲットのウィンドウタイトル取得
+		if(0==wcscmp(buf,TEXT("hhh")))	//タイトル比較
+		{
+			break;
+		}
+		htarget=GetNextWindow(htarget,GW_HWNDNEXT);//次のウィンドウに
+	}while(htarget);
+	
+	if(NULL==htarget){MessageBox(NULL,TEXT("失敗"),NULL,MB_OK);}

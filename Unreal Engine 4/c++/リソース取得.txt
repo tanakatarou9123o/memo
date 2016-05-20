@@ -1,0 +1,8 @@
+一応、C++からでも、
+FindObject<UTexture>(NULL, TEXT(“/Game/StarEmblem.StarEmblem”));
+
+のように、名前からアセットを直接参照したり、
+
+UBlueprint* BulletBP = FindObject<UBlueprint>(NULL, TEXT(“/Game/BP_BulletA.BP_BulletA”));
+
+GWorld->SpawnActor(BulletBP->GeneratedClass);

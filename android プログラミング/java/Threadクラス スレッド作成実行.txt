@@ -1,0 +1,15 @@
+
+		MyTimer mti;//実行するスレッドのクラス
+		mti=new MyTimer();
+		mti.start();
+
+
+public class MyTimer extends Thread//Threadを継承 ネストクラスとして宣言する 
+{
+	@Override
+	public void run()
+	{
+		// TODO 自動生成されたメソッド・スタブ
+	}
+}
+

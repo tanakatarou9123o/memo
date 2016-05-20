@@ -1,0 +1,10 @@
+    IEnumerator Start()
+    {
+
+        while (true)
+        {
+            Instantiate(b, new Vector3(Random.Range(0, 100), 1, Random.Range(0, 100)), transform.rotation);
+            yield return new WaitForSeconds(10);  //10•b‘Ò‚Â
+        }
+
+    }

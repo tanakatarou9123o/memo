@@ -1,0 +1,13 @@
+case WM_SIZE:{
+
+
+					 int wmnwi = LOWORD(lParam);//幅サイズ取得
+					 int wmnhe = HIWORD(lParam);//高さサイズ取得
+
+					 MoveWindow(hlis1, 0, 0, wmnwi-500, wmnhe-10,true);//edit1
+					 MoveWindow(hlis2, wmnwi - 500, 0, wmnwi - 100, wmnhe - 100, true);//edit2
+					 MoveWindow(hbot1, wmnwi-180, wmnhe-70, 100, 30, true);//botan1
+					 MoveWindow(hedit, wmnwi-180, wmnhe-100, 130, 20, true);//list1
+
+	}
+		break;

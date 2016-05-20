@@ -1,0 +1,70 @@
+string[] hairetu = Directory.GetFiles(@"E:\Users\ttanakattarou\Videos\");
+
+var d = from z in hairetu where true == z.Contains("hukumu") select z;
+
+foreach (var item in d)
+            {
+
+                FileStream fs = new FileStream(item, FileMode.Open);//ファイル読み込む
+                BinaryReader br = new BinaryReader(fs);//バイナリリーダー
+
+                Regex regex = new Regex(@"\d.*\.ts$");
+                MatchCollection matchCol = regex.Matches(item);
+                Match xxx = null;
+                foreach (Match match in matchCol)
+                {
+                    xxx = match;
+                }
+                if (xxx == null)
+                {
+                    //System.IO.File.Delete(item);
+                    continue;
+                }
+                if (fs.Length < 2147483648)
+                {
+                    var a = br.ReadBytes((int)fs.Length);//現在のストリームから引数の数値分読み込む
+                    FileStream file = new FileStream(@"E:\Users\ttanakattarou\Videos\"+aa+@"\" + xxx, FileMode.Create, FileAccess.ReadWrite);
+                    file.Seek(0, SeekOrigin.Begin);//シークの開始位置 移動場所
+                    file.Write(a, 0, a.Count());//byte配列 配列の何番目から書き込みを開始位置 書き込みバイト数
+
+                    file.Close();
+
+                    br.Close();
+                    fs.Close();
+
+                    System.IO.File.Delete(item);
+
+
+                }
+                else
+                {
+                    long size = fs.Length;
+
+                    List<byte[]> buf = new List<byte[]>();
+
+                    while (size > 0x70000000)
+                    {
+                        var abbuf = br.ReadBytes(0x70000000);//現在のストリームから引数の数値分読み込む
+                        buf.Add(abbuf);
+
+                        size -= 0x70000000;
+                    }
+                    var abbu = br.ReadBytes((int)size);//現在のストリームから引数の数値分読み込む
+                    buf.Add(abbu);
+
+                    FileStream file = new FileStream(@"E:\Users\ttanakattarou\Videos\" + aa + @"\" + xxx, FileMode.Create, FileAccess.ReadWrite);
+                    file.Seek(0, SeekOrigin.Begin);//シークの開始位置 移動場所
+
+                    for (int i = 0; i < buf.Count; i++)
+                    {
+                        file.Write(buf[i], 0, buf[i].Count());//byte配列 配列の何番目から書き込みを開始位置 書き込みバイト数
+                    }
+
+
+                    file.Close();
+
+                    br.Close();
+                    fs.Close();
+                    System.IO.File.Delete(item);
+
+                }

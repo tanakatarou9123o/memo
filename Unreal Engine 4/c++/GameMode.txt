@@ -1,0 +1,62 @@
+MyWorldSettings.h
+
+UCLASS()
+class GAMEC_API AMyWorldSettings : public AWorldSettings
+{
+	GENERATED_BODY()
+	
+	
+
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+	UStaticMesh* BallMesh;//スタティックメッシュ
+
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+	UStaticMesh* PaddleMesh;//スタティックメッシュ
+	
+public:
+
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+	float VJump;
+
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+	float VSpeed;
+
+};
+
+
+
+
+
+
+// Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
+
+#include "GAMEC.h"
+#include "GAMECGameMode.h"
+#include "GAMECCharacter.h"
+
+#include "MyWorldSettings.h"
+
+AGAMECGameMode::AGAMECGameMode()
+{
+	// set default pawn class to our Blueprinted character
+	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/ThirdPersonCPP/Blueprints/ThirdPersonCharacter"));
+	if (PlayerPawnBPClass.Class != NULL)
+	{
+		DefaultPawnClass = PlayerPawnBPClass.Class;
+	}
+}
+
+void AGAMECGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+
+	UWorld* const world = GetWorld();
+	if (world)
+	{
+		AMyWorldSettings* settings = Cast<AMyWorldSettings>(world->GetWorldSettings());
+		if (settings)
+		{
+			settings->VJump = 8000;
+		}
+	}
+}

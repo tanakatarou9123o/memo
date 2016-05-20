@@ -1,0 +1,1 @@
+webBrowser1.Navigate("http://bbs.duowan.com/forum-1333-1.html");

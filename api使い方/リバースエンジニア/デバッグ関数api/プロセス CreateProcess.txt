@@ -1,0 +1,37 @@
+
+				PROCESS_INFORMATION pi;
+				STARTUPINFO si;
+				ZeroMemory(&si,sizeof(si));
+				si.cb=sizeof(si);
+				CreateProcess(TEXT("C:\\Users\\games24\\Documents\\visual studio 2010\\Projects\\createpro\\Debug\\100.exe"),NULL,NULL,NULL,FALSE,REALTIME_PRIORITY_CLASS,NULL,NULL,&si,&pi);
+
+
+
+
+//デバッグ
+				CreateProcess(TEXT("C:\\Users\\games24\\Documents\\visual studio 2010\\Projects\\createpro\\Debug\\100.exe"),NULL,NULL,NULL,FALSE,DEBUG_PROCESS|REALTIME_PRIORITY_CLASS,NULL,NULL,&si,&pi);
+//デバッグ
+
+
+
+
+
+
+
+
+
+  STARTUPINFO si;
+  PROCESS_INFORMATION pi;
+  DEBUG_EVENT de;
+
+  memset(&si,0,sizeof(STARTUPINFO));
+  si.cb=sizeof(STARTUPINFO);
+  CreateProcess(TEXT("C:\\Users\\games24\\Documents\\Visual Studio 2010\\Projects\\100\\Debug\\100.exe"),NULL,NULL,NULL,0,NORMAL_PRIORITY_CLASS|DEBUG_ONLY_THIS_PROCESS,NULL,NULL,&si,&pi);
+
+  de.dwProcessId=pi.dwProcessId;
+
+  while(1)
+  {
+	WaitForDebugEvent(&de,INFINITE);
+    ContinueDebugEvent(de.dwProcessId,de.dwThreadId,DBG_CONTINUE);
+  }

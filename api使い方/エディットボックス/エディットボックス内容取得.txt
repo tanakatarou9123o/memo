@@ -1,0 +1,2 @@
+CHAR iptxet[50];
+GetWindowTextA(hedit, iptxet,50);//ウィンドウハンドルのテキストを取得

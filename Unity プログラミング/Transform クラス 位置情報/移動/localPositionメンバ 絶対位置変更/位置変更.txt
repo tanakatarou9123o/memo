@@ -1,0 +1,3 @@
+public Transform b;
+
+b.localPosition = new Vector3 (g, g, 1.0f);

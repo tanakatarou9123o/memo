@@ -1,0 +1,36 @@
+	HWND hbak; 
+	WCHAR buf[50];
+	hbak=hWnd; //バックアップ
+
+
+
+	while(!hWnd==NULL)
+	{
+	hWnd = GetNextWindow( hWnd, GW_HWNDNEXT);  //次のウィンドウハンドル取得 失敗するとNULLが返る
+	GetWindowText(hWnd,buf,50);
+	if(0==wcscmp(buf,TEXT("ﾃﾞｰﾀﾍﾞｰｽを開く - 新しいﾃﾞｰﾀﾍﾞｰｽ.kdbx"))){hbak=hWnd;break;}
+	}
+
+	SetForegroundWindow(hbak); //ウィンドウをアクティブに
+
+if(hkew!=0)
+{
+
+//キーボード入力
+	keybd_event(0x4B,0,0,0);
+	keybd_event(0x4B, 0, KEYEVENTF_KEYUP, 0);
+	keybd_event(0x4F,0,0,0);
+	keybd_event(0x4F, 0, KEYEVENTF_KEYUP, 0);
+	keybd_event(0x55,0,0,0);
+	keybd_event(0x55, 0, KEYEVENTF_KEYUP, 0);
+	keybd_event(0x48,0,0,0);
+	keybd_event(0x48, 0, KEYEVENTF_KEYUP, 0);
+	keybd_event(0x45,0,0,0);
+	keybd_event(0x45, 0, KEYEVENTF_KEYUP, 0);	
+	keybd_event(0x49,0,0,0);
+	keybd_event(0x49, 0, KEYEVENTF_KEYUP, 0);
+	keybd_event(VK_RETURN,0,0,0);
+	keybd_event(VK_RETURN, 0, KEYEVENTF_KEYUP, 0);
+//キーボード入力
+
+	DestroyWindow(hbak)

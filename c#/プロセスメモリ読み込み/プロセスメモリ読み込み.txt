@@ -1,0 +1,81 @@
+
+        /*インポート*/
+        [DllImport("kernel32.dll")]
+        static extern IntPtr OpenProcess(ProcessAccessFlags dwDesiredAccess, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.Bool)] bool bInheritHandle, int dwProcessId);
+        // 出現するフラグを列挙
+        private enum ProcessAccessFlags : uint
+        {
+            All = 0x001F0FFF,
+            Terminate = 0x00000001,
+            CreateThread = 0x00000002,
+            VMOperation = 0x00000008,
+            PROCESS_VM_READ = 0x10,
+            VMWrite = 0x00000020,
+            DupHandle = 0x00000040,
+            SetInformation = 0x00000200,
+            QueryInformation = 0x00000400,
+            Synchronize = 0x00100000
+        }
+
+        [DllImport("kernel32.dll", SetLastError = true, PreserveSig = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, UIntPtr nSize, out int lpNumberOfBytesRead);
+
+
+        public List<string> fname = new List<string>();
+        public List<Process> lprocess = new List<Process>();
+        
+        private Process search(String pTargetExePath)
+        {
+            Process[] aAllProcessArray = Process.GetProcesses(); // 全プロセスに対して繰り返し。 
+
+            fname.Clear();
+                                    
+            // フルパスを取得して判定する。 
+            foreach (var aProcess in aAllProcessArray)
+            {
+                String aProcessFilePath = "";// プロセスの中にはフルパスを取得できないものがあるため、例外が発生しうる。 
+                try
+                {
+                    aProcessFilePath = aProcess.MainModule.FileName;
+
+                    fname.Add(aProcessFilePath);
+                    lprocess.Add(aProcess);
+                }
+                catch (Win32Exception)
+                {
+                    continue;
+                }
+                //if (aProcessFilePath.Equals(pTargetExePath))
+                //{
+                   // return aProcess;
+               // }
+            }
+           // MessageBox.Show("見つからないし…");
+            return null;
+        }
+
+
+
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int f;
+            byte[] aResultArray = new byte[0x100];
+            IntPtr aPtr = OpenProcess(ProcessAccessFlags.All, false, lprocess[listBox1.SelectedIndex].Id);//プロセスIDでアタッチ
+            ReadProcessMemory(aPtr, new IntPtr( Convert.ToInt32(textBox1.Text, 16)), aResultArray, new UIntPtr((uint)0x100), out f);
+
+            textBox2.Text = "";
+            int cc = 0;
+            foreach (var item in aResultArray)
+            {
+                cc++;
+                textBox2.Text += item.ToString("X2")+" ";
+                if ((cc%16)==0)
+                {
+                    textBox2.Text += "\r\n";
+                }
+
+            }
+        }

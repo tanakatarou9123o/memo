@@ -1,0 +1,6 @@
+EFlags がフラグレジスタ。
+ctx.EFlags |= 0x00000100; // シングルステップフラグセット
+
+ContextFlags
+CONTEXT_INTEGER  EAX～EDX
+CONTEXT_CONTROL

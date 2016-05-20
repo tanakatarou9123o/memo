@@ -1,0 +1,3 @@
+WCHAR *binna;
+
+binna=1+wcsrchr(szDropFile,'\\');

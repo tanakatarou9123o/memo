@@ -1,0 +1,5 @@
+wchar_t adt[50];
+GetWindowText(hbot[2], adt, 50);
+int adores=0;
+
+swscanf_s(adt, L"%x", &adores);

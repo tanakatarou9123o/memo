@@ -1,0 +1,5 @@
+#include <stdio.h>//sprintf
+
+
+char buf[500];
+sprintf_s(buf, "GET %s HTTP/1.0\r\n\r\n", "http://live.nicovideo.jp/?header");

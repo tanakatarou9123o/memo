@@ -1,0 +1,15 @@
+	//DLL読み込み
+	HMODULE ldll = LoadLibrary(L"dll作成.dll");
+	if (!ldll)
+	{
+		MessageBox(NULL, L"DLL読み込み失敗", L"", MB_OK);
+	}
+
+	//DLL関数読み込み
+	FARPROC lapi = GetProcAddress(ldll, "messge");
+
+
+	lapi();
+
+	//DLLのモジュールハンドル開放
+	FreeLibrary(ldll);

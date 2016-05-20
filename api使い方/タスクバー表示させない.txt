@@ -1,0 +1,57 @@
+親ウィンドウを非表示にして
+子ウィンドウを作成する
+
+
+
+
+
+
+
+
+
+int kowin(HWND hWnd, HWND *hko, WCHAR *classname)//親ウィンドウハンドル,子ウィンドウハンドル,クラスネーム
+{
+	HWND hko1;
+	WNDCLASSEX wcex;														// ウインドウクラス構造体
+
+	wcex.cbSize = sizeof(WNDCLASSEX);										//初期化
+	wcex.style = CS_HREDRAW | CS_VREDRAW;									//縦横 サイズが変わると再描画
+	wcex.lpfnWndProc = (WNDPROC)MainWndProc;								//ウィンドウプロシージャ
+	wcex.cbClsExtra = 0;													//クラス構造体
+	wcex.cbWndExtra = 0;													//ウィンドウ構造体
+	wcex.hInstance = hInst;													//インスタンスハンドル
+	wcex.hIcon = LoadIcon(hInst, MAKEINTRESOURCE(IDI_MY2));					//タスクバーやタイトルバーに表示されるアイコン
+	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);								//ウィンドウのクライアントエリア上のマウスカーソル
+	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);						//クライアントエリアの背景色を指定します
+	wcex.lpszMenuName = NULL;												//クラスメニュー
+	wcex.lpszClassName = classname;								//ウィンドウクラスの名前
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));	//タイトルバーの左端にある 小さいアイコン
+
+	RegisterClassEx(&wcex);													//クラス登録
+
+	hko1 = CreateWindowEx(WS_EX_TOPMOST | WS_EX_LAYERED,									//拡張ウインドウスタイル
+		classname,												// ウインドウクラス名
+		TEXT(""),												// キャプション文字列
+		WS_VISIBLE,									// ウインドウのスタイル WS_VISIBLEを付けないと表示されない
+		CW_USEDEFAULT, // 水平位置
+		CW_USEDEFAULT, // 垂直位置
+		CW_USEDEFAULT, // 幅
+		CW_USEDEFAULT, // 高さ
+		hWnd, // 親ウインドウ
+		NULL, // ウインドウメニュー
+		hInst, // インスタンスハンドル。ここで使うため、グローバル変数にした。
+		NULL); // WM_CREATE情報
+
+	SetLayeredWindowAttributes(hko1, RGB(255, 255, 255), 250, LWA_COLORKEY | LWA_ALPHA);//半透明
+	LONG lStyle;
+	lStyle = GetWindowLong(hko1, GWL_STYLE);
+	lStyle &= ~WS_CAPTION;
+	lStyle = SetWindowLong(hko1, GWL_STYLE, lStyle);//フレーム タイトル 非表示
+
+	SetWindowPos(hko1, 0, 1080, 680, 330, 120, 0);// サイズ維持 表示
+
+
+	*hko = hko1;//ポインタにハンドル渡し
+
+	return 0;
+}

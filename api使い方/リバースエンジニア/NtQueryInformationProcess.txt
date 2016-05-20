@@ -1,0 +1,8 @@
+#include <Winternl.h>
+typedef LONG (WINAPI *NtQueryInformationProcesss)(HANDLE, PROCESSINFOCLASS, PVOID, ULONG, PULONG);//関数ポインタ typedef 戻り値の型(*関数ポインタ名)(引数1の型,引数2の型,,,)
+
+NtQueryInformationProcesss a;
+
+
+HMODULE ldll = LoadLibrary(L"Ntdll.dll");//ライブラリロード
+a = (NtQueryInformationProcesss)GetProcAddress(ldll, "NtQueryInformationProcess");//関数のアドレス取得

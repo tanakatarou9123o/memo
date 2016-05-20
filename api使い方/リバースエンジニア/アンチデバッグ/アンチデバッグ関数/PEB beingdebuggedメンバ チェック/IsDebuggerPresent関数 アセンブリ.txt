@@ -1,0 +1,20 @@
+	bool m;
+
+	m = IsDebuggerPresent();//tureを返せばデバッグされてる
+
+	if (m)
+	{
+		MessageBox(NULL, L"デバッグされてます", L"", MB_OK);
+	}
+
+
+64 A1 30 00 00 00    mov         eax,dword ptr fs:[00000030h]  
+0F B6 40 02          movzx       eax,byte ptr [eax+2] 
+
+	__asm
+	{
+		//mov         eax, dword ptr fs : [00000018h]//fs+18hにあるTIBのアドレス取得 TIBのアドレスから+1000hした所にPEBがある(確定？)
+		mov         eax, dword ptr fs : [00000030h]//fs+30hにあるPEBのアドレス取得
+		movzx       eax, byte ptr[eax + 2]		//pebのアドレス+2にある
+		mov m,eax
+	}

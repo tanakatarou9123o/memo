@@ -1,0 +1,16 @@
+AndroidManifest.xmlを開いて許可タブをクリック
+追加から Uses Permission
+名前から android.permission.VIBRATE を選択
+保存
+
+
+import android.os.Vibrator;
+
+Vibrator vib;
+
+this.vib=(Vibrator)getSystemService(VIBRATOR_SERVICE);//クラスをインスタンス化
+
+
+this.vib.vibrate(50000);//バイブ
+
+引数 ミリ秒

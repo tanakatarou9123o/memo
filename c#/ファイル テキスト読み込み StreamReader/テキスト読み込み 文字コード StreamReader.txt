@@ -1,0 +1,6 @@
+StreamReader reader = new StreamReader(@"c:\", Encoding.GetEncoding("Shift_JIS"));//shift_JISÇ≈ì«Ç›çûÇﬁ
+
+            while (reader.EndOfStream==false)//ç≈å„Ç…Ç»ÇÈÇ‹Ç≈
+            {
+                string a = reader.ReadLine();//àÍçsì«Ç›çûÇ›
+            }

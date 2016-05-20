@@ -1,0 +1,1 @@
+APlayerController* pc=UGameplayStatics::GetPlayerController(GetWorld(), 0);

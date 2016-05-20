@@ -1,0 +1,33 @@
+
+HR{
+  height : 5px;
+  background-image : url(../pic/hr_green.gif);
+  background-repeat : repeat-x;
+}
+UL{
+  list-style-image : url(../pic/list.gif);
+  list-style-position: outside;
+}
+BODY{
+  background-color : #fbfbff;
+  background-image : url(../pic/bg_pink.gif);
+  background-repeat : repeat-y;
+  background-attachment : scroll;
+}
+H2{
+  background-image : url(../pic/hr_green.gif);
+  color : #800000;
+  text-align : center;
+}
+H3{
+  color : #400000;
+  text-align : left;
+  background-image : url(common/hr_blue.gif);
+}
+H5{
+  text-align : left;
+  font-weight : normal;
+  color : maroon;
+  float : none;
+  position : normal;
+}

@@ -1,0 +1,8 @@
+メッシュ形状をそのままコリジョン化する
+
+スタティックメッシュエディターを開いて、
+スタティックメッシュのプロパティを変更する
+スタティックメッシュ設定の
+"Collision Complexity"を
+"Default"から"Use Complex Collision As Simple"
+に変更

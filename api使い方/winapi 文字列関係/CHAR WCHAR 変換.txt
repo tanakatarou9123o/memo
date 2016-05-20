@@ -1,0 +1,4 @@
+WCHAR ipwtxet[50];
+CHAR iptxet[50];
+GetWindowTextA(hedit, iptxet,50);
+mbstowcs_s(NULL, ipwtxet, 49, iptxet, _TRUNCATE);//CHAR‚ðWCHAR‚É•ÏŠ·‚µ‚Ä‚¢‚é

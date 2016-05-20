@@ -1,0 +1,5 @@
+		Window ins=getWindow();//インスタンス取得
+		ins.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//スクリーンがスリープにならない
+		
+		ins.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//フラグを元に戻す        
+        

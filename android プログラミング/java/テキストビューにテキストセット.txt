@@ -1,0 +1,2 @@
+TextView tv=(TextView)findViewById(R.id.textView1);//インスタンス取得
+tv.setText("a");

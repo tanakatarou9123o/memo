@@ -1,0 +1,9 @@
+FILE *hfile;
+
+WCHAR buf[500];
+fopen_s(&hfile, "1.txt", "r");
+
+setlocale(LC_CTYPE, "jpn");		//“ú–{Œê
+fgetws(buf, 500, hfile);		//ˆêsæ“¾
+
+fclose(hfile);

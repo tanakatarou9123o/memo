@@ -1,0 +1,46 @@
+WorldSettings‚ğŒp³‚µ‚ÄƒNƒ‰ƒX‚ğì¬
+
+
+MyWorldSettings.h
+
+#pragma once
+
+#include "GameFramework/WorldSettings.h"
+#include "MyWorldSettings.generated.h"
+
+/**
+ * 
+ */
+UCLASS()
+class GAMEC_API AMyWorldSettings : public AWorldSettings
+{
+	GENERATED_BODY()
+	
+
+public:
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+	float VSpeed=1200.0f;//
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+	float VJump=600.0f;//
+
+
+	
+	
+};
+
+
+
+
+g‚¤‘¤‚Å
+#include "MyWorldSettings.h"
+
+	UWorld* const world = GetWorld();
+	if (world)
+	{
+		AMyWorldSettings* settings = Cast<AMyWorldSettings>(world->GetWorldSettings());
+		if (settings)
+		{
+			settings->VSpeed = 1200;
+			settings->VJump=1800;
+		}
+	}

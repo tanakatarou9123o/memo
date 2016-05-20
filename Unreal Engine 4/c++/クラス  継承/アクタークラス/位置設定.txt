@@ -1,0 +1,5 @@
+	FVector NewLocation = GetActorLocation();//ˆÊ’uæ“¾
+	float DeltaHeight = (FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime));
+	NewLocation.Z += DeltaHeight * 20.0f;       //‚‚³‚É 20 ‚ğŠ|‚¯‚Ü‚·
+	RunningTime += DeltaTime;
+	SetActorLocation(NewLocation);//ˆÊ’uİ’è

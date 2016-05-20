@@ -1,0 +1,7 @@
+hierarchy 
+create
+audio
+audiosorce
+
+projectにbgmをロード
+audioclipに再生する音源をセット

@@ -1,0 +1,9 @@
+
+            FileStream fs = new FileStream(@"C:\Users\tanakatarou\Downloads\ナイト・オブ・ナイツ.mp3", FileMode.Open);//ファイル読み込む
+            BinaryReader br = new BinaryReader(fs);//バイナリリーダー
+            var a = br.ReadBytes((int)fs.Length);//現在のストリームから引数の数値分読み込む
+            
+
+
+            br.Close();
+            fs.Close();

@@ -1,0 +1,12 @@
+
+        DateTime g = DateTime.Now;
+        string s;
+        s = g.Year.ToString("0000" + "”N");
+        s += g.Month.ToString("00" + "ŒŽ");
+        s += g.Day.ToString("00" + "“ú");
+        s += g.Hour.ToString("00" + "Žž");
+        s += g.Minute.ToString("00" + "•ª");
+        s += g.Second.ToString("00" + "•b");
+        s += g.Millisecond.ToString("0000" + "ƒ~ƒŠ•b");
+
+        Debug.Log(s);

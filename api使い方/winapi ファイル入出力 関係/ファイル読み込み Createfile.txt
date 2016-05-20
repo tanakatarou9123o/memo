@@ -1,0 +1,75 @@
+HANDLE hfipo = CreateFile(TEXT(".txt"), GENERIC_READ|GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);//IPファイルを作成
+if (hfipo == INVALID_HANDLE_VALUE)//ファイル存在しない エラー
+{
+}
+
+
+WCHAR buf[500];
+if (!ReadFile(hfipo, buf, 500, NULL, NULL))
+{//失敗時
+}
+else
+{//成功時
+}
+
+
+CloseHandle(hfipo);//ハンドル閉じる
+
+
+
+
+ReadFile(hfipo, //ファイルハンドル
+buf, //格納先配列
+500, //読み込むバイト数
+NULL, 
+NULL)
+
+WriteFile(hfipo, buf, 3200, NULL, NULL);
+
+
+CreateFile(TEXT(".txt"), //第一引数 ファイル名
+GENERIC_READ|GENERIC_WRITE, //アクセスモード
+FILE_SHARE_READ, //アクセス許可
+NULL, //
+OPEN_EXISTING, //作成方法 読み込み方法
+FILE_ATTRIBUTE_NORMAL, //
+NULL);
+
+
+アクセス許可
+
+FILE_SHARE_READ
+後続のオープン操作で読み取りアクセスが要求された場合
+そのオープンを許可します
+
+FILE_SHARE_WRITE 	
+後続のオープン操作で書き込みアクセスが要求された場合
+そのオープンを許可します 
+
+
+
+作成方法
+
+CREATE_NEW 	
+新しいファイルを作成します
+指定ファイルがすでに存在している場合、関数は失敗します
+
+CREATE_ALWAYS 	
+新しいファイルを作成します
+指定ファイルがすでに存在している場合、そのファイルは上書きされます
+
+OPEN_EXISTING 	
+ファイルをオープンします
+指定ファイルが存在していない場合、関数は失敗します
+デバイス (コンソールも含む) 上で CreateFile 関数を使う場合は
+このフラグを指定しなければなりません
+
+OPEN_ALWAYS 	
+ファイルをオープンします
+指定ファイルが存在していない場合、関数は新しいファイルを作成します。
+
+TRUNCATE_EXISTING 	
+ファイルをオープンし、ファイルのサイズを 0 バイトにします
+指定ファイルが存在していない場合、関数は失敗します
+dwDesiredAccess パラメータで
+少なくとも GENERIC_WRITE を指定しなければなりません 

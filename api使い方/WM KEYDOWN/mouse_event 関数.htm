@@ -1,0 +1,516 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0053)http://msdn.microsoft.com/ja-jp/library/cc410921.aspx -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="ja" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+<LINK href="http://msdn.microsoft.com/ja-jp/library/cc410921.aspx" rel="canonical"> 
+        
+<META http-equiv="Content-Type" 
+content="text/html; charset=utf-8"><TITLE>mouse_event 関数</TITLE> 
+<META name="DCS.dcsuri" content="/ja-jp/library/cc410921(d=default,l=ja-jp,v=msdn.10).aspx"> 
+<META name="NormalizedUrl" content="http://msdn.microsoft.com/ja-jp/library/cc410921(d=default,l=ja-jp,v=msdn.10).aspx"> 
+<META name="ms.normalizedurl" content="http://msdn.microsoft.com/ja-jp/library/cc410921(d=default,l=ja-jp,v=msdn.10).aspx"> 
+<META name="VotingContextUrl" content="http://msdn.microsoft.com/ja-jp/library/cc410921(d=default,l=ja-jp,v=msdn.10).aspx"> 
+<META name="MN" content="EE4293BF-12:43:49 AM"> 
+<META name="Search.ShortId" content="cc410921"> 
+<META name="ms.shortidmsdn" content="cc410921"> 
+<META name="Ms.Locale" content="ja-jp"> 
+<META name="ms.prodver" content="MSDN.10"> 
+<META name="ms.contentlang" content="JA"> 
+<META name="ms.lang" content="JA"> 
+<META name="ms.loc" content="JP"> 
+<META name="ms.sitever" content="2014.08.01.0005"> 
+<META name="ms.assetid" content="MSDN|jpwinui|~\html\_win32_mouse_event.htm"> 
+<META name="ms.auth" content="0">             <LINK href="mouse_event%20関数.files/Combined.css" 
+rel="stylesheet" type="text/css">
+<META name="GENERATOR" content="MSHTML 11.00.9600.17239"></HEAD>     
+<BODY class="library IE IE11">
+<DIV id="page"><LINK rel="stylesheet" type="text/css">         <INPUT id="isHeaderBleeding" type="hidden" value="true"> 
+    
+<DIV class="ltr msdn" id="ux-header" dir="ltr"><HEADER>
+<DIV class="row">
+<DIV class="top mobile"></DIV>
+<DIV class="left">
+<DIV class="siteLogo"><A class="msdnLogoImg" href="http://msdn.microsoft.com/ja-jp"><IMG 
+src="mouse_event%20関数.files/microsoftLogoForHeader.png">                         
+ </A>
+<DIV id="Fragment_SiteLogo" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="SiteLogo">
+<DIV class="LinkWithImage topImage"><A id="SiteLogo_2152_1" href="http://msdn.microsoft.com/ja-jp"><SPAN>Developer 
+Network</SPAN>     </A>   </DIV></DIV></DIV>
+<DIV id="grip"></DIV></DIV>
+<DIV class="right desktop">
+<DIV class="auxNav">
+<DIV id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="Subscriptions"><A id="Subscriptions_2153_1" href="https://msdn.microsoft.com/subscriptions/manage/hh442900" 
+xmlns="http://www.w3.org/1999/xhtml">MSDN サブスクリプション</A> </DIV>
+<DIV id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="GetTools"><A id="GetTools_2153_3" href="http://go.microsoft.com/fwlink/?LinkId=309297&amp;clcid=0x0411&amp;slcid=0x0411" 
+xmlns="http://www.w3.org/1999/xhtml">ツールを入手する</A> </DIV>
+<DIV id="signIn"><A title=" サインイン  " class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=12&amp;ct=1408866229&amp;rver=6.0.5276.0&amp;wp=MCLBI&amp;wlcxt=MSDN%24MSDN%24MSDN&amp;wreply=http%3a%2f%2fmsdn.microsoft.com%2fja-jp%2flibrary%2fcc410921.aspx&amp;lc=1041&amp;id=254354&amp;mkt=ja-JP"> 
+サインイン  </A></DIV></DIV>
+<DIV id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="SearchBox">
+<DIV class="SearchBox">
+<FORM name="HeaderSearchForm" id="HeaderSearchForm" onsubmit="return Epx.Controls.SearchBox.searchBoxOnSubmit(this);" 
+method="get"><INPUT name="query" id="HeaderSearchTextBox" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" type="text" maxlength="200"> 
+      <BUTTON class="header-search-button" id="HeaderSearchButton" type="submit" 
+value=""></BUTTON>     </FORM></DIV></DIV></DIV></DIV>
+<DIV class="row" id="droor">
+<DIV class="left"><NAV>
+<UL>
+  <LI class="inactive"><A title="テクノロジ" href="http://msdn.microsoft.com/microsoft-platform-technologies-tools-msdn">テクノロジ</A> 
+                                   
+  <DIV class="area">
+  <DIV class="arrow"></DIV></DIV>
+  <DIV class="subNav">
+  <UL>
+    <LI><A title="クラウド" href="http://msdn.microsoft.com/cloud-app-development-msdn">クラウド</A></LI>
+    <LI><A title="モバイル" href="http://msdn.microsoft.com/mobile-app-development-msdn">モバイル</A></LI>
+    <LI><A title="Web" 
+    href="http://msdn.microsoft.com/web-app-development-msdn">Web</A></LI>
+    <LI><A title="ビジネス" href="http://msdn.microsoft.com/business-and-productivity-app-development-msdn">ビジネス</A></LI>
+    <LI><A title="データ" href="http://msdn.microsoft.com/big-data-development-msdn">データ</A></LI>
+    <LI><A title="ゲーム" 
+    href="http://msdn.microsoft.com/games-development-msdn">ゲーム</A></LI></UL></DIV></LI>
+  <LI class="inactive"><A title="ダウンロード" href="http://msdn.microsoft.com/developer-resource-downloads-msdn">ダウンロード</A> 
+                                   
+  <DIV class="area">
+  <DIV class="arrow"></DIV></DIV>
+  <DIV class="subNav">
+  <UL>
+    <LI><A title="Visual Studio" href="http://go.microsoft.com/fwlink/?linkid=307137&amp;clcid=0x411">Visual 
+    Studio</A></LI>
+    <LI><A title="MSDN サブスクリプション" href="http://msdn.microsoft.com/subscriptions/">MSDN 
+    サブスクリプション</A></LI>
+    <LI><A title="SDK" 
+    href="http://msdn.microsoft.com/microsoft-sdks-msdn">SDK</A></LI></UL></DIV></LI>
+  <LI class="inactive"><A title="プログラム" href="http://msdn.microsoft.com/dn756385">プログラム</A> 
+                                   
+  <DIV class="area">
+  <DIV class="arrow"></DIV></DIV>
+  <DIV class="subNav">
+  <UL>
+    <LI><A title="学生" 
+    href="http://msdn.microsoft.com/students-overview-msdn">学生</A></LI>
+    <LI><A title="イベント" 
+    href="http://events.msdn.microsoft.com/ja-jp">イベント</A></LI></UL></DIV></LI>
+  <LI class="inactive"><A title="コミュニティ" href="http://msdn.microsoft.com/developer-communities-msdn">コミュニティ</A> 
+                                   
+  <DIV class="area">
+  <DIV class="arrow"></DIV></DIV>
+  <DIV class="subNav">
+  <UL>
+    <LI><A title="フォーラム" 
+    href="http://social.msdn.microsoft.com/forums/">フォーラム</A></LI>
+    <LI><A title="ブログ" 
+    href="http://blogs.msdn.com/b/developer-tools/">ブログ</A></LI>
+    <LI><A title="テクニカル アドバイザー" href="http://tech-advisors.msdn.microsoft.com/ja-jp">テクニカル 
+    アドバイザー</A></LI>
+    <LI><A title="Channel 9" href="http://channel9.msdn.com/">Channel 
+  9</A></LI></UL></DIV></LI>
+  <LI class="active current"><A title="ドキュメント" href="http://msdn.microsoft.com/library/">ドキュメント</A> 
+                       </LI>
+  <LI class="inactive"><A title="サンプルコード" 
+  href="http://code.msdn.microsoft.com/">サンプルコード</A>                      
+</LI></UL></NAV></DIV>
+<DIV class="right mobile"></DIV>
+<DIV id="Fragment_SocialLinks" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="SocialLinks">
+<DIV class="linkList">
+<DIV class="linkListTitle">フォローする</DIV>
+<UL class="links horizontal">
+  <LI><A class="facebook" id="SocialLinks_2152_4" href="http://www.facebook.com/microsoftdeveloper" 
+  target="_blank" 
+  xmlns="http://www.w3.org/1999/xhtml">http://www.facebook.com/microsoftdeveloper</A> 
+        </LI>
+  <LI><A class="twitter" id="SocialLinks_2152_5" href="https://twitter.com/msdevjp" 
+  target="_blank" 
+  xmlns="http://www.w3.org/1999/xhtml">https://twitter.com/msdevjp</A>       
+  </LI>
+  <LI><A class="googlePlus" id="SocialLinks_2152_6" href="http://plus.google.com/111221966647232053570/" 
+  target="_blank" 
+  xmlns="http://www.w3.org/1999/xhtml">http://plus.google.com/111221966647232053570/</A> 
+        </LI></UL></DIV></DIV><SPAN id="singleCol"></SPAN>                 <SPAN 
+id="doubleCol"></SPAN>              </DIV></HEADER>     </DIV>
+<DIV class="printExportMenus ltr"><A id="isd_printABook" href="http://msdn.microsoft.com/ja-jp/library/export/help/?returnUrl=%2fja-jp%2flibrary%2fcc410921.aspx">エクスポート 
+(<SPAN class="count">0</SPAN>)         </A>         <A id="isd_print" href="http://msdn.microsoft.com/ja-jp/library/cc410921(d=printer).aspx" 
+rel="nofollow">印刷         </A>     </DIV>
+<DIV class="printExportMenus ltr"><A title="Expand/Collapse all sections by pressing Ctrl + Shift + e" 
+id="expandCollapseAll" accesskey="e" href="javascript:void(0)">すべて展開</A>     
+</DIV>
+<DIV id="body">
+<DIV id="leftNav">
+<DIV id="tocnav">
+<DIV class="toclevel0" data-toclevel="0"><A title="MSDN ライブラリ" id="ms310241_MSDN.10_ja-jp" 
+href="http://msdn.microsoft.com/ja-jp/library/ms123401.aspx" mtpsshortid="ms123401_MSDN.10_ja-jp" 
+mtpsassetid="5DDC0A78-6B2C-43E3-9C56-55F45C0DFFA5_MSDN.10_ja-jp" mtpsaliasid="" 
+data-tochassubtree="true">MSDN ライブラリ</A></DIV>
+<DIV class="toclevel0" data-toclevel="0"><A title="Windows 開発" id="gg250485_VS.85_ja-jp" 
+href="http://msdn.microsoft.com/ja-jp/library/gg250485(v=vs.85).aspx" 
+mtpsshortid="gg250485_VS.85_ja-jp" mtpsassetid="VS|jajp_windev|$\jajp_windev.hxt@0,0_VS.85_ja-jp" 
+mtpsaliasid="" data-tochassubtree="true">Windows 開発</A></DIV>
+<DIV class="toclevel0" data-toclevel="0"><A title="Windows 2000" id="hh846400_VS.85_ja-jp" 
+href="http://msdn.microsoft.com/ja-jp/library/hh846400(v=vs.85).aspx" 
+mtpsshortid="hh846400_VS.85_ja-jp" mtpsassetid="VS|jajp_windev|$\jajp_windev.hxt@0,0,10_VS.85_ja-jp" 
+mtpsaliasid="" data-tochassubtree="true">Windows 2000</A></DIV>
+<DIV class="toclevel0" data-toclevel="0"><A title="ユーザー インターフェイス デザインおよび開発" id="hh846405_VS.85_ja-jp" 
+href="http://msdn.microsoft.com/ja-jp/library/hh846405(v=vs.85).aspx" 
+mtpsshortid="hh846405_VS.85_ja-jp" mtpsassetid="VS|jajp_windev|$\jajp_windev.hxt@0,0,10,1_VS.85_ja-jp" 
+mtpsaliasid="" data-tochassubtree="true">ユーザー インターフェイス デザインおよび開発</A></DIV>
+<DIV class="toclevel0" data-toclevel="0"><A title="Windows ユーザー インターフェイス" id="hh846412_VS.85_ja-jp" 
+href="http://msdn.microsoft.com/ja-jp/library/hh846412(v=vs.85).aspx" 
+mtpsshortid="hh846412_VS.85_ja-jp" mtpsassetid="VS|jajp_windev|$\jajp_windev.hxt@0,0,10,1,4_VS.85_ja-jp" 
+mtpsaliasid="" data-tochassubtree="true">Windows ユーザー インターフェイス</A></DIV>
+<DIV class="toclevel0" data-toclevel="0"><A title="Windows ユーザー インターフェイス サービス" 
+id="cc392726_MSDN.10_ja-jp" href="http://msdn.microsoft.com/ja-jp/library/cc392726.aspx" 
+mtpsshortid="cc392726_MSDN.10_ja-jp" mtpsassetid="MSDN|jpwinui|$\jpwinui.hxt@0,0_MSDN.10_ja-jp" 
+mtpsaliasid="" data-tochassubtree="true">Windows ユーザー インターフェイス サービス</A></DIV>
+<DIV class="toclevel0" data-toclevel="0"><A title="ユーザー入力" id="cc392801_MSDN.10_ja-jp" 
+href="http://msdn.microsoft.com/ja-jp/library/cc392801.aspx" mtpsshortid="cc392801_MSDN.10_ja-jp" 
+mtpsassetid="MSDN|jpwinui|$\jpwinui.hxt@0,0,3_MSDN.10_ja-jp" mtpsaliasid="" 
+data-tochassubtree="true">ユーザー入力</A></DIV>
+<DIV class="toclevel0" data-toclevel="0"><A title="マウス入力" id="cc392811_MSDN.10_ja-jp" 
+href="http://msdn.microsoft.com/ja-jp/library/cc392811.aspx" mtpsshortid="cc392811_MSDN.10_ja-jp" 
+mtpsassetid="MSDN|jpwinui|$\jpwinui.hxt@0,0,3,3_MSDN.10_ja-jp" mtpsaliasid="" 
+data-tochassubtree="true">マウス入力</A></DIV>
+<DIV class="toclevel0" data-toclevel="0"><A title="リファレンス" id="cc392812_MSDN.10_ja-jp" 
+href="http://msdn.microsoft.com/ja-jp/library/cc392812.aspx" mtpsshortid="cc392812_MSDN.10_ja-jp" 
+mtpsassetid="MSDN|jpwinui|$\jpwinui.hxt@0,0,3,3,0_MSDN.10_ja-jp" mtpsaliasid="" 
+data-tochassubtree="true">リファレンス</A></DIV>
+<DIV class="toclevel1" data-toclevel="1"><A title="関数" id="cc392813_MSDN.10_ja-jp" 
+href="http://msdn.microsoft.com/ja-jp/library/cc430231.aspx" mtpsshortid="cc430231_MSDN.10_ja-jp" 
+mtpsassetid="MSDN|jpwinui|~\html\toppage_mouseinput.htm_MSDN.10_ja-jp" 
+mtpsaliasid="" data-tochassubtree="true">関数</A></DIV>
+<DIV class="toclevel2" data-toclevel="2"><A title="DragDetect" href="http://msdn.microsoft.com/ja-jp/library/cc410770.aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">DragDetect</A></DIV>
+<DIV class="toclevel2" data-toclevel="2"><A title="GetCapture" href="http://msdn.microsoft.com/ja-jp/library/cc364585.aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">GetCapture</A></DIV>
+<DIV class="toclevel2" data-toclevel="2"><A title="GetDoubleClickTime" href="http://msdn.microsoft.com/ja-jp/library/cc364628.aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">GetDoubleClickTime</A></DIV>
+<DIV class="toclevel2" data-toclevel="2"><A title="GetMouseMovePointsEx" href="http://msdn.microsoft.com/ja-jp/library/cc364708.aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">GetMouseMovePointsEx</A></DIV>
+<DIV class="toclevel2 current" data-toclevel="2"><A title="mouse_event" href="http://msdn.microsoft.com/ja-jp/library/cc410921.aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">mouse_event</A></DIV>
+<DIV class="toclevel2" data-toclevel="2"><A title="ReleaseCapture" href="http://msdn.microsoft.com/ja-jp/library/cc410990.aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">ReleaseCapture</A></DIV>
+<DIV class="toclevel2" data-toclevel="2"><A title="SetCapture" href="http://msdn.microsoft.com/ja-jp/library/cc411051.aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">SetCapture</A></DIV>
+<DIV class="toclevel2" data-toclevel="2"><A title="SetDoubleClickTime" href="http://msdn.microsoft.com/ja-jp/library/cc411070.aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">SetDoubleClickTime</A></DIV>
+<DIV class="toclevel2" data-toclevel="2"><A title="SwapMouseButton" href="http://msdn.microsoft.com/ja-jp/library/cc411214.aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">SwapMouseButton</A></DIV>
+<DIV class="toclevel2" data-toclevel="2"><A title="TrackMouseEvent" href="http://msdn.microsoft.com/ja-jp/library/cc364837.aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">TrackMouseEvent</A></DIV>
+<DIV class="toclevel2" data-toclevel="2"><A title="_TrackMouseEvent" href="http://msdn.microsoft.com/ja-jp/library/cc364884.aspx" 
+mtpsshortid="" mtpsassetid="" mtpsaliasid="">_TrackMouseEvent</A></DIV></DIV>
+<DIV class="toc-resizable-ew" id="toc-resizable-ew"></DIV><A id="NavigationResize" 
+href="javascript:void(0)"><IMG title="展開" class="cl_nav_resize_open" alt="展開" 
+src="mouse_event%20関数.files/ImageSprite.png">     <IMG title="最小化" class="cl_nav_resize_close" 
+alt="最小化" src="mouse_event%20関数.files/ImageSprite.png"> </A>     </DIV>
+<DIV class="content" id="content">
+<DIV id="FeedbackCounterUrl" data-url="/ja-jp/library/feedbackcounterasync/cc410921.aspx"></DIV>
+<DIV id="FeedbackCounterPlaceHolder"></DIV>
+<DIV class="topic" xmlns="http://www.w3.org/1999/xhtml">
+<H1 class="title">mouse_event</H1>
+<DIV><A 
+href="http://msdn.microsoft.com/ja-jp/library/cc429946.aspx">http://msdn.microsoft.com/ja-jp/library/cc429946.aspx</A> 
+<A 
+href="http://msdn.microsoft.com/ja-jp/library/cc429946.aspx">http://msdn.microsoft.com/ja-jp/library/cc429946.aspx</A> 
+<A 
+href="http://msdn.microsoft.com/ja-jp/library/cc429946.aspx">http://msdn.microsoft.com/ja-jp/library/cc429946.aspx</A> 
+</DIV><A id="_win32_mouse_event"></A> 
+<P>マウスの移動やマウスボタンのクリックを合成します。</P>
+<P><STRONG>Windows NT/2000：</STRONG>この関数は、<A href="http://msdn.microsoft.com/ja-jp/library/cc411004.aspx">SendInput</A> 
+関数にとって代わられました。<STRONG>SendInput </STRONG>関数を使ってください。</P>
+<DIV class="codeSnippetContainer" id="code-snippet-1" xmlns="">
+<DIV class="codeSnippetContainerTabs"></DIV>
+<DIV class="codeSnippetContainerCodeContainer">
+<DIV class="codeSnippetToolBar">
+<DIV class="codeSnippetToolBarText"><A name="CodeSnippetCopyLink" title="クリップボードにコピーします。" 
+style="display: none;" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_c34cc425-9b6b-486a-8ea4-230bb6d8fc38');">コピー</A> 
+            </DIV></DIV>
+<DIV class="codeSnippetContainerCode" id="CodeSnippetContainerCode_c34cc425-9b6b-486a-8ea4-230bb6d8fc38" 
+dir="ltr">
+<DIV style="color: black;">
+<PRE>VOID mouse_event(
+  DWORD dwFlags,         // 移動とクリックのオプション
+  DWORD dx,              // 水平位置または移動量
+  DWORD dy,              // 垂直位置または移動量
+  DWORD dwData,          // ホイールの移動
+  ULONG_PTR dwExtraInfo  // アプリケーション定義の情報
+);
+</PRE></DIV></DIV></DIV></DIV>
+<H4>パラメータ</H4>
+<DL>
+  <DT><EM>dwFlags</EM></DT>
+  <DD>マウスの移動とマウスボタンのクリックのさまざまな動作を指定します。次のフラグのうち、意味のある組み合わせを指定します。 
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TD><STRONG>値</STRONG></TD>
+      <TD><STRONG>意味</STRONG></TD></TR>
+    <TR>
+      <TD>MOUSEEVENTF_ABSOLUTE</TD>
+      <TD><EM>dx </EM>と <EM>dy 
+        </EM>の各パラメータは、正規化された絶対座標を意味します。このフラグを指定しなかった場合、これらのパラメータは相対データ、つまり最後に報告された位置からの変化量を意味します（<EM>dx 
+        </EM>と <EM>dy 
+        </EM>は微分の記号ではなく、差分；differential、つまり変化量を意味します）。マウスや他のどのポインティングデバイスがシステムに接続されている場合でも、このフラグを指定することも、指定しないこともできます。マウスの相対的な移動については、この関数の「解説」を参照してください。</TD></TR>
+    <TR>
+      <TD>MOUSEEVENTF_MOVE</TD>
+      <TD>マウスが移動したことを示します。</TD></TR>
+    <TR>
+      <TD>MOUSEEVENTF_LEFTDOWN</TD>
+      <TD>左ボタンが押されたことを示します。</TD></TR>
+    <TR>
+      <TD>MOUSEEVENTF_LEFTUP</TD>
+      <TD>左ボタンが離されたことを示します。</TD></TR>
+    <TR>
+      <TD>MOUSEEVENTF_RIGHTDOWN</TD>
+      <TD>右ボタンが押されたことを示します。</TD></TR>
+    <TR>
+      <TD>MOUSEEVENTF_RIGHTUP</TD>
+      <TD>右ボタンが離されたことを示します。</TD></TR>
+    <TR>
+      <TD>MOUSEEVENTF_MIDDLEDOWN</TD>
+      <TD>中央ボタンが押されたことを示します。</TD></TR>
+    <TR>
+      <TD>MOUSEEVENTF_MIDDLEUP</TD>
+      <TD>中央ボタンが離されたことを示します。</TD></TR>
+    <TR>
+      <TD>MOUSEEVENTF_WHEEL</TD>
+      <TD><STRONG>Windows 
+        NT/2000：</STRONG>マウスにホイールが実装されている場合、そのホイールが回転したことを示します。移動量は、<EM>dwData 
+        </EM>パラメータで指定します。</TD></TR>
+    <TR>
+      <TD>MOUSEEVENTF_XDOWN</TD>
+      <TD><STRONG>Windows 2000：</STRONG>X ボタンが押されたことを示します。</TD></TR>
+    <TR>
+      <TD>MOUSEEVENTF_XUP</TD>
+      <TD><STRONG>Windows 2000：</STRONG>X 
+  ボタンが離されたことを示します。</TD></TR></TBODY></TABLE><BR>
+  <P>マウスボタンの状態を示すフラグは、ボタンの状態が変化したことを示すものであり、その状態が続いていることを示すものではありません。たとえば、ユーザーが実際に左ボタンを押してそのまま押し続けている状況を想定すると、左ボタンを押した時点で 
+  MOUSEEVENTF_LEFTDOWN 
+  がセットされますが、それ以降にマウスを移動してもこの値はセットされません。同様に、ボタンを最初に離したときにのみ、MOUSEEVENTF_LEFTUP 
+  がセットされます。 </P>
+  <P><STRONG>注意</STRONG>&nbsp;&nbsp;<EM>dwFlags </EM>パラメータで MOUSEEVENTF_WHEEL 
+  を指定した場合、それに加えて MOUSEEVENTF_XDOWN または MOUSEEVENTF_XUP 
+  を指定することはできません。これらの各値は、<EM>mouseData </EM>フィールドを使う必要があり、共存できないからです。 </P></DD>
+  <DT><EM>dx</EM></DT>
+  <DD><EM>dwFlags </EM>パラメータで MOUSEEVENTF_ABSOLUTE フラグを指定した場合、x 
+  軸でのマウスの絶対座標を指定します。それ以外の場合は、直前のマウスイベントが発生した後の移動量を指定します。絶対座標を使う場合、マウスの実際の x 
+  座標を指定します。相対データは、移動量のミッキー数で指定します。「ミッキー」とは、記録可能なマウスの最小の移動量のことですが、単位は機種や設定によって異なり、1 
+  ピクセルを 1 ミッキーとする OS や、1/100 インチ（0.25mm）を 1 ミッキーとする 
+  OS、またユーザーがピクセルとミッキーの比率を任意に設定できるアプリケーションもあります。ほかに、ユーザーがコントロールパネルの［マウス］でカーソル（マウスカーソル）の速度を指定する方法も、比率を変更することに相当します。ミッキーの詳細については、MSDN 
+  ライブラリの［検索］タブで「(" ミッキー " OR "mickey") AND (" マウス " OR 
+  "mouse")」を検索し、サンプルコードなどを参照してください。特に、Q193003 には  
+  関数を使って比率を変更するサンプルコードが掲載されています。</DD>
+  <DT><EM>dy</EM></DT>
+  <DD><EM>dwFlags </EM>パラメータで MOUSEEVENTF_ABSOLUTE フラグを指定した場合、y 
+  軸でのマウスの絶対座標を指定します。それ以外の場合、直前のマウスイベントが発生した後の移動量を指定します。絶対座標を使う場合、マウスの実際の x 
+  座標を指定します。相対データは、移動量のミッキー数で指定します。</DD>
+  <DT><EM>dwData</EM></DT>
+  <DD><EM>dwFlags </EM>パラメータで MOUSEEVENTF_WHEEL 
+  フラグを指定した場合、ホイールの移動量を指定します。正の値はホイールが前方（ユーザーから離れた方向）へ、負の値はホイールが後方（ユーザーの方向）へ回転したことを示します。1 
+  回のホイールクリックは、WHEEL_DELTA として定義されていて、この値は 120 です。 
+  <P><STRONG>Windows 2000：</STRONG><EM>dwFlags </EM>パラメータで MOUSEEVENTF_XDOWN または 
+  MOUSEEVENTF_XUP フラグを指定した場合 , <EM>dwData </EM>パラメータでどの X 
+  ボタンが押されたか離されたかを指定します。次のフラグの任意の組み合わせを指定します。 </P>
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TD><STRONG>値</STRONG></TD>
+      <TD><STRONG>意味</STRONG></TD></TR>
+    <TR>
+      <TD>XBUTTON1</TD>
+      <TD>最初の X ボタンが押されたか離されたことを示します。</TD></TR>
+    <TR>
+      <TD>XBUTTON2</TD>
+      <TD>2 番目の X ボタンが押されたか離されたことを示します。</TD></TR></TBODY></TABLE><BR>
+  <P><EM>dwFlags </EM>パラメータで MOUSEEVENTF_WHEEL、MOUSEEVENTF_XDOWN、MOUSEEVENTF_XUP 
+  のどのフラグも指定していない場合は、<EM>dwData </EM>パラメータで 0 を指定してください。 </P></DD>
+  <DT><EM>dwExtraInfo</EM></DT>
+  <DD>マウスイベントに関連付けられた 32 ビットの追加情報を指定します。アプリケーションは、<A href="http://msdn.microsoft.com/ja-jp/library/cc364746.aspx">GetMessageExtraInfo</A> 
+  関数を呼び出すと、この値を取得できます。 </DD></DL>
+<H4>戻り値</H4>
+<P>戻り値はありません。</P>
+<H4>解説</H4>
+<P>マウスが移動した場合、MOUSEEVENTF_MOVE フラグがセットされてそのことが明示され、<EM>dx </EM>との <EM>dy 
+</EM>の各パラメータは移動に関する情報を保持しています。この情報は、絶対座標または相対データを表す整数です。</P>
+<P>MOUSEEVENTF_ABSOLUTE フラグを指定した場合、<EM>dx </EM>と <EM>dy </EM>の各パラメータは 0～65,535 
+の範囲で、正規化された絶対座標を保持しています。イベントプロシージャは、これらの座標を表示サーフェスの座標へマップ（変換）します。座標 (0,0) 
+は表示サーフェスの左上隅、(65535,65535) は表示サーフェスの右下隅へマップされます。</P>
+<P>MOUSEEVENTF_ABSOLUTE を指定しなかった場合、<EM>dx </EM>と <EM>dy 
+</EM>の各パラメータの値は、直前のマウスイベントが発生した後の相対的な移動量を意味します。正の値は右（または下）への移動を示し、負の値は左（または上）への移動を示します。</P>
+<P>マウスの相対的な移動量は、マウスの速度とアクセラレーション（加速；マウスを連続的に比較的大きく移動させた場合、カーソルを通常より大きく移動すること）レベルを設定することを意図しています。エンドユーザーは、コントロールパネルの［マウス］を使ってこれらの値を設定します。アプリケーションは、 
+関数を使って、これらの値の取得と設定を行えます。</P>
+<P>システムはアクセラレーションを適用する際に、指定されたマウスの相対的な移動に対して 2 つのテストを実行します。x 軸または y 
+軸上で、指定された距離がマウスの最初のしきい値を超え、マウスのアクセラレーションレベルが 0 ではない場合、システムはこの距離を 2 倍にします。x 軸または 
+y 軸上で、指定された距離がマウスの 2 番目のしきい値を超え、マウスのアクセラレーションレベルが 2 
+の場合、システムは、最初のしきい値テストを適用して得られた距離を 2 倍にします。その結果、x 軸または y 軸上で、相対量で指定されたマウスの移動量を最大 4 
+倍にすることがあります。</P>
+<P>アクセラレーションを適用した後で、システムは得られた結果に、希望のマウス速度をかけます。マウス速度は 
+1（最も遅い）～20（最も速い）の範囲で指定でき、マウスの移動距離に応じてカーソルを移動する距離を表します。既定の値は 10 
+であり、これはマウスの移動に何も変更を加えないことを意味します。</P>
+<P><STRONG>mouse_event 
+</STRONG>関数は、アプリケーションでマウスイベントを疑似的に発生させたいときに使います。また、アプリケーションが通常の位置とボタンの状態より詳細な情報を取得する必要がある場合も、この関数を使います。たとえば、タブレットのメーカーが、ペンベースの情報を自社のアプリケーションへ渡すことを考えてみましょう。開発者は専用のダイナミックリンクライブラリ（DLL）を作成し、タブレットのハードウェアと直接の通信を行い、拡張情報を取得し、その情報をキューに格納します。その後、その 
+DLL は <STRONG>mouse_event </STRONG>関数を呼び出して、標準的なボタンデータと x/y 
+の位置データに加えて、<EM>dwExtraInfo 
+</EM>パラメータで、キュー内に存在している拡張情報へのポインタまたはインデックスを指定します。アプリケーションが拡張情報を必要とする場合、<EM>dwExtraInfo 
+</EM>パラメータのポインタまたはインデックスを指定して DLL を呼び出し、DLL は拡張情報を返します。</P>
+<H4>対応情報</H4>
+<P><STRONG>Windows NT/2000：</STRONG>Windows NT 3.1 以降<BR><STRONG>Windows 
+95/98：</STRONG>Windows 95 以降<BR><STRONG>ヘッダー：</STRONG>Winuser.h 内で宣言、Windows.h 
+をインクルード<BR><STRONG>インポートライブラリ：</STRONG>User32.lib を使用</P>
+<H4>参照</H4>
+<P><A 
+href="http://msdn.microsoft.com/ja-jp/library/cc364746.aspx">GetMessageExtraInfo</A>, 
+</P></DIV>
+<DIV class="libraryMemberFilter">
+<DIV class="filterContainer"><SPAN>表示:</SPAN>         <LABEL><INPUT class="libraryFilterInherited" 
+type="checkbox" checked="checked" value="Inherit">継承         </LABEL>         
+<LABEL><INPUT class="libraryFilterProtected" type="checkbox" checked="checked" 
+value="Protected">保護         </LABEL>     </DIV></DIV><INPUT id="libraryMemberFilterEmptyWarning" type="hidden" value="現在のフィルター設定に該当するメンバーはいません。"> 
+ </DIV></DIV>
+<DIV 
+class="clear"></DIV><INPUT name="__RequestVerificationToken" type="hidden" value="wmBeHpSpV58QDEfa3kRyMfvwiypJPGwwz7-0eS0GaClFnJZlI7oDiWAv_9LT2D7kO9rzfC-g_UKfT_8aXMHj2YMrI701"> 
+<INPUT id="ratingSubmitUrl" type="hidden" value="http://msdn.microsoft.com/ja-jp/library/feedback/add/cc410921.aspx"> 
+<INPUT id="isTopicRated" type="hidden" value="false">             <LINK rel="stylesheet" 
+type="text/css">         
+<DIV id="ux-footer" dir="ltr">
+<DIV class="librarySock" id="footerSock">
+<DIV id="footerSockInner"><A name="feedback"></A> 
+<DIV class="rating">
+<DIV id="ratingSection1">
+<DIV class="title">このページは役に立ちましたか。         </DIV>
+<DIV class="description">このページのコンテンツについての<BR>ご意見をお待ちしております         </DIV>
+<DIV class="buttons"><BUTTON class="button" id="ratingYes">はい</BUTTON>           
+  <BUTTON class="button" id="ratingNo">いいえ</BUTTON>         </DIV><INPUT id="ratingValue" type="hidden"> 
+    </DIV>
+<DIV id="ratingSection2">
+<DIV class="title">その他にご意見はありますか。         
+</DIV><TEXTAREA id="ratingText" maxlength="1500" rows="6" cols="20"></TEXTAREA>  
+       
+<DIV class="counter right">残り <SPAN id="feedbackTextCounter">1500</SPAN> 文字      
+   </DIV>
+<DIV class="buttons left"><BUTTON class="button" id="ratingSubmit">送信</BUTTON>   
+          <BUTTON class="button" id="ratingSkipThis">スキップする</BUTTON>         
+</DIV></DIV>
+<DIV id="ratingSection3">
+<DIV class="title">ありがとうございました。         </DIV>
+<DIV class="description">            貴重なご意見をお寄せいただき心より感謝いたします。         
+</DIV></DIV>
+<DIV id="contentFeedbackQAContainer" style="display: none;"></DIV></DIV>
+<DIV class="clear"></DIV></DIV></DIV><FOOTER class="top">
+<DIV id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="LeftLinks">
+<DIV class="linkList">
+<DIV class="linkListTitle">デベロッパー センター</DIV>
+<UL class="links">
+  <LI><A class="windowsBlue" id="LeftLinks_2148_1" href="http://dev.windows.com/ja-jp" 
+  xmlns="http://www.w3.org/1999/xhtml">Windows</A>       </LI>
+  <LI><A class="office" id="LeftLinks_2148_3" href="http://msdn.microsoft.com/office" 
+  xmlns="http://www.w3.org/1999/xhtml">Office</A>       </LI>
+  <LI><A class="visualStudio" id="LeftLinks_2148_4" href="http://msdn.microsoft.com/vstudio" 
+  xmlns="http://www.w3.org/1999/xhtml">Visual Studio</A>       </LI>
+  <LI><A title="Nokia" class="nokia" id="LeftLinks_2148_15" href="http://developer.nokia.com/" 
+  xmlns="http://www.w3.org/1999/xhtml">Nokia&nbsp;(英語)</A>       </LI>
+  <LI><A id="LeftLinks_2148_12" href="http://azure.microsoft.com/ja-jp/documentation/" 
+  target="_blank" xmlns="http://www.w3.org/1999/xhtml">Microsoft Azure</A>       
+  </LI>
+  <LI><A id="LeftLinks_2148_5" href="http://msdn.microsoft.com/aa937802" xmlns="http://www.w3.org/1999/xhtml">その他...</A> 
+        </LI></UL></DIV></DIV>
+<DIV id="rightLinks">
+<DIV id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="CenterLinks1">
+<DIV class="linkList">
+<DIV class="linkListTitle">IT トレーニングとマイクロソフト認定資格</DIV>
+<UL class="links">
+  <LI><A id="CenterLinks1_2151_4" href="http://www.microsoftvirtualacademy.com/" 
+  xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</A>       </LI>
+  <LI><A id="CenterLinks1_2151_5" href="http://channel9.msdn.com/" xmlns="http://www.w3.org/1999/xhtml">Channel 
+  9&nbsp;(英語)</A>       </LI>
+  <LI><A id="CenterLinks1_2151_6" href="http://www.interoperabilitybridges.com/" 
+  xmlns="http://www.w3.org/1999/xhtml">相互運用性ブリッジ&nbsp;(英語)</A>       </LI>
+  <LI><A id="CenterLinks1_2151_7" href="http://msdn.microsoft.com/magazine/" 
+  xmlns="http://www.w3.org/1999/xhtml">MSDN マガジン</A>       </LI></UL></DIV></DIV>
+<DIV id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="CenterLinks2">
+<DIV class="linkList">
+<DIV class="linkListTitle">コミュニティ</DIV>
+<UL class="links">
+  <LI><A id="CenterLinks2_2151_8" href="http://social.msdn.microsoft.com/forums/ja-jp/home" 
+  xmlns="http://www.w3.org/1999/xhtml">フォーラム</A>       </LI>
+  <LI><A id="CenterLinks2_2151_9" href="http://msdn.microsoft.com/ja-JP/ee942173#kaihatsu" 
+  xmlns="http://www.w3.org/1999/xhtml">ブログ</A>       </LI>
+  <LI><A id="CenterLinks2_2151_10" href="http://www.codeplex.com/" xmlns="http://www.w3.org/1999/xhtml">CodePlex&nbsp;(英語)</A> 
+        </LI></UL></DIV></DIV>
+<DIV id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="CenterLinks3">
+<DIV class="linkList">
+<DIV class="linkListTitle">サポート</DIV>
+<UL class="links">
+  <LI><A id="CenterLinks3_2151_11" href="http://msdn.microsoft.com/hh361695" 
+  xmlns="http://www.w3.org/1999/xhtml">セルフ サポート</A>       </LI></UL></DIV></DIV>
+<DIV id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="CenterLinks4">
+<DIV class="linkList">
+<DIV class="linkListTitle">プログラム </DIV>
+<UL class="links">
+  <LI><A id="CenterLinks4_2151_13" href="http://msdn.microsoft.com/ja-jp/msdn/ux/library/dn789927" 
+  xmlns="http://www.w3.org/1999/xhtml">BizSpark (スタートアップ企業向け)&nbsp;</A>       
+  </LI>
+  <LI><A id="CenterLinks4_2151_14" href="http://msdn.microsoft.com/students-overview-msdn" 
+  xmlns="http://www.w3.org/1999/xhtml">DreamSpark (学生向け)</A>       </LI>
+  <LI><A id="CenterLinks4_2151_17" href="http://www.microsoft.com/ja-jp/education/imagine-cup.aspx" 
+  xmlns="http://www.w3.org/1999/xhtml">Imagine Cup &nbsp;(学生向け IT コンテンスト)</A>    
+     </LI></UL></DIV></DIV></DIV></FOOTER><FOOTER class="bottom"><SPAN class="localeContainer">
+<FORM class="selectLocale" id="selectLocaleForm" action="http://msdn.microsoft.com/ja-jp/selectlocale-dmc"><INPUT name="fromPage" type="hidden" value="http%3a%2f%2fmsdn.microsoft.com%2fja-jp%2flibrary%2fcc410921.aspx"> 
+        <A title="言語の変更" onclick="$('#selectLocaleForm').submit();return false;" 
+href="http://msdn.microsoft.com/ja-jp/library/cc410921.aspx#">日本 (日本語)</A>     
+</FORM></SPAN>                     
+<DIV id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="BottomLinks">
+<DIV class="linkList">
+<UL class="links horizontal">
+  <LI><A id="BottomLinks_2148_7" href="http://msdn.microsoft.com/newsletter.aspx" 
+  xmlns="http://www.w3.org/1999/xhtml">ニュースレター</A>       </LI>
+  <LI><A id="BottomLinks_2148_8" href="http://msdn.microsoft.com/dn529288" 
+  xmlns="http://www.w3.org/1999/xhtml">プライバシー &amp; Cookie</A>       </LI>
+  <LI><A id="BottomLinks_2148_9" href="http://msdn.microsoft.com/cc300389" 
+  xmlns="http://www.w3.org/1999/xhtml">使用条件</A>       </LI>
+  <LI><A id="BottomLinks_2148_10" href="http://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" 
+  xmlns="http://www.w3.org/1999/xhtml">商標&nbsp;(英語)</A>       
+</LI></UL></DIV></DIV><SPAN class="logoLegal"><SPAN class="logo"></SPAN>         
+        <SPAN class="copyright">© 2014 Microsoft</SPAN>             </SPAN>      
+   </FOOTER></DIV>
+<DIV class="footerPrintView">
+<DIV class="footerCopyrightPrintView">© 2014 Microsoft</DIV></DIV><INPUT id="tocPaddingPerLevel" type="hidden" value="17"> 
+                    <INPUT id="MtpsDevice" type="hidden" value="Default"> <!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]--> 
+                                                                            
+<NOSCRIPT>&lt;div&gt;&lt;img alt="DCSIMG" id="Img1" width="1" height="1" 
+src="http://m.webtrends.com/dcsmgru7m99k7mqmgrhudo0k8_8c6m/njs.gif?dcsuri=/nojavascript&amp;amp;WT.js=No" 
+/&gt;&lt;/div&gt;</NOSCRIPT> <NOSCRIPT>  &lt;a href="http://www.omniture.com" 
+title="Web Analytics"&gt;    &lt;img 
+src="//msstonojsmsdn.112.2o7.net/b/ss/msstonojsmsdn/1/H.20.2--NS/0" height="1" 
+width="1" border="0" alt="" /&gt;  &lt;/a&gt; </NOSCRIPT> 
+<DIV 
+id="globalRequestVerification"><INPUT name="__RequestVerificationToken" type="hidden" value="JFLZVfwcAgZDJH0RJIXIpews7B5ec1hQwG3h4SX5PZ4MZgm3mV6acmXqSZIqhLOffv4sqK-kLPUqkr9BkvO54SB_5p81"> 
+</DIV></DIV>
+<SCRIPT class="mtps-injected" type="text/javascript">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"http://i.msdn.microsoft.com\", \r\n\t\"js\": \"http://i2.msdn.microsoft.com\", \r\n\t\"css\": \"http://i3.msdn.microsoft.com\", \r\n\t\"xap\": \"http://msdn.microsoft.com\"\r\n});\r\n/**/" },
+	{ url: "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js" },
+	{ txt: "//\n  var literalNormalizedUrl = \u0027/ja-jp/library/cc410921(l=ja-jp,v=msdn.10).aspx\u0027;\n  var wt_nvr_ru = \u0027WT_NVR_RU\u0027;\n  var wt_fpcdom = \u0027.microsoft.com\u0027;\n  var wt_domlist = \u0027msdn.microsoft.com\u0027;\n  var wt_pathlist = \u0027\u0027;\n  var wt_paramlist = \u0027DCSext.mtps_devcenter\u0027;\n  var wt_siteid = \u0027MSDN\u0027;\n  var gDomain = \u0027m.webtrends.com\u0027;\n  var gDcsId = \u0027dcsmgru7m99k7mqmgrhudo0k8_8c6m\u0027;\n  var gFpc = \u0027WT_FPC\u0027;\n\n\n\n  if (document.cookie.indexOf(gFpc + \"=\") == -1) {\n    var wtidJs = document.createElement(\"script\");\n    wtidJs.src = \"//\" + gDomain + \"/\" + gDcsId + \"/wtid.js\";\n    document.getElementsByTagName(\"head\")[0].appendChild(wtidJs);\n  }\n\n\n\n  var detectedLocale = \u0027ja-jp\u0027;\n  var wtsp = \u0027msdnlib_hp\u0027;\n  var gTrackEvents = \u00270\u0027;\n/**/" },
+	{ txt: "/**/\n  var omni_guid = \"5f71c7dd-083c-45c5-980e-8a8ef9f3874b\";\n/**/" },
+	{ txt: "//\n\n            window.appInsightsId = \u002760854590-027a-4ae4-98be-2741a40f355f\u0027;\n            //" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:Utilities,1:Layout,2:Header,3:FeedbackCounterAsync,1:Rating,2:Footer,0:Topic,4:webtrendsscript,5:omni_rsid_MSDN,0:AppInsightsPerf,6:Toc,1:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Themes/Base/Content:1,/Areas/Centers/Themes/StandardDevCenter/Content:2,/Areas/Epx/Shared/Content:3,/Areas/Global/Content/Webtrends/resources:4,/Areas/Global/Content/Omniture/resources/MSDN:5,/Areas/Library/Content:6\u0026amp;hashKey=09ACDD9DF129C26A6730A26D7F1AF996" },
+	{ url: "http://i2.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026brand=Msdn\u0026loc=ja-jp\u0026focusOnInit=false\u0026emptyWatermark=true\u0026searchButtonTooltip=MSDN を検索" },
+	{ url: "http://i2.msdn.microsoft.com/Combined.js?resources=0:PrintExportButton,1:NavigationResize,1:LibraryMemberFilter,2:Toc_Fixed,2:CodeSnippet,2:TopicNotInScope,2:CollapsibleArea,2:VersionSelector,2:SurveyBroker;/Areas/Library/Themes/Base/Content:0,/Areas/Library/Content:1,/Areas/Epx/Content/Scripts:2\u0026amp;hashKey=3248804C2DE1E642F8B20C4F83DBEA3B" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</SCRIPT>
+ </BODY></HTML>

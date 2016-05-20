@@ -1,0 +1,4 @@
+hWnd = CreateWindowEx(WS_EX_LAYERED,szWindowClass, szTitle, WS_SYSMENU,//WS_OVERLAPPEDWINDOW    WS_EX_LAYERED ”¼“§–¾
+      CW_USEDEFAULT, 0, 330, 120, NULL, NULL, hInstance, NULL);
+
+SetLayeredWindowAttributes(hWnd, RGB(255, 255, 255), 250, LWA_COLORKEY|LWA_ALPHA);//”¼“§–¾

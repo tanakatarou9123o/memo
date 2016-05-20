@@ -1,0 +1,27 @@
+CREATE_PROCESS_DEBUG_EVENT 	
+プロセスが作成されたことを表す。
+このイベントは、デバッグ対象プロセスが作成された瞬間(まだ実行してはいない)、
+もしくはDebugActiveProcess関数で起動中のプログラムにアタッチした瞬間に発生する。
+このイベントは一番最初に発生するイベントである。
+
+EXIT_PROCESS_DEBUG_EVENT 	プロセスが終了したことを表す。
+
+CREATE_THREAD_DEBUG_EVENT 	デバッグ対象プロセスで新しいスレッドが作成されたこと、もしくは起動中のプロセスに一番初めにアタッチしたこと表す。ただし、デバッグ対象プログラムのメインスレッドが作成されたときにこのイベントをおそらく受け取らないことに注意しなければならない。
+
+EXIT_THREAD_DEBUG_EVENT 	
+デバッグ対象プログラムのスレッドが終了したことを表す。
+ただし、このイベントはメインスレッドが終了したときに受け取ることはないだろう。
+つまり、メインスレッドはデバッグ対象プロセス自身と同等の扱いになるので、
+EXIT_PROCESS_DEBUG_EVENTが発生したと言うことは、
+メインスレッドにとってのEXIT_THREAD_DEBUG_EVENTが発生したということである。
+
+LOAD_DLL_DEBUG_EVENT 	デバッグ対象プログラムがDLLをロードしたことを表す。このイベントを受け取るのは、PEローダがDLLへのリンクを解決したとき(デバッグ対象プログラムがCreateProcess関数をCALLしたとき)と、デバッグ対象プログラムがLoadLibrary関数をCALLしたときである。
+
+UNLOAD_DLL_DEBUG_EVENT 	デバッグ対象プログラムからDLLがアンロードされたことを表す。
+
+EXCEPTION_DEBUG_EVENT 	デバッグ対象プログラムで例外が発生したことを表す。
+※重要 	このイベントはデバッグ対象プログラムが一番最初の命令を実行する時に一度だけ発生する。その例外はデバッグブレーク(int 3h)である。デバッグ対象プログラムの実行を続ける場合、DBG_CONTINUEを指定して、ContinueDebugEvent関数をCALLすればよい。決してDBG_EXCEPTION_NOT_HANDLEDフラグを指定してはならず、もし指定すると、WindowsNTではデバッグ対象プログラムが動かなくなってしまう(Win98ではOK)。
+
+OUTPUT_DEBUG_STRING_EVENT 	DebugOutputString関数をCALLしてメッセージを送信することを表す。
+
+RIP_EVENT 	システムデバッグエラーが発生したことを表す。

@@ -1,0 +1,16 @@
+
+
+void func(int& num);
+
+int main()
+{
+	int num = 123;
+	func( num );
+
+	return 0;
+}
+
+void func(int& param)//ƒAƒhƒŒƒX‚ğó‚¯æ‚é
+{
+	param *= 2;
+}

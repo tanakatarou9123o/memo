@@ -1,0 +1,7 @@
+                int b = item.LastIndexOf("-ソフトウェアのしくみ");//後方から文字列を検索してヒット位置のインデックスを返す 
+                if (b<0)//なかったら-1が帰る
+                {
+                    continue;
+                }
+                b++;
+                string a = item.Substring(b);//インデックス値から最後まで取り出す

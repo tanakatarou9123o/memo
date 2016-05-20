@@ -1,0 +1,49 @@
+#include <winsock2.h>
+#include <Windows.h>
+
+
+
+int main()
+{
+	WSADATA wsaData;		//WSADATA構造体　バージョンなどが格納される
+	SOCKET sock;			//サーバソケット
+	SOCKET csock;			//クライアントソケット
+	struct sockaddr_in addr;	//sockaddr_in構造体　ipアドレス ポート番号など
+	struct sockaddr_in client;	//クライアントの情報が格納される
+	int len;					//クライアントの情報が格納される
+
+
+	WSAStartup(MAKEWORD(2,2), &wsaData);	//winsockの初期化
+
+	sock=socket(AF_INET, SOCK_STREAM, 0);	//ソケット作成
+	if(INVALID_SOCKET==sock){MessageBox(NULL,"ソケット作成失敗","",MB_OK);return 1;}	//エラーチェック　ソケットが作成できたか
+
+	/*		ソケットの設定			*/
+	addr.sin_family = AF_INET;					//アドレスファミリ
+	addr.sin_port = htons(12345);				//ポート番号
+	addr.sin_addr.S_un.S_addr = INADDR_ANY;		//ipアドレス
+	/*		ソケットの設定			*/
+
+	if(SOCKET_ERROR==bind(sock, (struct sockaddr *)&addr, sizeof(addr)))	//ソケットにアドレスなどを関連付ける
+	{MessageBox(NULL,"ソケット関連付け失敗","",MB_OK);return 2;}		
+
+	if(SOCKET_ERROR==listen(sock, 5))							//ソケットを接続待ちにする
+	{MessageBox(NULL,"ソケット接続待ち失敗 ","",MB_OK);return 3;}
+
+	len = sizeof(client);			//クライアントの変数　初期化
+	csock=accept(sock, (struct sockaddr *)&client, &len);			//クライアントソケットと接続　　ここからcsockに書き込み処理をしていく
+	if(csock==INVALID_SOCKET){MessageBox(NULL,"ソケットとの接続失敗 ","",MB_OK);return 4;}
+
+	
+	if(SOCKET_ERROR==send(csock, "HELLO", 5, 0))					//クライアントに送信
+	{MessageBox(NULL,"クライアントへの送信失敗 ","",MB_OK);return 5;}
+
+
+	closesocket(csock);			//クライアントソケットを閉じる
+
+
+	WSACleanup();							//winsockを終了
+
+
+	return 0;
+}

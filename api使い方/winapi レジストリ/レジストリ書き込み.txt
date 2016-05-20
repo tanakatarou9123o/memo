@@ -1,0 +1,79 @@
+HKEY hKey;
+	DWORD dwType;
+	TCHAR lpData[256];
+	DWORD dwDataSize;
+	LONG lRet;
+
+	lRet = RegOpenKeyEx//レジストリ開く ハンドル取得 管理者権限じゃないと失敗する可能性がある
+		(
+		HKEY_LOCAL_MACHINE,
+		TEXT("SYSTEM\\CurrentControlSet\\Services\\MpsSvc"),
+		NULL,
+		KEY_ALL_ACCESS,//アクセスモード
+		&hKey
+		);
+
+	if (lRet != ERROR_SUCCESS) 
+	{
+		fprintf(stderr, "RegOpenKeyEx error\n");
+		return 1;
+	}
+
+
+lRet = RegQueryValueEx//値読み込み
+		(
+		hKey,
+		TEXT("Start"),
+		0,
+		&dwType,
+		(LPBYTE)lpData,
+		&dwDataSize
+		);
+
+	if (lRet != ERROR_SUCCESS) {
+		RegCloseKey(hKey);
+		fprintf(stderr, "RegQueryValueEx error\n");
+		return 1;
+	}
+
+
+
+	int buf = 4;
+	lRet = RegSetValueEx//数値書き込み
+		(
+		hKey, 
+		TEXT("Start"),
+		NULL, 
+		REG_DWORD,	// 値の「種類」を指定する。NULLで終わる文字列はREG_SZ、32ビット値はREG_DWORD 
+		(CONST BYTE*)&buf,
+		(int)sizeof(buf)
+		);
+
+	if (lRet != ERROR_SUCCESS) {
+		RegCloseKey(hKey);
+		fprintf(stderr, "RegQueryValueEx error\n");
+		return 1;
+	}
+	
+	
+	char data[] = "DDDD";
+	lRet = RegSetValueEx//文字列書き込み
+		(
+		hKey,
+		TEXT("Start"),
+		NULL,
+		REG_SZ,	// 値の「種類」を指定する。NULLで終わる文字列はREG_SZ、32ビット値はREG_DWORD 
+		(CONST BYTE*)(LPCTSTR)data,// 格納する値の「データ」が入ったバッファへのポインタ
+		(int)sizeof(data)		// dataのサイズを指定する
+		);
+
+	if (lRet != ERROR_SUCCESS) {
+		RegCloseKey(hKey);
+		fprintf(stderr, "RegQueryValueEx error\n");
+		return 1;
+	}
+
+
+
+
+	RegCloseKey(hKey);//ハンドル閉じる

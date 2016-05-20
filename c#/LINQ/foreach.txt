@@ -1,0 +1,22 @@
+int[] array = new int[10]{1, 2, 4, 8, 16, 32, 64, 128, 256, 512};
+
+foreach(int n in array)
+{
+  Console.Write(n + " ");
+}
+
+//1 2 4 8 16 32 64 128 256 512 
+
+
+byte[] a = new byte[5];
+
+
+var 出席番号前半名 = from aaa in a where aaa <= 15 orderby aaa select aaa;
+
+var 出席番号前半名 = from aaa in ダンプ配列[0] from bbb in ダンプ配列[1] where aaa == bbb orderby aaa select aaa;
+
+
+//from aaa in a　　　//配列aの要素をaaaという新しいaaaに入れる
+//where aaa <= 15    //aaaが15以下なら
+//orderby aaa 	　　 //順番
+//select aaa;　　　　//出力する内容

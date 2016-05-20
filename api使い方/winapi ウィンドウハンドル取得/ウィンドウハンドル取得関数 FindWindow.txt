@@ -1,0 +1,10 @@
+HWND windoh = FindWindow(NULL, L"デバッグ");//ウィンドウハンドル取得
+
+
+ LPCTSTR lpClassName,  // クラス名        第一引数
+  LPCTSTR lpWindowName  // ウィンドウ名   第二引数
+
+
+戻り値 
+成功でウィンドウハンドル
+失敗でNULL

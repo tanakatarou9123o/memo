@@ -1,0 +1,18 @@
+int test()
+{
+	__try
+	{
+		__asm
+		{
+			__emit 0xf3//prefix rep: ブレークポインとステップ実行でデバッガ検出
+			__emit 0x64
+			__emit 0xf1//int 1 
+		}
+	}
+	__except (EXCEPTION_EXECUTE_HANDLER)//デバッグ中なら例外が発生しない
+	{
+		return 0;//デバッグされてない
+	}
+	
+	return 1;//デバッグされてる
+}

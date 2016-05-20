@@ -1,0 +1,113 @@
+プロジェクト設定
+エンジン インプット
+Axis Mapping
+MoveForward	前後
+MoveRight	左右
+
+
+
+
+.cpp
+
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#include "MyProject2.h"
+#include "MyPawn.h"
+
+
+// Sets default values
+AMyPawn::AMyPawn()
+{
+ 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+	
+	//AutoPossessPlayerは継承元の変数
+	AutoPossessPlayer = EAutoReceiveInput::Player0;//Player0ならカメラが追尾 プレイヤーに設定
+}
+
+// Called when the game starts or when spawned
+void AMyPawn::BeginPlay()
+{
+	Super::BeginPlay();
+	
+}
+
+// Called every frame
+void AMyPawn::Tick( float DeltaTime )
+{
+	Super::Tick( DeltaTime );
+
+	FVector NewLocation = GetActorLocation() + (CurrentVelocity * DeltaTime);
+	SetActorLocation(NewLocation);//位置設定
+}
+
+// Called to bind functionality to input
+void AMyPawn::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+{
+	Super::SetupPlayerInputComponent(InputComponent);
+
+
+	InputComponent->BindAxis("MoveForward", this, &AMyPawn::Move_XAxis);//関数をInputと対応させる
+	InputComponent->BindAxis("MoveRight", this, &AMyPawn::Move_YAxis);//関数をInputと対応させる
+
+}
+
+void AMyPawn::Move_XAxis(float AxisValue)
+{
+	// Move at 100 units per second forward or backward (1 秒間に前後へ 100 単位移動)
+	CurrentVelocity.X = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
+}
+
+void AMyPawn::Move_YAxis(float AxisValue)
+{
+	// Move at 100 units per second right or left (1 秒間に左右へ 100 単位移動)
+	CurrentVelocity.Y = FMath::Clamp(AxisValue, -1.0f, 1.0f) * 100.0f;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.h
+#pragma once
+
+#include "GameFramework/Pawn.h"
+#include "MyPawn.generated.h"
+
+UCLASS()
+class MYPROJECT2_API AMyPawn : public APawn
+{
+	GENERATED_BODY()
+
+public:
+	// Sets default values for this pawn's properties
+	AMyPawn();
+
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+	
+	// Called every frame
+	virtual void Tick( float DeltaSeconds ) override;
+
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
+
+
+	//Input functions (入力関数)
+	void Move_XAxis(float AxisValue);
+	void Move_YAxis(float AxisValue);
+
+	//Input variables (入力変数)
+	FVector CurrentVelocity;
+	
+};

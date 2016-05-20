@@ -1,0 +1,41 @@
+#define IDD_DIALOG1                     129
+#define IDC_BUTTON1                     502
+#define IDC_EDIT1                       503
+
+
+INT_PTR CALLBACK	Editdlg(HWND, UINT, WPARAM, LPARAM);//プロトタイプ宣言
+
+
+DialogBox(hInst, MAKEINTRESOURCE(IDD_DIALOG1), hWnd, Editdlg);//IP取得 DLG作成
+		
+
+
+// IP取得DLG
+INT_PTR CALLBACK Editdlg(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	UNREFERENCED_PARAMETER(lParam);
+	switch (message)
+	{
+	case WM_INITDIALOG://dlg作成された
+		SetWindowText(hDlg, TEXT("PS3 ローカルIPアドレス"));//タイトル設定
+		SetDlgItemText(hDlg, IDC_EDIT1, TEXT("192.168.xx.xx"));//EDIT テキストセット
+
+		return (INT_PTR)TRUE;
+
+	case WM_COMMAND:
+		if (  LOWORD(wParam) == IDCANCEL)
+		{
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+		}
+		if (LOWORD(wParam) == IDOK)//ok
+		{
+			GetDlgItemText(hDlg, IDC_EDIT1, getipdlg, 30);//EDIT テキスト取得
+			EndDialog(hDlg, LOWORD(wParam));
+			return (INT_PTR)TRUE;
+		}
+
+		break;
+	}
+	return (INT_PTR)FALSE;
+}

@@ -1,0 +1,66 @@
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="internetClientServer" />
+    <Capability Name="privateNetworkClientServer" />
+  </Capabilities>
+
+
+
+
+using Windows.Networking.Connectivity;//NetworkInformation.GetHostNames()
+using Windows.Networking;//HostNameType
+using Windows.Networking.Sockets;//StreamSocket
+using System.Diagnostics;//Debug
+using Windows.Storage.Streams;//DataWriter
+
+
+サーバ側
+
+            var localHost = NetworkInformation.GetHostNames().Where(q => q.Type == HostNameType.Ipv4).First();//ローカルホストの情報はNetworkInformationクラスのGetHostNamesメソッドで取得できます。
+            string port = "5000";//ポート
+
+            StreamSocket serverSocket = null;//ソケット
+            var listener = new StreamSocketListener();//通信を待ち受けるリスナー
+
+            //接続要求がきたら
+            listener.ConnectionReceived += (ss, ee) =>//イベントリスナーを登録
+            {
+                serverSocket = ee.Socket;//サーバー用ソケットの取得
+                Debug.WriteLine("connected {0}", serverSocket.Information.RemoteAddress);
+            };
+
+            await listener.BindEndpointAsync(localHost, port);//IPアドレスとポートをバインドして接続待機
+
+            while (true)
+            {
+                if (serverSocket != null)
+                {
+                    break;
+                }
+            }
+
+
+送信処理
+            var writer = new DataWriter(serverSocket.OutputStream);//送信  受信はserverSocket.InputStream
+            string str = "ほげほげ";
+            writer.WriteUInt32(writer.MeasureString(str));//メッセージのサイズ UINTで送る
+            writer.WriteString(str);//メッセージ内容 Stringでメッセージを送る
+            await writer.StoreAsync();//データ送信
+
+
+クライアント側
+
+            HostName localHost = new HostName("192.168.11.70");//接続するアドレス
+
+            var clientSocket = new StreamSocket();
+            await clientSocket.ConnectAsync(localHost, "5000");//ポート
+
+
+受信処理
+	　　var reader = new DataReader(clientSocket.InputStream);//受信　InputStream
+
+            uint sizeFieldCount = await reader.LoadAsync(sizeof(uint));//データ受信 まずメッセージのサイズ
+            uint size = reader.ReadUInt32();//メッセージサイズ取得
+            uint sizeFieldCount2 = await reader.LoadAsync(size);//メッセージサイズ分だけ受信　戻り値は受信したサイズ
+            var str = reader.ReadString(sizeFieldCount2);//サイズ分だけ取り出す
+            Debug.WriteLine("client receive {0}", str);

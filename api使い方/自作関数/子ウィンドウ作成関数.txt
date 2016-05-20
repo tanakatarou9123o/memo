@@ -1,0 +1,63 @@
+int kowin(HWND hWnd, HWND *hko,WCHAR *classname);//プロトタイプ宣言
+LRESULT CALLBACK MainWndProc(HWND, UINT, WPARAM, LPARAM);//子ウィンドウ。実はメインとなる
+
+
+HWND hko;//子ウィンドウハンドル
+
+kowin(hWnd, &hko,TEXT("kowin"));//呼び出し
+
+
+int kowin(HWND hWnd, HWND *hko,WCHAR *classname)//親ウィンドウハンドル,子ウィンドウハンドル,クラスネーム
+{
+	HWND hko1;
+	WNDCLASSEX wcex;														// ウインドウクラス構造体
+
+	wcex.cbSize = sizeof(WNDCLASSEX);										//初期化
+	wcex.style = CS_HREDRAW | CS_VREDRAW;									//縦横 サイズが変わると再描画
+	wcex.lpfnWndProc = (WNDPROC)MainWndProc;								//ウィンドウプロシージャ
+	wcex.cbClsExtra = 0;													//クラス構造体
+	wcex.cbWndExtra = 0;													//ウィンドウ構造体
+	wcex.hInstance = hInst;													//インスタンスハンドル
+	wcex.hIcon = LoadIcon(hInst, MAKEINTRESOURCE(IDI_MY2));					//タスクバーやタイトルバーに表示されるアイコン
+	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);								//ウィンドウのクライアントエリア上のマウスカーソル
+	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);						//クライアントエリアの背景色を指定します
+	wcex.lpszMenuName = NULL;												//クラスメニュー
+	wcex.lpszClassName = classname;								//ウィンドウクラスの名前
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));	//タイトルバーの左端にある 小さいアイコン
+
+	RegisterClassEx(&wcex);													//クラス登録
+
+	hko1 = CreateWindowEx(WS_EX_TOPMOST,									//拡張ウインドウスタイル
+		classname,												// ウインドウクラス名
+		TEXT(""),												// キャプション文字列
+		WS_VISIBLE | WS_OVERLAPPEDWINDOW,									// ウインドウのスタイル WS_VISIBLEを付けないと表示されない
+		CW_USEDEFAULT, // 水平位置
+		CW_USEDEFAULT, // 垂直位置
+		CW_USEDEFAULT, // 幅
+		CW_USEDEFAULT, // 高さ
+		hWnd, // 親ウインドウ
+		NULL, // ウインドウメニュー
+		hInst, // インスタンスハンドル。ここで使うため、グローバル変数にした。
+		NULL); // WM_CREATE情報
+	
+	*hko = hko1;//ポインタにハンドル渡し
+
+	return 0;
+}
+
+
+// ウインドウプロシージャ
+LRESULT CALLBACK MainWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	// メッセージの種類に応じて処理を分岐します。
+	switch (message)
+	{
+	case WM_DESTROY:
+		// ウインドウが破棄されたときの処理
+		PostQuitMessage(0);
+		return 0;
+	default:
+		// デフォルトの処理
+		return DefWindowProc(hWnd, message, wParam, lParam);
+	}
+}

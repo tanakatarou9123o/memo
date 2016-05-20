@@ -1,0 +1,9 @@
+
+            string a="•¶Žš—ñ";
+
+
+            if (string.Equals(a, "•¶Žš—ñ"))//ˆê’v‚µ‚½‚ç true‚ª•Ô‚é
+            {
+                Console.WriteLine("ˆê’v‚µ‚½‚æ");
+                Console.Read();
+            }

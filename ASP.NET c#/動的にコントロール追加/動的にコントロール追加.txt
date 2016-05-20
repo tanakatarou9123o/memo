@@ -1,0 +1,13 @@
+
+//テーブルをguiで作成 
+            TableRow row = new TableRow();
+            Table1.Rows.Add(row);
+
+            TableCell tCell = new TableCell();
+            row.Cells.Add(tCell);
+
+
+            Button aRadioButton = new Button();
+            aRadioButton.ID = "RadioButton1";
+            aRadioButton.Text = "douteki";
+            tCell.Controls.Add(aRadioButton);//テーブルにボタン追加

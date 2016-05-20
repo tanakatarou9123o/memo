@@ -1,0 +1,17 @@
+HFONT fon = CreateFont(//フォント作成
+						  0,0,			//高さ 横
+						  10,			//文字角度 0 ならば左から右へ、900 ならば下から上へ 1/10 度単位で角度を指定します
+						  0,			//ベースラインの X 軸を 1/10 度単位で指定します
+						  400,	//フォントの太さ 0~900
+						  0, 0, 0,		//TRUE で 斜体 下線付き 打消し線付き
+						  SHIFTJIS_CHARSET,  //フォントのキャラクタセット ANSI  ANSI_CHARSET を、シフト JIS  SHIFTJIS_CHARSET
+						  OUT_DEFAULT_PRECIS,	//物理フォントを検索するための方法
+						  CLIP_DEFAULT_PRECIS,	//はみ出した文字をクリップする方法 
+						  ANTIALIASED_QUALITY,		//論理フォントの属性と物理フォントの属性をどの程度一致させるか
+						  DEFAULT_PITCH,	//フォントのピッチとファミリを指定します
+						  NULL);		//フォントのタイプフェイスが格納された NULL で終わる文字列へのポインタを指定します
+					  
+
+					  SelectObject(hdc, fon);//選択フォント
+
+DeleteObject(fon);

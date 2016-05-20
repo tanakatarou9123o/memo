@@ -1,0 +1,9 @@
+// Borland C++
+#ifdef __BORLANDC__
+#pragma link "ライブラリ.lib"
+#endif
+
+// Visual C++
+#ifdef _MSC_VER
+#pragma comment(lib, "ライブラリ.lib")
+#endif

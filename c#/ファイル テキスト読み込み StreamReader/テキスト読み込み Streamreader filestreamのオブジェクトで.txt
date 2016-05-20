@@ -1,0 +1,7 @@
+		FileStream file = new FileStream("set.txt", FileMode.Open, FileAccess.ReadWrite);
+                StreamReader reader = new StreamReader(file);//FileStreamのインスタンス;
+
+                string a = reader.ReadLine();//一行読み込み
+                trackBar1.Value = int.Parse(a);
+
+                reader.Close();

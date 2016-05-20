@@ -1,0 +1,53 @@
+#define IDC_WINDOW2 604
+
+
+int kowin(WCHAR *classname, HINSTANCE hInstance, HWND *hko);//プロトタイプ宣言
+
+
+HWND hWnd,hoya;
+
+
+hoya = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
+      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, NULL, hInstance, NULL);
+
+
+
+
+
+
+
+
+
+
+
+HWND hitiz;
+	WNDCLASSEX wcex;
+
+	wcex.cbSize = sizeof(WNDCLASSEX);										//初期化
+	wcex.style = CS_HREDRAW | CS_VREDRAW;									//縦横 サイズが変わると再描画
+	wcex.lpfnWndProc = WndProc;												//ウィンドウプロシージャ
+	wcex.cbClsExtra = 0;													//クラス構造体
+	wcex.cbWndExtra = 0;													//ウィンドウ構造体
+	wcex.hInstance = hInstance;												//インスタンスハンドル
+	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MY2));				//タスクバーやタイトルバーに表示されるアイコン
+	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);								//ウィンドウのクライアントエリア上のマウスカーソル
+	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);						//クライアントエリアの背景色を指定します
+	wcex.lpszMenuName = MAKEINTRESOURCE(IDC_MY2);							//クラスメニュー
+	wcex.lpszClassName = classname;										//ウィンドウクラスの名前
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));	//タイトルバーの左端にある 小さいアイコン
+
+	RegisterClassEx(&wcex);												//クラス登録
+
+	hitiz = CreateWindowEx(WS_EX_TOPMOST,									//拡張ウインドウスタイル
+		classname,															//ウインドウクラスのクラス名を指定
+		TEXT(""),															//ウインドウのタイトル
+		WS_CHILD | WS_VISIBLE,												//ウインドウスタイル
+		CW_USEDEFAULT,0,													//ウインドウの水平位置 ウインドウの垂直位置
+		330,120,															//ウィンドウサイズ 横幅 高さ
+		0,																//親ウインドウのハンドルを指定します。
+		(HMENU)IDC_WINDOW2,													//メニューID
+		hInstance,															//インスタンスハンドル
+		NULL);	//ウィンドウ作成データ WM_CREATEのlParamはCREATESTRUCTとなっていて、そのメンバのlpCreateParamsが、CreateWindowのlParamとして渡した値となる。
+
+
+	

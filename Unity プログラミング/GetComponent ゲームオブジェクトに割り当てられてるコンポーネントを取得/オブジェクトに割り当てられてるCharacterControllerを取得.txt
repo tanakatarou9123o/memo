@@ -1,0 +1,4 @@
+CharacterController characterController;//キャラのフィジックス
+
+characterController = GetComponent<CharacterController>();//インスタンス取得 ゲームオブジェクトに設定されてるコンポーネントを取得
+	

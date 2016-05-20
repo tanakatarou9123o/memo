@@ -1,0 +1,2 @@
+string a = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+System.IO.File.Delete(a + "/ip.txt");

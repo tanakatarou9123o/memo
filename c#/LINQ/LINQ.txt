@@ -1,0 +1,3 @@
+string[] hairetu = Directory.GetFiles(@"E:\Users\ttanakattarou\Videos\");
+
+var d = from z in hairetu where true == z.Contains(aa) select z;

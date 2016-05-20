@@ -1,0 +1,4 @@
+WCHAR@buf[5000];
+
+int l = 0;
+while (buf[l] != '\0'){l++;}//null•¶šæ“¾

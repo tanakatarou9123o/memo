@@ -1,0 +1,28 @@
+using System.IO;
+
+FileStream file = new FileStream( @"C:\Temp\MyFile.dat", FileMode.Open,FileAccess.ReadWrite);
+
+FileMode.Append ファイルの末尾に追加する。ファイルが存在しなければ新規作成
+FileMode.Create ファイルを新規作成する。すでにファイルがあると上書きされる
+FileMode.CreateNew ファイルを新規作成する。すでにファイルがある場合は例外（IOException）がスローされる
+FileMode.Open ファイルを開く。ファイルが存在しない場合は例外（FileNotFoundException）がスローされる
+FileMode.OpenOrCreate ファイルを開く。ファイルが存在しない場合は新規作成
+FileMode.Truncate ファイルを開き、サイズを0にする
+
+
+FileAccess.Read 読み出しモードで開く
+FileAccess.Write 書き込みモードで開く
+FileAccess.ReadWrite 読み出し、書き込みのいずれも可能なモードで開く
+
+
+
+file.Seek(0, SeekOrigin.Begin);//シークの開始位置 移動場所
+
+
+SeekOrigin.Begin ストリームの先頭
+SeekOrigin.Current ストリームの現在位置
+SeekOrigin.End ストリームの末尾
+
+byte[] a = {1,2,3,4,5 };
+file.Write(a, 0, a.Count());//byte配列 配列の何番目から書き込みを開始位置 書き込みバイト数
+           

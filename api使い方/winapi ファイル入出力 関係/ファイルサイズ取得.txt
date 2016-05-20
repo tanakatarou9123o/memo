@@ -1,0 +1,11 @@
+		char* buf;//バッファポインタ
+		DWORD fsizel, fsizeh;//ファイルサイズ
+		
+		DragQueryFile((HDROP)wParam, 0, szDropFile, MAX_PATH);//ファイルパス取得
+		HANDLE hfile = CreateFile(szDropFile, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);//読み書きで読み込み
+		fsizel = GetFileSize(hfile, &fsizeh);				//ファイルサイズ取得
+		buf = new char[fsizel];								//動的メモリ確保
+		ReadFile(hfile, buf, fsizel, NULL, NULL);			//ファイル読み込み
+
+
+		CloseHandle(hfile);									//ファイルハンドル閉じる

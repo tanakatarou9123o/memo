@@ -1,0 +1,35 @@
+//UNICODE用テキスト
+
+							HANDLE hfipo = CreateFile(TEXT("GAMES24UNI.ps3cheat"), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+							if (hfipo == INVALID_HANDLE_VALUE)//ファイル存在しない エラー
+							{
+							}
+
+							
+
+							int fsize;//ファイルサイズ取得  buf+ファイルサイズが終了地点
+							WCHAR *buf;//読み込みポインタ
+							fsize=GetFileSize(hfipo,NULL);//ファイルサイズ取得
+							buf = new WCHAR[fsize/2];//ファイルサイズbuf
+
+							ReadFile(hfipo, buf, fsize, NULL, NULL);//ファイル読み込み
+
+							CloseHandle(hfipo);//ハンドル閉じる
+
+							WCHAR *amovep;//移動ポインタ
+							amovep = buf;//ポインタコピー
+
+
+							while (amovep<buf+fsize)//タイトル取得
+							{
+								amovep = _tcsstr(amovep, TEXT("----"));//検索箇所の先頭ポインタが返る
+								if (amovep == 0)//見つからなかったらbreak;
+								{
+									break;
+								}
+
+								amovep =2 + _tcsstr(amovep, TEXT("\r"));//\r　復帰文字+2のポインタが返る (次の行)
+
+
+
+							}

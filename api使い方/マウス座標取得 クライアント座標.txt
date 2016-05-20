@@ -1,0 +1,7 @@
+case WM_MOUSEMOVE:
+	{
+		
+		WORD x = LOWORD(lParam);	//クライアント座標 x座標
+		WORD y = HIWORD(lParam);	//クライアント座標 y座標
+
+	}break;

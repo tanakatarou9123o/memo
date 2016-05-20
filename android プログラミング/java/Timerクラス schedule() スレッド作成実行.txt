@@ -1,0 +1,40 @@
+//メインアクティビティに Runnable を実装する
+implements Runnable
+
+Timer tim;
+MyTimer mti;//実行するスレッドのクラス
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) 
+	{
+		super.onCreate(savedInstanceState);
+		
+		te=(TextView)findViewById(R.id.textView1);
+		mti=new MyTimer();//スレッドのインスタンス作成
+		
+		tim=new Timer(true);// インスタンス デーモンスレッドととして作成 
+		tim.schedule(mti, 50,50);//スレッドのオブジェクトを渡す スレッド開始
+				
+	}
+
+
+	//ネストクラス メインアクティビティにアクセスするために
+	public class MyTimer extends TimerTask//TimerTaskを継承
+	{
+		@Override
+		public void run()
+		{
+			// TODO 自動生成されたメソッド・スタブ
+			MainActivity.this.runOnUiThread(MainActivity.this);//メインアクティビティのrunを呼ぶ
+		}
+	}
+
+
+	@Override
+	public void run() //スレッドで実行されるメソッド
+	{
+		// TODO 自動生成されたメソッド・スタブ
+		ti.setToNow();//現在日時取得
+		te.setText(ti.hour+"時"+ti.minute+"分"+ti.second+"秒");
+	
+	}

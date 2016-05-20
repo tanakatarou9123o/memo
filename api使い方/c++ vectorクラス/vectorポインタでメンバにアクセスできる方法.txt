@@ -1,0 +1,12 @@
+DWORD Debugapu::DebugThreadProc(vector<debugmem> *v,int mgf)
+{
+//これだとアクセス出来ない
+	*v[mgf].hdebProcess = OpenProcess(PROCESS_ALL_ACCESS, TRUE, (*v)[mgf].pe.th32ProcessID); //アクセス権限, ,プロセスID アクセス権限を設定してプロセスハンドル取得
+}
+
+
+DWORD Debugapu::DebugThreadProc(vector<debugmem> *v,int mgf)
+{
+//アクセスできる
+	(*v)[mgf].hdebProcess = OpenProcess(PROCESS_ALL_ACCESS, TRUE, (*v)[mgf].pe.th32ProcessID); //アクセス権限, ,プロセスID アクセス権限を設定してプロセスハンドル取得
+}

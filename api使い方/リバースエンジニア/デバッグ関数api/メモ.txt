@@ -1,0 +1,69 @@
+
+アタッチ手順
+プロセスID を取得
+OpenProcessでプロセスを開く
+DebugActiveProcessでアタッチ
+
+WaitForDebugEventでデバッグメッセージを取得 ループ
+デバッグメッセージでプログラミング
+ContinueDebugEventで続行
+
+
+デバッグ権限 OpenProcess(PROCESS_ALL_ACCESS, TRUE, dwProcessId); //アクセス権限, ,プロセスID アクセス権限を設定してプロセスハンドル取得
+
+
+DEBUG_EVENT evDebug;
+WaitForDebugEvent(&evDebug, INFINITE);
+
+switch (evDebug.dwDebugEventCode)
+					{
+					case CREATE_PROCESS_DEBUG_EVENT://プロセス作成 最初のスレッドハンドル取得
+					{
+						CONTEXT ctx = { CONTEXT_CONTROL | CONTEXT_INTEGER };//アクセスフラグ
+						if (!GetThreadContext(evDebug.u.CreateProcessInfo.hThread, &ctx))
+						{
+							MessageBox(hWnd, L"GetThreadContext失敗", L"", MB_OK);
+						};
+					
+					
+						ContinueDebugEvent(evDebug.dwProcessId, evDebug.dwThreadId, DBG_CONTINUE);//続行
+					}
+
+						break;
+
+					case CREATE_THREAD_DEBUG_EVENT://スレッド作成
+					{
+						CONTEXT ctx = { CONTEXT_CONTROL | CONTEXT_INTEGER };
+						if (!GetThreadContext(evDebug.u.CreateThread.hThread, &ctx))
+						{
+							MessageBox(hWnd, L"GetThreadContext失敗", L"", MB_OK);
+						};
+
+
+						ContinueDebugEvent(evDebug.dwProcessId, evDebug.dwThreadId, DBG_CONTINUE);//続行
+					}
+						break;
+
+					case EXCEPTION_DEBUG_EVENT://メモリの不正アクセス、0割り、ブレークポイント 例外
+					{
+						CONTEXT ctx = { CONTEXT_CONTROL | CONTEXT_INTEGER };
+						GetThreadContext(evDebug.u.CreateThread.hThread, &ctx);
+
+						WCHAR s1[500];
+						wsprintf(s1,L"%x",ctx.Edx);
+						SetWindowText(hWnd, s1);
+
+
+						ContinueDebugEvent(evDebug.dwProcessId, evDebug.dwThreadId, DBG_CONTINUE);//続行
+					}
+						break;
+
+					case EXIT_PROCESS_DEBUG_EVENT://プロセス終了時
+
+						return 1;//プロシージャを抜ける
+						break;
+
+					default:
+						ContinueDebugEvent(evDebug.dwProcessId, evDebug.dwThreadId, DBG_CONTINUE);//続行
+						break;
+					}

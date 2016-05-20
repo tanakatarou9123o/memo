@@ -1,0 +1,39 @@
+tes(int g, int b, int c) という関数呼び出しの場合
+tes(0x28, 0x32, 0x64);
+
+関数呼び出し前
+push 64h	//第三引数
+push 32h	//第二引数
+push 28h	//第一引数
+call tes()
+
+
+関数呼び出し開始
+push ebp	//ここでpushしてるので[EBP]はEBPの内容が格納されている
+mov ebp,esp	//ここからebpをespとして使う
+sub esp,50h	//スタックを0x50使用する
+
+.....
+
+mov esp,ebp	//espをebpで戻す
+pop ebp 	//pushしていたebpを元に戻す
+ret
+
+[EBP+4]
+関数のリターンアドレス
+
+[EBP+8]
+第一引数
+
+[EBP+C]
+第二引数
+
+[EBP+10]
+第三引数
+
+[EBP]にはEBPのプッシュした内容が入ってる
+
+[EBP-4]
+ローカル変数
+[EBP-8]
+ローカル変数

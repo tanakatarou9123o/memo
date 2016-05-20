@@ -1,0 +1,5 @@
+WaitForDebugEvent(&evDebug, INFINITE);//callするまでプライマリスレッドは停止している
+
+メッセージが来るとDEBUG_EVENT構造体に値がセットされる
+
+dwProcessIdとdwThreadIdはそれぞれ、デバッグイベントが発生したプロセスIDとスレッドIDである

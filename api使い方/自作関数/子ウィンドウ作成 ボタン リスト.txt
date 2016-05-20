@@ -1,0 +1,23 @@
+HWND kocwin(HWND hWnd, WCHAR *classmei, WCHAR *ctaitle, int wcstail = WS_CLIPCHILDREN | WS_CHILD | WS_VISIBLE | ES_LEFT | WS_BORDER, int yokoiti = 100, int tateiti = 100, int yokohaba = 100, int tatehaba = 20);
+
+
+
+
+
+HWND koch = kocwin(hWnd, TEXT("EDIT"), NULL);
+
+
+
+
+
+HWND kocwin(HWND hWnd,WCHAR *classmei,WCHAR *ctaitle,int wcstail,int yokoiti,int tateiti,int yokohaba,int tatehaba)
+{
+	return CreateWindow(classmei,
+		ctaitle,
+		wcstail,
+		yokoiti, tateiti,yokohaba ,tatehaba , 
+		hWnd, 
+		NULL,
+		hInst, 
+		NULL);//EDITボックス
+}

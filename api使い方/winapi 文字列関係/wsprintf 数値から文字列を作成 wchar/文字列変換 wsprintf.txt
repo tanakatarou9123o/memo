@@ -1,0 +1,7 @@
+int mozisuu;
+int s5=1000;
+WCHAR s1[50];
+
+mozisuu=wsprintf(s1,TEXT("%x"),s5);
+
+MessageBox(NULL,s1,mozisuu,MB_OK);

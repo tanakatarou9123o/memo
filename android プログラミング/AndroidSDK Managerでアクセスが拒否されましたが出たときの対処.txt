@@ -1,0 +1,5 @@
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Android SDK Tools
+
+AndroidSDK Managerでアクセスが拒否されましたが出たときの対処
+
+AndroidSDK Managerを管理者権限で起動する

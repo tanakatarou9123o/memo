@@ -1,0 +1,4 @@
+int len = SendMessage(hedit2, WM_GETTEXTLENGTH, 0, 0);//文字数
+SendMessage(hedit2, EM_SETSEL, len, len);//カーソル最後
+
+SendMessage(hedit2, EM_REPLACESEL, 0, (LPARAM)rezisu[i]);//追記

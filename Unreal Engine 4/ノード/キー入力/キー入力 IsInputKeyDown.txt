@@ -1,0 +1,7 @@
+ターゲットにGetPlayerControllerをセット
+keyにチェックするKeyをセット
+
+
+通常
+イベントティックにシーケンスを接続しIsInputKeyDownを複数つなげ
+ブランチでチェック

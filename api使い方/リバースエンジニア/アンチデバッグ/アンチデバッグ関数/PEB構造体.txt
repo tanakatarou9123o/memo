@@ -1,0 +1,11 @@
+Winternl.h
+
+PEB
+
+
+
+
+ #include <windows.h> 
+#include <tlhelp32.h> 
+std::vector<std::pair<std::string, uint32_t> > base_addresses; //
+ take a snapshot of all modules in the specified process HANDLE snaphot_handle = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, 0); if (snaphot_handle != INVALID_HANDLE_VALUE) { // first module MODULEENTRY32 mod_entry; mod_entry.dwSize = sizeof(mod_entry); if (Module32First(snaphot_handle, &mod_entry)) { // iterate through the module list of the process do { base_addresses.push_back( std::make_pair(mod_entry.szModule, static_cast<uint32_t>(mod_entry.modBaseAddr)); } while (Module32Next(snaphot_handle, &mod_entry)); } CloseHandle(snaphot_handle); } 

@@ -1,0 +1,4 @@
+ƒAƒNƒ^‚ÌÚ×‚©‚ç
+SimulationGeneratesHitEvents‚ğON‚É
+
+OnActorHit

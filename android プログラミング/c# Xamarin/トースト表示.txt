@@ -1,0 +1,4 @@
+
+                // トーストを使って結果を表示
+                var to=Toast.MakeText(this, results[0],ToastLength.Long);//this,string 
+                to.Show();

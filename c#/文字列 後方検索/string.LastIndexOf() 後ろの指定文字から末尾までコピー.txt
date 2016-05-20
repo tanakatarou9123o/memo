@@ -1,0 +1,4 @@
+int iti=string.LastIndexOf('\\');
+
+iti++;
+var tridasi= string.Substring(iti,string.Length-1);

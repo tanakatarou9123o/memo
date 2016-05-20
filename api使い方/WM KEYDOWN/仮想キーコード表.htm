@@ -1,0 +1,1660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+<title>仮想キーコード表</title>
+<script language="JavaScript" src="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/icsr.js"></script>
+<link rel="stylesheet" href="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/icsr.css" type="text/css">
+</head>
+<body bgcolor="#FBFBFF"><script language="JavaScript">
+<!--
+PageTop(2,"Removal Function")
+//-->
+</script><center><table><tbody><tr><td><img src="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/nell_idx.gif" alt="私、ネルちゃん" align="right" height="56" width="56"></td><td align="left" valign="middle"><font size="5"><strong>Removal Function</strong></font></td></tr><tr><td colspan="2" align="center"><script language="JavaScript">LastUpdate()</script><font color="#ff8080" size="2">最終更新日：<b>2002</b>年<b>7</b>月<b>29</b>日（<b>月</b>）<b>2</b>時<b>21</b>分</font></td></tr><tr><td colspan="2" align="center"><img src="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/ttl_help.gif" alt="水平線" height="20" width="480"></td></tr></tbody></table></center><hr>
+<p><b><a href="#excode">拡張コード</a></b>を追加しました。2002/6/2<br>
+<br>
+<a href="#keyevt">キーイベント入力例</a>を追加しました。2002/6/13<br>
+</p>
+<hr>
+<p>キーコード文字はSDKで定義されている仮想キーコード定数とほぼ同じです。最新のSDKのヘッダファイルを元に作成しました。本来"0～9""A～Z"はASCIIコードと同じため定義されていませんが、ここでは"VK_"を付加しています。<br>
+<br>
+使用する場合は入力ミスをなくすために、キーコード文字をコピーしてください。<br>
+だいたい"VK_"以降がキー名を表しています。また、"VK_"以降が"$07"のように"$"で始まっている物はSDKでも未定義です。一部OEM依存する物は除外されています。<br>
+<br>
+<br>
+</p>
+<table border="1">
+  <tbody>
+    <tr>
+      <td colspan="4">仮想キーコードはシステムの状態に応じてOSが作り出した仮想的なキーコードです。<br>
+      キーボード上のキーと仮想キーコードは、必ずしも１対１に対応しているわけではありません。中にはキー操作だけでは発生させることのできないキーコードもあります。<br>
+      <br>
+      ホイールキーはすべての仮想キーを指定できますので、通常のキー操作では発生させることのできない仮想キーの機能を簡単に利用することができます。<br>
+      <br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center" background="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/hr_green.gif"><b><font size="+1">仮想キーコード表</font></b></td>
+    </tr>
+    <tr bgcolor="#999900">
+      <td bgcolor="#999900">キーコード（16進）</td>
+      <td align="center" bgcolor="#999900"><b>キーコード文字</b></td>
+      <td>一般的な呼び名</td>
+      <td align="center">備考</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900"><font color="#FF0000">0x00</font></td>
+      <td bgcolor="#CCCCCC"><font color="#FF0000"><b>VK_$00</b></font></td>
+      <td>　</td>
+      <td><font color="#FF0000">使用不可</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x01</td>
+      <td bgcolor="#CCCCCC"><b>VK_LBUTTON</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x02</td>
+      <td bgcolor="#CCCCCC"><b>VK_RBUTTON</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x03</td>
+      <td bgcolor="#CCCCCC"><b>VK_CANCEL</b></td>
+      <td>Break</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x04</td>
+      <td bgcolor="#CCCCCC"><b>VK_MBUTTON</b></td>
+      <td>　</td>
+      <td>NOT contiguous with L &amp; RBUTTON</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x05</td>
+      <td bgcolor="#CCCCCC"><b>VK_XBUTTON1</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x06</td>
+      <td bgcolor="#CCCCCC"><b>VK_XBUTTON2</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x07</td>
+      <td bgcolor="#CCCCCC"><b>VK_$07</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x08</td>
+      <td bgcolor="#CCCCCC"><b>VK_BACK</b></td>
+      <td>Backspace</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x09</td>
+      <td bgcolor="#CCCCCC"><b>VK_TAB</b></td>
+      <td>Tab</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x0A</td>
+      <td bgcolor="#CCCCCC"><b>VK_$0A</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x0B</td>
+      <td bgcolor="#CCCCCC"><b>VK_$0B</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x0C</td>
+      <td bgcolor="#CCCCCC"><b>VK_CLEAR</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x0D</td>
+      <td bgcolor="#CCCCCC"><b>VK_RETURN</b></td>
+      <td>Enter</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x0E</td>
+      <td bgcolor="#CCCCCC"><b>VK_$0E</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x0F</td>
+      <td bgcolor="#CCCCCC"><b>VK_$0F</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x10</td>
+      <td bgcolor="#CCCCCC"><b>VK_SHIFT</b></td>
+      <td>Shift</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x11</td>
+      <td bgcolor="#CCCCCC"><b>VK_CONTROL</b></td>
+      <td>Ctrl　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x12</td>
+      <td bgcolor="#CCCCCC"><b>VK_MENU</b></td>
+      <td>Alt　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x13</td>
+      <td bgcolor="#CCCCCC"><b>VK_PAUSE</b></td>
+      <td>Pause</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x14</td>
+      <td bgcolor="#CCCCCC"><b>VK_CAPITAL</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x15</td>
+      <td bgcolor="#CCCCCC"><b>VK_KANA</b></td>
+      <td>　</td>
+      <td>VK_HANGEUL,VK_HANGUL</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x16</td>
+      <td bgcolor="#CCCCCC"><b>VK_$16</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x17</td>
+      <td bgcolor="#CCCCCC"><b>VK_JUNJA</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x18</td>
+      <td bgcolor="#CCCCCC"><b>VK_FINAL</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x19</td>
+      <td bgcolor="#CCCCCC"><b>VK_KANJI</b></td>
+      <td>　</td>
+      <td>VK_HANJA</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x1A</td>
+      <td bgcolor="#CCCCCC"><b>VK_$1A</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x1B</td>
+      <td bgcolor="#CCCCCC"><b>VK_ESCAPE</b></td>
+      <td>Esc</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x1C</td>
+      <td bgcolor="#CCCCCC"><b>VK_CONVERT</b></td>
+      <td>変換</td>
+      <td>ShiftまたはCtrlとの同時押下</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x1D</td>
+      <td bgcolor="#CCCCCC"><b>VK_NONCONVERT</b></td>
+      <td>無変換　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x1E</td>
+      <td bgcolor="#CCCCCC"><b>VK_ACCEPT</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x1F</td>
+      <td bgcolor="#CCCCCC"><b>VK_MODECHANGE</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x20</td>
+      <td bgcolor="#CCCCCC"><b>VK_SPACE</b></td>
+      <td>スペース</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x21</td>
+      <td bgcolor="#CCCCCC"><b>VK_PRIOR</b></td>
+      <td>PgUp</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x22</td>
+      <td bgcolor="#CCCCCC"><b>VK_NEXT</b></td>
+      <td>PgDn</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x23</td>
+      <td bgcolor="#CCCCCC"><b>VK_END</b></td>
+      <td>End</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x24</td>
+      <td bgcolor="#CCCCCC"><b>VK_HOME</b></td>
+      <td>Home　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x25</td>
+      <td bgcolor="#CCCCCC"><b>VK_LEFT</b></td>
+      <td>←</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x26</td>
+      <td bgcolor="#CCCCCC"><b>VK_UP</b></td>
+      <td>↑　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x27</td>
+      <td bgcolor="#CCCCCC"><b>VK_RIGHT</b></td>
+      <td>→　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x28</td>
+      <td bgcolor="#CCCCCC"><b>VK_DOWN</b></td>
+      <td>↓　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x29</td>
+      <td bgcolor="#CCCCCC"><b>VK_SELECT</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x2A</td>
+      <td bgcolor="#CCCCCC"><b>VK_PRINT</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x2B</td>
+      <td bgcolor="#CCCCCC"><b>VK_EXECUTE</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x2C</td>
+      <td bgcolor="#CCCCCC"><b>VK_SNAPSHOT</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x2D</td>
+      <td bgcolor="#CCCCCC"><b>VK_INSERT</b></td>
+      <td>Insert　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x2E</td>
+      <td bgcolor="#CCCCCC"><b>VK_DELETE</b></td>
+      <td>Delete　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x2F</td>
+      <td bgcolor="#CCCCCC"><b>VK_HELP</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x30</td>
+      <td bgcolor="#CCCCCC"><b>VK_0</b></td>
+      <td>　</td>
+      <td rowspan="10">0～9　　　　　　　　　　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x31</td>
+      <td bgcolor="#CCCCCC"><b>VK_1</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x32</td>
+      <td bgcolor="#CCCCCC"><b>VK_2</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x33</td>
+      <td bgcolor="#CCCCCC"><b>VK_3</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x34</td>
+      <td bgcolor="#CCCCCC"><b>VK_4</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x35</td>
+      <td bgcolor="#CCCCCC"><b>VK_5</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x36</td>
+      <td bgcolor="#CCCCCC"><b>VK_6</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x37</td>
+      <td bgcolor="#CCCCCC"><b>VK_7</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x38</td>
+      <td bgcolor="#CCCCCC"><b>VK_8</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x39</td>
+      <td bgcolor="#CCCCCC"><b>VK_9</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x3A</td>
+      <td bgcolor="#CCCCCC"><b>VK_$3A</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x3B</td>
+      <td bgcolor="#CCCCCC"><b>VK_$3B</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x3C</td>
+      <td bgcolor="#CCCCCC"><b>VK_$3C</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x3D</td>
+      <td bgcolor="#CCCCCC"><b>VK_$3D</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x3E</td>
+      <td bgcolor="#CCCCCC"><b>VK_$3E</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x3F</td>
+      <td bgcolor="#CCCCCC"><b>VK_$3F</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x40</td>
+      <td bgcolor="#CCCCCC"><b>VK_$40</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x41</td>
+      <td bgcolor="#CCCCCC"><b>VK_A</b></td>
+      <td>　</td>
+      <td rowspan="26">A～Z　　　　　　　　　　　　　　　　　　　　　　　　　　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x42</td>
+      <td bgcolor="#CCCCCC"><b>VK_B</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x43</td>
+      <td bgcolor="#CCCCCC"><b>VK_C</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x44</td>
+      <td bgcolor="#CCCCCC"><b>VK_D</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x45</td>
+      <td bgcolor="#CCCCCC"><b>VK_E</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x46</td>
+      <td bgcolor="#CCCCCC"><b>VK_F</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x47</td>
+      <td bgcolor="#CCCCCC"><b>VK_G</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x48</td>
+      <td bgcolor="#CCCCCC"><b>VK_H</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x49</td>
+      <td bgcolor="#CCCCCC"><b>VK_I</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x4A</td>
+      <td bgcolor="#CCCCCC"><b>VK_J</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x4B</td>
+      <td bgcolor="#CCCCCC"><b>VK_K</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x4C</td>
+      <td bgcolor="#CCCCCC"><b>VK_L</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x4D</td>
+      <td bgcolor="#CCCCCC"><b>VK_M</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x4E</td>
+      <td bgcolor="#CCCCCC"><b>VK_N</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x4F</td>
+      <td bgcolor="#CCCCCC"><b>VK_O</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x50</td>
+      <td bgcolor="#CCCCCC"><b>VK_P</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x51</td>
+      <td bgcolor="#CCCCCC"><b>VK_Q</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x52</td>
+      <td bgcolor="#CCCCCC"><b>VK_R</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x53</td>
+      <td bgcolor="#CCCCCC"><b>VK_S</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x54</td>
+      <td bgcolor="#CCCCCC"><b>VK_T</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x55</td>
+      <td bgcolor="#CCCCCC"><b>VK_U</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x56</td>
+      <td bgcolor="#CCCCCC"><b>VK_V</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x57</td>
+      <td bgcolor="#CCCCCC"><b>VK_W</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x58</td>
+      <td bgcolor="#CCCCCC"><b>VK_X</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x59</td>
+      <td bgcolor="#CCCCCC"><b>VK_Y</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x5A</td>
+      <td bgcolor="#CCCCCC"><b>VK_Z</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x5B</td>
+      <td bgcolor="#CCCCCC"><b>VK_LWIN</b></td>
+      <td>左ウィンドウズキー</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x5C</td>
+      <td bgcolor="#CCCCCC"><b>VK_RWIN</b></td>
+      <td>右ウィンドウズキー</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x5D</td>
+      <td bgcolor="#CCCCCC"><b>VK_APPS</b></td>
+      <td>アプリケーションキー</td>
+      <td>ポップアップメニューが開くキー</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x5E</td>
+      <td bgcolor="#CCCCCC"><b>VK_$5E</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x5F</td>
+      <td bgcolor="#CCCCCC"><b>VK_SLEEP</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x60</td>
+      <td bgcolor="#CCCCCC"><b>VK_NUMPAD0</b></td>
+      <td>　</td>
+      <td rowspan="16">テンキー　　　　　　　　　　　　　　　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x61</td>
+      <td bgcolor="#CCCCCC"><b>VK_NUMPAD1</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x62</td>
+      <td bgcolor="#CCCCCC"><b>VK_NUMPAD2</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x63</td>
+      <td bgcolor="#CCCCCC"><b>VK_NUMPAD3</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x64</td>
+      <td bgcolor="#CCCCCC"><b>VK_NUMPAD4</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x65</td>
+      <td bgcolor="#CCCCCC"><b>VK_NUMPAD5</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x66</td>
+      <td bgcolor="#CCCCCC"><b>VK_NUMPAD6</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x67</td>
+      <td bgcolor="#CCCCCC"><b>VK_NUMPAD7</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x68</td>
+      <td bgcolor="#CCCCCC"><b>VK_NUMPAD8</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x69</td>
+      <td bgcolor="#CCCCCC"><b>VK_NUMPAD9</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x6A</td>
+      <td bgcolor="#CCCCCC"><b>VK_MULTIPLY</b></td>
+      <td>*</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x6B</td>
+      <td bgcolor="#CCCCCC"><b>VK_ADD</b></td>
+      <td>+</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x6C</td>
+      <td bgcolor="#CCCCCC"><b>VK_SEPARATOR</b></td>
+      <td>,</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x6D</td>
+      <td bgcolor="#CCCCCC"><b>VK_SUBTRACT</b></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x6E</td>
+      <td bgcolor="#CCCCCC"><b>VK_DECIMAL</b></td>
+      <td>.</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x6F</td>
+      <td bgcolor="#CCCCCC"><b>VK_DIVIDE</b></td>
+      <td>/</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x70</td>
+      <td bgcolor="#CCCCCC"><b>VK_F1</b></td>
+      <td>　</td>
+      <td rowspan="24">ファンクションキー　　　　　　　　　　　　　　　　　　　　　　　　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x71</td>
+      <td bgcolor="#CCCCCC"><b>VK_F2</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x72</td>
+      <td bgcolor="#CCCCCC"><b>VK_F3</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x73</td>
+      <td bgcolor="#CCCCCC"><b>VK_F4</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x74</td>
+      <td bgcolor="#CCCCCC"><b>VK_F5</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x75</td>
+      <td bgcolor="#CCCCCC"><b>VK_F6</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x76</td>
+      <td bgcolor="#CCCCCC"><b>VK_F7</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x77</td>
+      <td bgcolor="#CCCCCC"><b>VK_F8</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x78</td>
+      <td bgcolor="#CCCCCC"><b>VK_F9</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x79</td>
+      <td bgcolor="#CCCCCC"><b>VK_F10</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x7A</td>
+      <td bgcolor="#CCCCCC"><b>VK_F11</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x7B</td>
+      <td bgcolor="#CCCCCC"><b>VK_F12</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x7C</td>
+      <td bgcolor="#CCCCCC"><b>VK_F13</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x7D</td>
+      <td bgcolor="#CCCCCC"><b>VK_F14</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x7E</td>
+      <td bgcolor="#CCCCCC"><b>VK_F15</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x7F</td>
+      <td bgcolor="#CCCCCC"><b>VK_F16</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x80</td>
+      <td bgcolor="#CCCCCC"><b>VK_F17</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x81</td>
+      <td bgcolor="#CCCCCC"><b>VK_F18</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x82</td>
+      <td bgcolor="#CCCCCC"><b>VK_F19</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x83</td>
+      <td bgcolor="#CCCCCC"><b>VK_F20</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x84</td>
+      <td bgcolor="#CCCCCC"><b>VK_F21</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x85</td>
+      <td bgcolor="#CCCCCC"><b>VK_F22</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x86</td>
+      <td bgcolor="#CCCCCC"><b>VK_F23</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x87</td>
+      <td bgcolor="#CCCCCC"><b>VK_F24</b></td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x88</td>
+      <td bgcolor="#CCCCCC"><b>VK_$88</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x89</td>
+      <td bgcolor="#CCCCCC"><b>VK_$89</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x8A</td>
+      <td bgcolor="#CCCCCC"><b>VK_$8A</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x8B</td>
+      <td bgcolor="#CCCCCC"><b>VK_$8B</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x8C</td>
+      <td bgcolor="#CCCCCC"><b>VK_$8C</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x8D</td>
+      <td bgcolor="#CCCCCC"><b>VK_$8D</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x8E</td>
+      <td bgcolor="#CCCCCC"><b>VK_$8E</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x8F</td>
+      <td bgcolor="#CCCCCC"><b>VK_$8F</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x90</td>
+      <td bgcolor="#CCCCCC"><b>VK_NUMLOCK</b></td>
+      <td>Num Lock</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x91</td>
+      <td bgcolor="#CCCCCC"><b>VK_SCROLL</b></td>
+      <td>Scroll Lock</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x92</td>
+      <td bgcolor="#CCCCCC"><b>VK_$92</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x93</td>
+      <td bgcolor="#CCCCCC"><b>VK_$93</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x94</td>
+      <td bgcolor="#CCCCCC"><b>VK_$94</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x95</td>
+      <td bgcolor="#CCCCCC"><b>VK_$95</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x96</td>
+      <td bgcolor="#CCCCCC"><b>VK_$96</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x97</td>
+      <td bgcolor="#CCCCCC"><b>VK_$97</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x98</td>
+      <td bgcolor="#CCCCCC"><b>VK_$98</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x99</td>
+      <td bgcolor="#CCCCCC"><b>VK_$99</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x9A</td>
+      <td bgcolor="#CCCCCC"><b>VK_$9A</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x9B</td>
+      <td bgcolor="#CCCCCC"><b>VK_$9B</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x9C</td>
+      <td bgcolor="#CCCCCC"><b>VK_$9C</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x9D</td>
+      <td bgcolor="#CCCCCC"><b>VK_$9D</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x9E</td>
+      <td bgcolor="#CCCCCC"><b>VK_$9E</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0x9F</td>
+      <td bgcolor="#CCCCCC"><b>VK_$9F</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xA0</td>
+      <td bgcolor="#CCCCCC"><b>VK_LSHIFT</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xA1</td>
+      <td bgcolor="#CCCCCC"><b>VK_RSHIFT</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xA2</td>
+      <td bgcolor="#CCCCCC"><b>VK_LCONTROL</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xA3</td>
+      <td bgcolor="#CCCCCC"><b>VK_RCONTROL</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xA4</td>
+      <td bgcolor="#CCCCCC"><b>VK_LMENU</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xA5</td>
+      <td bgcolor="#CCCCCC"><b>VK_RMENU</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xA6</td>
+      <td bgcolor="#CCCCCC"><b>VK_BROWSER_BACK</b></td>
+      <td rowspan="7">ブラウザー</td>
+      <td>戻る</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xA7</td>
+      <td bgcolor="#CCCCCC"><b>VK_BROWSER_FORWARD</b></td>
+      <td>進む</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xA8</td>
+      <td bgcolor="#CCCCCC"><b>VK_BROWSER_REFRESH</b></td>
+      <td>更新</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xA9</td>
+      <td bgcolor="#CCCCCC"><b>VK_BROWSER_STOP</b></td>
+      <td>中止</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xAA</td>
+      <td bgcolor="#CCCCCC"><b>VK_BROWSER_SEARCH</b></td>
+      <td>検索ウィンドウの表示・非表示</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xAB</td>
+      <td bgcolor="#CCCCCC"><b>VK_BROWSER_FAVORITES</b></td>
+      <td>お気に入りウィンドウの表示・非表示</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xAC</td>
+      <td bgcolor="#CCCCCC"><b>VK_BROWSER_HOME</b></td>
+      <td>ホーム</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xAD</td>
+      <td bgcolor="#CCCCCC"><b>VK_VOLUME_MUTE</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xAE</td>
+      <td bgcolor="#CCCCCC"><b>VK_VOLUME_DOWN</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xAF</td>
+      <td bgcolor="#CCCCCC"><b>VK_VOLUME_UP</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xB0</td>
+      <td bgcolor="#CCCCCC"><b>VK_MEDIA_NEXT_TRACK</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xB1</td>
+      <td bgcolor="#CCCCCC"><b>VK_MEDIA_PREV_TRACK</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xB2</td>
+      <td bgcolor="#CCCCCC"><b>VK_MEDIA_STOP</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xB3</td>
+      <td bgcolor="#CCCCCC"><b>VK_MEDIA_PLAY_PAUSE</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xB4</td>
+      <td bgcolor="#CCCCCC"><b>VK_LAUNCH_MAIL</b></td>
+      <td>　</td>
+      <td>メーラー起動</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xB5</td>
+      <td bgcolor="#CCCCCC"><b>VK_LAUNCH_MEDIA_SELECT</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xB6</td>
+      <td bgcolor="#CCCCCC"><b>VK_LAUNCH_APP1</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xB7</td>
+      <td bgcolor="#CCCCCC"><b>VK_LAUNCH_APP2</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xB8</td>
+      <td bgcolor="#CCCCCC"><b>VK_$B8</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xB9</td>
+      <td bgcolor="#CCCCCC"><b>VK_$B9</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xBA</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_1</b></td>
+      <td>:</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xBB</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_PLUS</b></td>
+      <td>;</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xBC</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_COMMA</b></td>
+      <td>,</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xBD</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_MINUS</b></td>
+      <td>-^</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xBE</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_PERIOD</b></td>
+      <td>.</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xBF</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_2</b></td>
+      <td>/</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xC0</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_3</b></td>
+      <td>@</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xC1</td>
+      <td bgcolor="#CCCCCC"><b>VK_$C1</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xC2</td>
+      <td bgcolor="#CCCCCC"><b>VK_$C2</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xC3</td>
+      <td bgcolor="#CCCCCC"><b>VK_$C3</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xC4</td>
+      <td bgcolor="#CCCCCC"><b>VK_$C4</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xC5</td>
+      <td bgcolor="#CCCCCC"><b>VK_$C5</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xC6</td>
+      <td bgcolor="#CCCCCC"><b>VK_$C6</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xC7</td>
+      <td bgcolor="#CCCCCC"><b>VK_$C7</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xC8</td>
+      <td bgcolor="#CCCCCC"><b>VK_$C8</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xC9</td>
+      <td bgcolor="#CCCCCC"><b>VK_$C9</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xCA</td>
+      <td bgcolor="#CCCCCC"><b>VK_$CA</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xCB</td>
+      <td bgcolor="#CCCCCC"><b>VK_$CB</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xCC</td>
+      <td bgcolor="#CCCCCC"><b>VK_$CC</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xCD</td>
+      <td bgcolor="#CCCCCC"><b>VK_$CD</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xCE</td>
+      <td bgcolor="#CCCCCC"><b>VK_$CE</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xCF</td>
+      <td bgcolor="#CCCCCC"><b>VK_$CF</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xD0</td>
+      <td bgcolor="#CCCCCC"><b>VK_$D0</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xD1</td>
+      <td bgcolor="#CCCCCC"><b>VK_$D1</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xD2</td>
+      <td bgcolor="#CCCCCC"><b>VK_$D2</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xD3</td>
+      <td bgcolor="#CCCCCC"><b>VK_$D3</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xD4</td>
+      <td bgcolor="#CCCCCC"><b>VK_$D4</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xD5</td>
+      <td bgcolor="#CCCCCC"><b>VK_$D5</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xD6</td>
+      <td bgcolor="#CCCCCC"><b>VK_$D6</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xD7</td>
+      <td bgcolor="#CCCCCC"><b>VK_$D7</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xD8</td>
+      <td bgcolor="#CCCCCC"><b>VK_$D8</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xD9</td>
+      <td bgcolor="#CCCCCC"><b>VK_$D9</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xDA</td>
+      <td bgcolor="#CCCCCC"><b>VK_$DA</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xDB</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_4</b></td>
+      <td>[</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xDC</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_5</b></td>
+      <td>\</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xDD</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_6</b></td>
+      <td>]</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xDE</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_7</b></td>
+      <td>^</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xDF</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_8</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xE0</td>
+      <td bgcolor="#CCCCCC"><b>VK_$E0</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xE1</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_AX</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xE2</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_102</b></td>
+      <td>\(バックスラッシュ）</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xE3</td>
+      <td bgcolor="#CCCCCC"><b>VK_ICO_HELP</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xE4</td>
+      <td bgcolor="#CCCCCC"><b>VK_ICO_00</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xE5</td>
+      <td bgcolor="#CCCCCC"><b>VK_PROCESSKEY</b></td>
+      <td>　</td>
+      <td>IMEがONの時、変換に関わるすべてのキーで発生</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xE6</td>
+      <td bgcolor="#CCCCCC"><b>VK_ICO_CLEAR</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xE7</td>
+      <td bgcolor="#CCCCCC"><b>VK_PACKET</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xE8</td>
+      <td bgcolor="#CCCCCC"><b>VK_$E8</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xE9</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_RESET</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xEA</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_JUMP</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xEB</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_PA1</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xEC</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_PA2</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xED</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_PA3</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xEE</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_WSCTRL</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xEF</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_CUSEL</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xF0</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_ATTN</b></td>
+      <td>Caps Lock</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xF1</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_FINISH</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xF2</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_COPY</b></td>
+      <td>カタカナ<br>
+      ひらがな<br>
+      ローマ字</td>
+      <td>IMEがOFFの時</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xF3</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_AUTO</b></td>
+      <td>半角／全角<br>
+      漢字</td>
+      <td rowspan="2">半角時にShiftまたはCtrlと同時押下すると交互に発生</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xF4</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_ENLW</b></td>
+      <td>半角／全角<br>
+      漢字</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xF5</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_BACKTAB</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xF6</td>
+      <td bgcolor="#CCCCCC"><b>VK_ATTN</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xF7</td>
+      <td bgcolor="#CCCCCC"><b>VK_CRSEL</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xF8</td>
+      <td bgcolor="#CCCCCC"><b>VK_EXSEL</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xF9</td>
+      <td bgcolor="#CCCCCC"><b>VK_EREOF</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xFA</td>
+      <td bgcolor="#CCCCCC"><b>VK_PLAY</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xFB</td>
+      <td bgcolor="#CCCCCC"><b>VK_ZOOM</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xFC</td>
+      <td bgcolor="#CCCCCC"><b>VK_NONAME</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xFD</td>
+      <td bgcolor="#CCCCCC"><b>VK_PA1</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900">0xFE</td>
+      <td bgcolor="#CCCCCC"><b>VK_OEM_CLEAR</b></td>
+      <td>　</td>
+      <td>　</td>
+    </tr>
+    <tr>
+      <td bgcolor="#999900"><font color="#FF0000">0xFF</font></td>
+      <td bgcolor="#CCCCCC"><font color="#FF0000"><b>VK_$FF</b></font></td>
+      <td>　</td>
+      <td><font color="#FF0000">使用不可</font></td>
+    </tr>
+  </tbody>
+</table>
+<p>　</p>
+<table border="1">
+  <tbody>
+    <tr>
+      <td colspan="4" align="center" background="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/hr_green.gif"><b><font size="+1"><a name="excode">拡張コード</a>表</font></b></td>
+    </tr>
+    <tr>
+      <td colspan="4"><font size="-1">拡張コードはVKX_xxxのように"<b>VK</b></font><font color="#ff0000" size="-1"><font color="#ff0000"><b>X</b></font></font><font size="-1"><b>_</b>"から始まります。</font></td>
+    </tr>
+    <tr bgcolor="#999900">
+      <td><b>拡張コード文字</b></td>
+      <td align="center"><b>概要</b></td>
+      <td align="center"><b>説明</b></td>
+      <td><b>備考</b></td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><b>VKX_IMEON</b></td>
+      <td>IMEをオープンします</td>
+      <td>IMEをONにします。入力モードは変化しません。<br>
+      <br>
+      前回の入力モードを引き継ぎますのでイベント終了後に入力される文字は不定です。漢字を入力する場合は<b>VKX_IMEKANA</b>使用します。</td>
+      <td rowspan="4">IME</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><b>VKX_IMEOFF</b></td>
+      <td>IMEをクローズします</td>
+      <td>IMEをOFFにします。<br>
+      <br>
+      デフォルト動作で実行されるので使用する機会はあまりありません。同一イベントでIMEをONにした後OFFにしたい場合に使用します。</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><b>VKX_IMENOOPE</b></td>
+      <td>デフォルトIME制御の禁止</td>
+      <td>デフォルト動作であるイベント発生前のIMEクローズとイベント終了後のIME復元動作を禁止します。<br>
+      <table border="1">
+        <tbody>
+          <tr>
+            <td><img src="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/attent.gif" alt="注意" border="0" height="24" width="24"></td>
+            <td>この拡張コードはキーイベントの先頭で指定する必要があります。先頭以外で指定された場合は無視されます。<br>
+            キーイベント文字列では、先頭または、見出しの直後に指定します。</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      例：IMEのON/OFF<br>
+      <br>
+      IMEの切り替え = <b>VKX_IMENOOPE</b>, VK_KANJI</td>
+    </tr>
+    <tr>
+      <td bgcolor="#CCCCCC"><b>VKX_IMEKANA</b></td>
+      <td>IMEオープン後、全角ひらがなに設定</td>
+      <td>IMEをONにし、入力モードを全角ひらがなに設定します。キーイベントを利用して漢字の名前を入力する時等に使用します。<br>
+      <br>
+      例：杉原（変換候補の先頭である必要あり）<br>
+      <br>
+      名前 = <b>VKX_IMEKANA</b> , VK_S , VK_U , VK_G , VK_I , VK_H , VK_A , VK_R , VK_A , VK_CONVERT ,
+      VK_RETURN<br>
+      <br>
+      VK_CONVERTで変換しVK_RETURNで確定します。改行したい場合はVK_RETURNをもう一つ追加します。<br>
+      <table border="1">
+        <tbody>
+          <tr>
+            <td><img src="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/attent.gif" alt="注意" border="0" height="24" width="24"></td>
+            <td>起動後１回目の変換は失敗することがあります</td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p><br>
+</p>
+<table border="1">
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" background="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/hr_green.gif"><a name="keyevt"><b>キーイベント入力例</b></a></td>
+    </tr>
+    <tr>
+      <td colspan="2">【共通】<br>
+      コピー = VK_CONTROL + VK_C<br>
+      貼り付け = VK_CONTROL + VK_V<br>
+      ボリューム下 = VK_VOLUME_DOWN<br>
+      ボリューム上 = VK_VOLUME_UP<br>
+      IME = VKX_IMENOOPE , VK_KANJI<br>
+      最上部 = VK_CONTROL + VK_HOME<br>
+      最下部 = VK_CONTROL + VK_END<br>
+      元に戻す = VK_CONTROL + VK_Z<br>
+      最小化 = VK_MENU + VK_SPACE , VK_N<br>
+      <br>
+      【IE】<br>
+      WINDOWS更新 = VK_MENU , VK_T , VK_U<br>
+      <br>
+      【OE】<br>
+      送受信 = VK_MENU , VK_T , VK_S , VK_A<br>
+      <br>
+      【Internet Explorer_Serverクラス】<br>
+      進む = VK_MENU + VK_RIGHT<br>
+      戻る = VK_MENU + VK_LEFT<br>
+      もどる = VK_BROWSER_BACK<br>
+      ホーム = VK_BROWSER_HOME<br>
+      更新 = VK_F5<br>
+      検索 = VK_CONTROL + VK_F<br>
+      <br>
+      【VC】<br>
+      FILE検索(VC) = VK_MENU , VK_E , VK_I<br>
+      ブックマーク次 = VK_F2<br>
+      ブックマーク前 = VK_SHIFT + VK_F2<br>
+      ページ移動(VC) = VK_CONTROL + VK_TAB<br>
+      ウィンドウ = VK_MENU , VK_W<br>
+      <br>
+      【Desktop】<br>
+      デスクトップ = VK_LWIN + VK_D<br>
+      <br>
+      【その他】<br>
+      メールアドレス = VK_T , VK_A , VK_T , VK_S , VK_U , VK_O , VK_OEM_PERIOD
+      , VK_S , VK_U , VK_G , VK_I , VK_H , VK_A , VK_R , VK_A , VK_OEM_3 , VK_N
+      , VK_I , VK_F , VK_T , VK_Y , VK_OEM_PERIOD , VK_N , VK_E , VK_OEM_PERIOD
+      , VK_J , VK_P<br>
+      <br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">上段をすべて選択してメモ帳に貼り付け、保存して使用すると簡単に入力できます。そのままコピーできるようにセルで分割していません。入力時はコピー＆ペーストすることになりますが、リムーバルファンクションの<a href="http://homepage3.nifty.com/ic/help/rmfunc/iacpy.htm">インアクティブコピー</a>を使用すると便利です。<br>
+      <br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><br>
+      <table>
+        <tbody>
+          <tr>
+            <td bgcolor="#E0E0FF">【Desktop】のデスクトップ はクイックランチにあるデスクトップの表示と同じです。XPではデスクトップでホイールキーが使用できるようです。（webページは表示していません）</td>
+          </tr>
+          <tr>
+            <td bgcolor="#FFE0E0">【その他】のメールアドレスは私のtatsuo.sugihara@nifty.ne.jpです。これを参考に編集して使用してください。</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p><script language="JavaScript">
+<!--
+PageBottom(2)
+//-->
+</script></p><hr><center><table><tbody><tr><td colspan="2" align="center" valign="middle"><a href="javascript:history.go(-1)"><img src="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/back_n.gif" alt="戻る" border="0" height="54" width="72"></a><a href="#top"><img src="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/top_n.gif" alt="ページ先頭へ" border="0" height="54" width="72"></a> <a href="javascript:history.go(1)"><img src="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/next_n.gif" alt="進む" border="0" height="54" width="72"></a></td></tr><tr><td colspan="2" align="center"><script language="JavaScript">LastUpdate()</script><font color="#ff8080" size="2">最終更新日：<b>2002</b>年<b>7</b>月<b>29</b>日（<b>月</b>）<b>2</b>時<b>21</b>分</font></td></tr><tr><td><a href="http://homepage3.nifty.com/ic/"><img src="%E4%BB%AE%E6%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%BC%E3%83%89%E8%A1%A8_files/bann_ic.png" alt="インテリカーソル サポートサイト" border="0" height="31" width="88"></a></td><td><font size="2"> ご意見は<a href="mailto:tatsuo.sugihara@nifty.ne.jp"><strong>tatsuo.sugihara@nifty.ne.jp</strong></a>まで</font></td></tr></tbody></table></center><br>
+<p></p>
+
+</body></html>

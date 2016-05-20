@@ -1,0 +1,3 @@
+WCHAR dhir[255];
+GetCurrentDirectory(255, dhir);//カレントディレクトリ取得
+SetWindowText(hWnd, dhir);

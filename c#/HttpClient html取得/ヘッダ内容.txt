@@ -1,0 +1,28 @@
+HttpResponseMessage s = await client.GetAsync(uri);//HttpResponseMessageで受け取る ステータスコードなどが見れる
+ghh = s.ToString();//StatusCode: 200, ReasonPhrase: 'OK', Version: 2 Content-Length: 2374 Content-Type: text/html  Expires: Thu, 19 Nov 1981 08:52:00 GMT
+
+//ghhの内容
+
+StatusCode: 200, ReasonPhrase: 'OK', Version: 2, Content: Windows.Web.Http.HttpStreamContent, Headers:
+{
+  Connection: close
+  Server: Apache
+  Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+  Set-Cookie: PHPSESSID=7j1sr3vapqdkcpbfngmp11irl2; path=/, _mpw_chkcode=36521a5b49e1d3b7e8b9b0447dafeefb; expires=Thu, 16-Jun-2016 14:40:12 GMT; path=/, _mpw_uniqid=e2b11357a03be642c9f92ee57398614f; expires=Thu, 16-Jun-2016 14:40:12 GMT; path=/
+  Date: Wed, 17 Jun 2015 14:40:12 GMT
+  X-Powered-By: PHP/5.4.42
+  Pragma: no-cache
+}{
+  Content-Length: 2374
+  Content-Type: text/html
+  Expires: Thu, 19 Nov 1981 08:52:00 GMT
+}
+
+
+
+
+
+
+Date: Wed, 17 Jun 2015 14:40:12 GMT//レスポンスメッセージが作成された時間
+Content-Length: 2374			//サイズ byte
+Content-Type: text/html			//

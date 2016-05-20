@@ -1,0 +1,13 @@
+HWND CreateWindow(
+  LPCTSTR lpClassName,  // 登録されているクラス名
+  LPCTSTR lpWindowName, // ウィンドウ名
+  DWORD dwStyle,        // ウィンドウスタイル
+  int x,                // ウィンドウの横方向の位置
+  int y,                // ウィンドウの縦方向の位置
+  int nWidth,           // ウィンドウの幅
+  int nHeight,          // ウィンドウの高さ
+  HWND hWndParent,      // 親ウィンドウまたはオーナーウィンドウのハンドル
+  HMENU hMenu,          // メニューハンドルまたは子ウィンドウ ID
+  HINSTANCE hInstance,  // アプリケーションインスタンスのハンドル
+  LPVOID lpParam        // ウィンドウ作成データ
+);

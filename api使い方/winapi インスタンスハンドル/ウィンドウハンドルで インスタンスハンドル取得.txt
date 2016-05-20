@@ -1,0 +1,4 @@
+インスタンスハンドルはASLRのロード先
+
+
+int ins=GetWindowLong(hWnd,GWL_HINSTANCE);

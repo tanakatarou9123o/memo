@@ -1,0 +1,18 @@
+	DWORD debugf=1;
+
+	__try
+	{
+		__asm
+		{
+			__emit 0xcc//int 3 デバッガ起動中なら例外が発生しない
+		}
+	}
+	__except (EXCEPTION_EXECUTE_HANDLER)//デバッグ中なら例外が発生しない
+	{
+		debugf = 0;//通常ここでフラグが0になる
+	}
+
+	if (debugf)//フラグがTRUEならデバッグされてる
+	{
+		MessageBox(NULL, L"デバッグされてます", L"", MB_OK);
+	}

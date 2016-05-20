@@ -1,0 +1,82 @@
+グローバル変数は
+GameInstance
+の定義に宣言
+
+UCLASS()
+class MYPROJECT_API UMyGameInstance : public UGameInstance
+{
+	GENERATED_BODY()
+	
+public:
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+		int Scoin = 0;
+
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+		float Sspeed = 1200;
+
+	UPROPERTY(EditDefaultsOnly, Category = ActorAndMesh)
+		float Sjunmp = 1800;
+	
+	
+};
+
+
+
+GameInstanceのメンバを取得できるブループリント関数を作成
+
+#pragma once
+#include "MyGameInstance.h"
+#include "GameFramework/Actor.h"
+#include "MyActor.generated.h"
+
+UCLASS()
+class MYPROJECT_API AMyActor : public AActor
+{
+	GENERATED_BODY()
+	
+public:	
+	// Sets default values for this actor's properties
+	AMyActor();
+
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+	
+	// Called every frame
+	virtual void Tick( float DeltaSeconds ) override;
+
+	UFUNCTION(BlueprintCallable, Category = "BC++")
+		int GetScoin();
+
+	UFUNCTION(BlueprintCallable, Category = "BC++")
+		float GetSspeed();
+
+	UFUNCTION(BlueprintCallable, Category = "BC++")
+		float GetSjump();
+	
+};
+
+
+
+
+int AMyActor::GetScoin()
+{
+	UMyGameInstance* a = Cast<UMyGameInstance>(GetGameInstance());
+	return a->Scoin;
+}
+
+float AMyActor::GetSspeed()
+{
+	UMyGameInstance* a = Cast<UMyGameInstance>(GetGameInstance());
+	return a->Sspeed;
+}
+
+float AMyActor::GetSjump()
+{
+	UMyGameInstance* a = Cast<UMyGameInstance>(GetGameInstance());
+	return a->Sjump;
+}
+
+
+
+
+ウィジェット作成
