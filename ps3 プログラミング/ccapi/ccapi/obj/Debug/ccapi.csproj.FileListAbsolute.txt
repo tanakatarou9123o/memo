@@ -1,0 +1,10 @@
+c:\users\tanak\documents\visual studio 2015\Projects\ccapi\ccapi\bin\Debug\ccapi.exe.config
+c:\users\tanak\documents\visual studio 2015\Projects\ccapi\ccapi\bin\Debug\ccapi.exe
+c:\users\tanak\documents\visual studio 2015\Projects\ccapi\ccapi\bin\Debug\ccapi.pdb
+c:\users\tanak\documents\visual studio 2015\Projects\ccapi\ccapi\bin\Debug\PS3Lib.dll
+c:\users\tanak\documents\visual studio 2015\Projects\ccapi\ccapi\obj\Debug\ccapi.csprojResolveAssemblyReference.cache
+c:\users\tanak\documents\visual studio 2015\Projects\ccapi\ccapi\obj\Debug\ccapi.Form1.resources
+c:\users\tanak\documents\visual studio 2015\Projects\ccapi\ccapi\obj\Debug\ccapi.Properties.Resources.resources
+c:\users\tanak\documents\visual studio 2015\Projects\ccapi\ccapi\obj\Debug\ccapi.csproj.GenerateResource.Cache
+c:\users\tanak\documents\visual studio 2015\Projects\ccapi\ccapi\obj\Debug\ccapi.exe
+c:\users\tanak\documents\visual studio 2015\Projects\ccapi\ccapi\obj\Debug\ccapi.pdb

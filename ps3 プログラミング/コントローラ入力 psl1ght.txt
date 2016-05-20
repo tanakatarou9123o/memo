@@ -1,0 +1,18 @@
+-lio
+
+#include <io/pad.h>
+
+	padInfo padinfo;
+	padData paddata;
+	ioPadInit (7);
+	int i=0;
+	
+	ioPadGetInfo (&padinfo);
+	for(i = 0; i < MAX_PADS; i++) {
+        if(padinfo.status[i]) {
+            ioPadGetData (i, &paddata);
+            if(paddata.BTN_START) {
+              lv2syscall4(379,0x100,0,0,0);
+            }
+        }
+    }

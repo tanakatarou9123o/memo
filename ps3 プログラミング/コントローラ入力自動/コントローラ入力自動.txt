@@ -1,0 +1,46 @@
+typedef struct CellPadData{
+  int32_t len;
+  uint16_t button[CELL_PAD_MAX_CODES];
+}CellPadData;
+
+
+
+    CellPadData data;
+    data.button[0] = 0x00;
+    data.button[1] = 0x00;
+    data.button[2] = 0x00;
+    data.button[3] = 0x00;
+    data.button[4] = 0x80;
+    data.button[5] = 0x80;
+    data.button[6] = 0x80;
+    data.button[7] = 0x80;
+
+
+
+
+    uint32_t frame = mFrameCount%1100;
+    if(frame == 180)
+    {
+        /* Press PS BUTTON */
+        data.button[0] |= CELL_PAD_CTRL_LDD_PS;
+    }
+    if(frame == 200)
+    {
+        /* Release PS BUTTON */
+        data.button[0] &= ~CELL_PAD_CTRL_LDD_PS;
+    }
+
+    /* cursor move up */
+    if(frame > 300 && frame<= 400)
+    {
+        if (frame%60 < 30)
+        {
+            /* Press */
+            data.button[2] = CELL_PAD_CTRL_DOWN;
+        }
+        else
+        {
+            /* Release */
+            data.button[2] = 0x00;
+        }
+    }

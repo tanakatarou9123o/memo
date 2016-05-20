@@ -1,0 +1,26 @@
+デバッグ
+プロパティ
+vc++ディレクトリ
+インクルードディレクトリを編集
+
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\um
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\shared 
+
+ライブラリディレクトリを編集
+C:\Program Files (x86)\Windows Kits\10\Lib\10.0.10240.0\um\x86
+
+
+
+
+x64
+
+インクルードディレクトリを編集
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\um
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\shared 
+
+
+ライブラリディレクトリを編集
+C:\Program Files (x86)\Windows Kits\10\Lib\10.0.10240.0\um\x64

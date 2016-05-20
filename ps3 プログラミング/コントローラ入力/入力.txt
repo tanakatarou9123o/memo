@@ -1,0 +1,39 @@
+bool on_update(void)
+{
+	if(!cellPadUtilUpdate()) return true;
+
+	// switch edit mode
+	if(cellPadUtilButtonPressedOnce(sControlPad, CELL_UTIL_BUTTON_L2)){
+		exit(1);
+	}	
+	
+	return true;
+}
+
+
+
+
+
+
+bool on_update(void)
+{
+	if(!cellPadUtilUpdate()) return true;
+
+	//ボタンを押すと終了する
+	if(cellPadUtilButtonPressed(sControlPad, CELL_UTIL_BUTTON_R1))
+	{
+		if(cellPadUtilButtonPressed(sControlPad, CELL_UTIL_BUTTON_L1))
+		{
+			if(cellPadUtilButtonPressed(sControlPad, CELL_UTIL_BUTTON_SELECT))
+			{
+				if(cellPadUtilButtonPressed(sControlPad,CELL_UTIL_BUTTON_START))
+				{exit(1);}
+			}
+		}
+	}
+	//ボタンを押すと終了する
+
+	
+	
+	return true;
+}

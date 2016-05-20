@@ -1,0 +1,8 @@
+C:\Windows\SoftwareDistribution\Download
+
+C:\ProgramData\Package Cache
+
+"シンボリックリンク" "ここにデータがいれられる"
+mklink /d "C:\Program Files\Microchip\xc8" "D:\Program Files\Microchip\xc8"
+
+"C:\Program Files\Microchip\MPLABX" "D:\Program Files\Microchip\MPLABX"

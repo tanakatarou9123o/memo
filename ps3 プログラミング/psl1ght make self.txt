@@ -1,0 +1,6 @@
+
+make
+cd build
+make_self msgdialog.elf sm.self
+
+

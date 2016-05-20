@@ -1,0 +1,14 @@
+ユーザーログインでpsl1ght4allと入力
+
+user 
+psl1ght4all
+
+
+サンプル先
+user/githubs/PSL1GHT/samples/sys/
+
+
+cmdでディレクトリを移動しmakeを入力
+
+buildフォルダにELFが作成される
+これをBINに変換する

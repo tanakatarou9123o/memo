@@ -1,0 +1,19 @@
+dbgfont_puts("PadUtil Sample", 0, line, 2.0f, 0xffffffff, TEXT_LEFT);
+
+1 "文字"
+2 文字位置 横
+3 文字位置 高さ line
+4 文字の大きさ
+5 色
+6 オプション
+
+
+
+
+
+
+
+    FWDebugFont::setPosition(0, 32);
+    FWDebugFont::setColor(1.f, 1.f, 1.f, 1.f);
+    FWDebugFont::printf("CUSTOM CONTROLLER SAMPLE\n");  表示
+    FWDebugFont::printf("FRAME:%d  FPS: %.2f\n", mFrameCount, fFPS);

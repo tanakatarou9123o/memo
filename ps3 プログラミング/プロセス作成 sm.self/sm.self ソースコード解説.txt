@@ -1,0 +1,50 @@
+
+main()
+1 patchs_lv2()実行
+2 スレッド作成
+
+
+
+patchs_lv2()	//ペイロード ロード先
+
+thread_temp(void *arg)	//処理
+
+thread_UsbWakeup(void *arg) //USBフラグ関係？
+
+
+
+
+
+ファイルオープンモード フラグ
+ret = sysLv2FsOpen(usb_path, SYS_O_WRONLY | SYS_O_CREAT | SYS_O_APPEND, &fd, 0777, NULL, 0);	//フラグがある場合 ファイル作成
+
+
+00008 // Open Flags
+00009 #define SYS_O_RDONLY        000000
+00010 #define SYS_O_WRONLY        000001
+00011 #define SYS_O_RDWR          000002
+00012 #define SYS_O_ACCMODE       000003
+00013 #define SYS_O_CREAT         000100
+00014 #define SYS_O_EXCL          000200
+00015 #define SYS_O_TRUNC         001000
+00016 #define SYS_O_APPEND        002000
+00017 #define SYS_O_MSELF         010000
+
+
+O_RDONLY	読み込み可
+O_WRONLY	書き込み可
+O_RDWR		読み書き可
+
+O_APPEND	ファイルポインタをファイルの最後に移動します
+O_CREAT		ファイルが存在していれば意味を持ちません
+		存在していなければ、ファイルを新規に作成します
+O_TRUNC		ファイルが既存のときはサイズを０にします
+O_BINARY	バイナリモード
+O_TEXT		テキストモード
+
+amodeにO_CREATを指定したときには3番目の引数でpermissを指定できます。
+
+・permiss(ファイルを作成するときのモード)
+S_IWRITE	読み書き可
+S_IREAD	読み込み可
+S_IREAD | S_IWRITE	読み書き可

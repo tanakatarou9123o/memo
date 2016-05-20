@@ -1,0 +1,2 @@
+npdramでpkg用eboot.bin作成  //コマンド説明 c:/usr/local/bin/make_fself_npdrmで make_fself_npdrmまでのパスを指定 現在のディレクトリのEBOOT.elfをEBOOT.BINにしてる
+c:\usr\local\2>c:/usr/local/bin/make_fself_npdrm EBOOT.elf EBOOT.BIN

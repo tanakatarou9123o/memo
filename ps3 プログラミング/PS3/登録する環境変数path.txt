@@ -1,0 +1,1 @@
+c:\usr\local\cell\host-win32\bin;c:\usr\local\cell\host-win32\ppu\bin;c:\usr\local\cell\host-win32\spu\bin;c:\usr\local\cell\host-win32\Cg\bin

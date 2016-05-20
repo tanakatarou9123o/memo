@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "np_gui_clans", "np_gui_clans.vcxproj", "{9A48AD15-91FC-41A7-9C79-1323FD56D694}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|PS3 = Debug|PS3
+		Release|PS3 = Release|PS3
+		SNC Debug|PS3 = SNC Debug|PS3
+		SNC Release|PS3 = SNC Release|PS3
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A48AD15-91FC-41A7-9C79-1323FD56D694}.Debug|PS3.ActiveCfg = Debug|PS3
+		{9A48AD15-91FC-41A7-9C79-1323FD56D694}.Debug|PS3.Build.0 = Debug|PS3
+		{9A48AD15-91FC-41A7-9C79-1323FD56D694}.Release|PS3.ActiveCfg = Release|PS3
+		{9A48AD15-91FC-41A7-9C79-1323FD56D694}.Release|PS3.Build.0 = Release|PS3
+		{9A48AD15-91FC-41A7-9C79-1323FD56D694}.SNC Debug|PS3.ActiveCfg = SNC Debug|PS3
+		{9A48AD15-91FC-41A7-9C79-1323FD56D694}.SNC Debug|PS3.Build.0 = SNC Debug|PS3
+		{9A48AD15-91FC-41A7-9C79-1323FD56D694}.SNC Release|PS3.ActiveCfg = SNC Release|PS3
+		{9A48AD15-91FC-41A7-9C79-1323FD56D694}.SNC Release|PS3.Build.0 = SNC Release|PS3
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,31 @@
+新規
+変数名
+CELL_SDK
+変数値
+/c/usr/local/cell
+
+新規
+変数名
+SCE_PS3_ROOT
+変数値
+c:/usr/local/cell
+
+新規
+変数名
+LANG
+変数値
+C
+
+新規
+変数名
+DTNETM
+変数値 Reference Toolのホスト名または IP アドレス
+
+編集
+変数名
+PATH
+変数値 （既存の変数値に、以下を改行せずに続けて追加する）
+c:¥usr¥local¥cell¥host-win32¥bin;
+c:¥usr¥local¥cell¥host-win32¥ppu¥bin;
+c:¥usr¥local¥cell¥host-win32¥spu¥bin;
+c:¥usr¥local¥cell¥host-win32¥Cg¥bin

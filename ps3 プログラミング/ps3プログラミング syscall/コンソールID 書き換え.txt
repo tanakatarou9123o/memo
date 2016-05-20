@@ -1,0 +1,104 @@
+IDPS1が表示用
+IDPS2が実際のコンソールid
+
+lv2peek 読み込み
+
+lv2poke 書き込み
+
+u64 lv2peek(u64 addr) 
+{ 
+    lv2syscall1(6, (u64) addr);
+    return_to_user_prog(u64);
+}
+
+u64 lv2poke(u64 addr, u64 value)
+{ 
+    lv2syscall2(7, (u64) addr, (u64) value); 
+    return_to_user_prog(u64);
+}
+
+
+
+
+
+//ここからCEXフォームウェア
+	//3.41CEX
+        firmware = 0x341C;
+        fw_ver = 0x8534;
+        off_idps = 0x80000000003BA880ULL;
+        off_idps2 = 0x800000000044A174ULL;
+       
+	//3.55CEX
+        firmware = 0x355C;
+        fw_ver = 0x8AAC;
+        off_idps = 0x80000000003C2EF0ULL;
+        off_idps2 = 0x8000000000452174ULL;
+
+	//4.21CEX
+        firmware = 0x421C;
+        fw_ver = 0xA474;
+        off_idps = 0x80000000003D9230ULL;
+        off_idps2 = 0x8000000000477E9CULL;
+
+	//4.30CEX
+        firmware = 0x430C;
+        fw_ver = 0xA7F8;
+        off_idps = 0x80000000003DB1B0ULL;
+        off_idps2 = 0x8000000000476F3CULL;
+
+	//4.31CEX
+        firmware = 0x431C;
+        fw_ver = 0xA85C;
+        off_idps = 0x80000000003DB1B0ULL;
+        off_idps2 = 0x8000000000476F3CULL;
+
+	//4.40CEX
+        firmware = 0x440C;
+        fw_ver = 0xABE0;
+        off_idps = 0x80000000003DB830ULL;
+        off_idps2 = 0x8000000000476F3CULL;
+
+	//4.41CEX
+        firmware = 0x441C;
+        fw_ver = 0xAC44;
+        off_idps = 0x80000000003DB830ULL;
+        off_idps2 = 0x8000000000476F3CULL;
+        
+	//4.46CEX
+        firmware = 0x446C;
+        fw_ver = 0xAE38;
+        off_idps = 0x80000000003DBE30ULL;
+        off_idps2 = 0x8000000000476F3CULL;
+
+
+//ここからDEXフォームウェア
+	//3.55DEX
+        firmware = 0x355D;
+        fw_ver = 0x8AAC;
+        off_idps = 0x80000000003DE170ULL;
+        off_idps2 = 0x8000000000472174ULL;
+        
+	//4.21DEX
+        firmware = 0x421D;
+        fw_ver = 0xA474;
+        off_idps = 0x80000000003F7A30ULL;
+        off_idps2 = 0x800000000048FE9CULL;
+        
+	//4.30DEX
+        firmware = 0x430D;
+        fw_ver = 0xA7F8;
+        off_idps = 0x80000000003F9930ULL;
+        off_idps2 = 0x8000000000496F3CULL;
+        
+	//4.41DEX
+        firmware = 0x441D;
+        fw_ver = 0xAC44;
+        off_idps = 0x80000000003FA2B0ULL;
+        off_idps2 = 0x8000000000496F3CULL;
+
+	//4.46DEX
+        firmware = 0x446D;
+        fw_ver = 0xAE38;
+        off_idps = 0x80000000003FA8B0ULL;
+        off_idps2 = 0x8000000000496F3CULL;  
+

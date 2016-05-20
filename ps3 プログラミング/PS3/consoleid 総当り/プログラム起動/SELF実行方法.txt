@@ -1,0 +1,14 @@
+#include <sys/process.h> //include
+
+
+exitspawn(mAppBinPath, NULL, NULL, 0, 0, prio, flags); //でSELFを実行する		引数はpsl1ghtのやつと一緒
+
+
+mAppBinPath 実行SELFのパス
+
+
+
+
+
+
+exitspawn("/dev_hdd0/GAMES/bljs11111/PS3_GAME/USRDIR/EBOOT.BIN", NULL, NULL, 0, 0, 1001,0x70);	//selfファイルなら早い？

@@ -1,0 +1,45 @@
+How to use:
+
+Read the intruction carefully. Use at your own risk. I dont responsible for
+any bricks if you do not follow step by steps below.
+
+1. You must use Habib 4.50 CFW.
+2. Make back up of sys_init_osd.self
+   How to : using multiMAN mmOS on PS3, navigate to dev_flash/sys/internal and find file named:
+   sys_init_osd.self. Copy this file to your USB or your PC and safe it in secure location.
+4. Extract zip on your PC. You will find 2 files : sys_init_osd.self and sm.self.
+5. Now using multiMAN, enable write access to dev_flash (on multiMAN, 
+   go to Settings -> Write Access to /dev_flash -> Enable
+6. Copy sys_init_osd.self to your PS3. Copy it to:
+   dev_blind/sys/internal  (replace the old sys_init_osd.self).
+7. Copy sm.self to your PS3. Copy it to the root of  dev_blind.
+8. Turn off your PS3, unplug all usb drive.
+9. Turn on your PS3. 
+10. Check your PS3 Power Indicator LED, if it is yellow (with green LED after few seconds then yellow again); 
+   it indicates that the fan control is working fine.If your PS3 cannot boot to XMB; it indicates your PS3 is 
+   semi brick and you cannot use CFW Tools because it is not compatible with your PS3.
+
+11. I also include core for fast booting, copy "flags" Folder into Root of a FAT32 Flash memory.
+    Turn off your Ps3
+    Connect your Flash memory to the nearest port to Blu-ray drive.
+    then Turn on your PS3
+    This greatly improves the boot time.
+
+12. If you want to change fan speed in sm.self, you can download PS3 CFW Tools at:
+    http://www.rogerotools.com/download.php
+13. If you want to prevent a USB device "sleep" create a file "nosleep" in root of the device (whether measured 0 bytes)
+14. If you want to uninstall System manager, Just replace sys_init_osd.self with original one.
+
+##IMPORTANT TO RECOVER SEMIBRICK CONSOLE
+if you have semibrick when test this tools, use this procedure to recover it:
+a.	Copy file sys_init_osd.self from your backup in Step 3 to the root of FAT32 USB Drive.
+b.	Turn Off PS3.
+c.	Insert your USB/External HD to your PS3 in your right port (Closest to the Blue Drive).
+d.	Turn on PS3.
+
+if above does not work, try reinstalling CFW (Habib 4.50 CFW)
+
+
+
+
+

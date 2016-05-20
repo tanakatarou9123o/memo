@@ -1,0 +1,351 @@
+[SCE CONFIDENTIAL DOCUMENT]
+PlayStation(R)3 Programmer Tool Runtime Library 400.001
+                    Copyright(C) 2008 Sony Computer Entertainment Inc.
+                                                   All Rights Reserved.
+======================================================================
+
+共通形式 Makefile について
+
+----------------------------------------------------------------------
+<はじめに>
+
+サンプルプログラム用に用意された全ての Makefile は、解読や変更を容易にする
+ために共通の形式に則って記述されています。
+これらの共通形式 Makefile では、ビルドする際の共通の設定などをテンプレートに
+委ね、プロジェクト固有の必要な部分だけを書くようになっています。
+
+共通形式 Makefile の典型例は、以下のディレクトリのサンプルで見ることができます。
+samples/sdk/lv2/simple_ppu_thr/     : ターゲットがひとつの場合の Makefile の例
+samples/sdk/lv2/simple_spu_thr/     : ターゲットが複数ある場合の Makefile の例
+samples/sdk/graphics/gcm/basic/     : Cg を使用したサンプルの Makefile の例
+
+各サンプルの Makefile では make 変数を上書き、追加することでカスタマイズが
+可能です。
+
+共通形式 Makefile を使用するためには環境変数の CELL_SDK の定義が必要になります。
+  Linux   : CELL_SDK=/usr/local/cell
+  Windows : CELL_SDK=/c/usr/local/cell
+
+共通形式 Makefile では、デフォルトでは GCC Toolchain を使いますが、
+環境変数 CELL_BUILD_TOOLS を指定することで、SNC PPU Toolchain を使うことができます。
+      GCC Toolchain : CELL_BUILD_TOOLS=GCC (default)
+  SNC PPU Toolchain : CELL_BUILD_TOOLS=SNC
+
+----------------------------------------------------------------------
+<共通形式 Makefile の基本的な使い方>
+
+Makefile は次の様に構成されます。
+
+  -----------------------------------------
+    # (1) ヘッダー部分
+    CELL_MK_DIR ?= $(CELL_SDK)/samples/mk
+    include $(CELL_MK_DIR)/sdk.makedef.mk
+    
+    # (2) ソース/ターゲット指定部分
+    
+    # (3) フッター部分
+    include $(CELL_MK_DIR)/sdk.target.mk
+  -----------------------------------------
+
+基本的に(1),(3) のヘッダー/フッター部分は各 Makefile に共通であり、
+ここで共通形式 Makefile 用のテンプレートファイルを include しています。
+
+そして、ビルド方法を変更するには(2)のソース/ターゲット指定部分を編集します。
+
+ただし、上記のままだとビルドする前に環境変数 CELL_SDK を指定する必要が
+ありますが、あらかじめ使用する SDK が決まっている場合は、
+次の様に Makefile のヘッダー部分の前に直接指定することもできます。
+
+  -----------------------------------------
+    CELL_SDK = /usr/local/cell
+    CELL_MK_DIR ?= $(CELL_SDK)/samples/mk
+    include $(CELL_MK_DIR)/sdk.makedef.mk
+    ...
+  -----------------------------------------
+
+ソース/ターゲット指定部分では、ビルドするターゲットとそのソースの指定を
+行います。基本的にはターゲット毎に Makefile を用意します。
+
+つまり、ターゲットが１つの場合は Makefile は１つですが、
+ターゲットが２つの場合はターゲットをビルドするための Makefile が２つと、
+それらをまとめてビルドするための Makefile が１つ、合計３つ必要です。
+
+  - PPU ELF が１つの場合
+      -> Makefile は１つ (例: Makefile)
+
+  - PPU ELF / SPU ELF を１つずつビルドする場合
+      -> Makefile は３つ (例: Makefile, ppu-elf.mk, spu-elf.mk)
+
+ソース/ターゲット指定部分には主に TARGET と SRCS をペアにして指定します。
+
+----------------------------------------------------------------------
+<TARGET について>
+
+最終的にビルドしたいターゲットを以下の変数で指定します。
+
+  PPU_TARGET     : PPU ELF ターゲット
+  PPU_LIB_TARGET : PPU LIB ターゲット
+  PPU_PRX_TARGET : PPU PRX ターゲット
+  SPU_TARGET     : SPU ELF ターゲット
+  SPU_LIB_TARGET : SPU LIB ターゲット
+  MK_TARGET      : Makefile ターゲット
+
+PPU_TARGET/SPU_TARGET を指定すると対応する SRCS から PPU/SPU ELF が
+ビルドされ、PPU_LIB_TARGET/SPU_LIB_TARGET を指定すると PPU/SPU アーカイブ
+がビルドされ、PPU_PRX_TARGET を指定すると PPU PRX がビルドされます。
+
+MK_TARGET で Makefile を指定すると、それらの Makefile を再帰的にビルド
+します。
+
+----------------------------------------------------------------------
+<SRCS について>
+
+ビルドするソースファイルを SRCS で指定します。
+PPU の場合は PPU_SRCS、SPU の場合は SPU_SRCS で指定します。
+SRCS で指定した各ファイルは、拡張子によってファイルの種類が判別されます。
+
+  .c         : C ソースファイル
+  .cc / .cpp : C++ ソースファイル
+  .s         : アセンブラソースファイル
+  .bin       : バイナリファイル
+  .elf       : SPU ELFファイル
+  .mk        : Makefile ターゲット
+  .a         : アーカイブファイル
+
+[C/C++/アセンブラソースファイル]
+C/C++/アセンブラソースファイルはそれぞれコンパイルされ、出来上がった
+オブジェクトファイルをリンクします。
+
+[バイナリファイル]
+バイナリファイルは一度 objcopy により .o に変換された後 ELF に
+リンクされます。
+リンクされたファイルイメージをプログラムから参照するには、
+それぞれ以下の変数を参照します。
+
+  _binary_<ファイル名>_start    : ファイルイメージの開始アドレス
+  _binary_<ファイル名>_end      : ファイルイメージの終端アドレス
+  _binary_<ファイル名>_size     : ファイルイメージのバイトサイズ
+
+ただし、<ファイル名>の部分はシンボルとして使用可能な文字集合に
+変換されます。
+
+  ' ' [space] -> _ [underbar]
+  .   [dot]   -> _ [underbar]
+
+===========================================================
+例） spu.elf というバイナリファイルをリンクした場合
+    #ifdef __cplusplus
+    extern "C" {
+    #endif /* __cplusplus */
+
+    extern char _binary_spu_elf_start[];
+    extern char _binary_spu_elf_end[];
+    extern unsigned long _binary_spu_elf_size[];
+
+    #ifdef __cplusplus
+    }
+    #endif /* __cplusplus */
+===========================================================
+
+[Makefile ターゲット]
+Makefile ターゲットは MK_TARGET で指定したときと同じ様に、
+その Makefile を再帰的にビルドします。
+
+[アーカイブファイル]
+アーカイブファイルは PPU_LIB_TARGET/SPU_LIB_TARGET をビルドするときにだけ
+参照され、例えば libtarget.a をビルドする時に libbase.a を取り込みたい
+時などに指定します。
+この場合
+
+    PPU_SRCS       = libbase.a ...
+    PPU_LIB_TARGET = libtarget.a
+
+といった様に指定します。この場合 libtarget.a の中に libbase.a の
+オブジェクトが取り込まれてビルドされます。
+
+----------------------------------------------------------------------
+<SUBDIRS / DIST_SUBDIRS について>
+
+SRCS に指定したファイルをコンパイルする前に、
+make を実行したいディレクトリを SUBDIRS/DIST_SUBDIRS で指定します。
+
+SUBDIRS に指定した場合、make clean/make distclean 時にそのディレクトリで
+make clean が実行されますが、DIST_SUBDIRS に指定した場合、make clean 時には
+何も行わず、make distclean 時にのみ、そのディレクトリで make clean が実行
+されます。
+
+----------------------------------------------------------------------
+<FPSHADER_SRCS/VPSHADER_SRCS について>
+
+cgc を使ってコンパイルするソースファイル(*.cg)を
+FPSHADER_SRCS/VPSHADER_SRCS で指定します。
+FPSHADER の場合は FPSHADER_SRCS、
+VPSHADER の場合は VPSHADER_SRCSで指定します。
+
+コンパイルする際の Profile は以下の変数で変更できます。
+  FPSHADER : FPSHADER_PROFILE (Default: sce_fp_rsx)
+  VPSHADER : VPSHADER_PROFILE (Default: sce_vp_rsx)
+
+またコンパイルする際にコンパイルオプションを追加したい場合、
+以下の変数で指定します。
+  FPSHADER : FPSHADER_FLAGS
+  VPSHADER : VPSHADER_FLAGS
+
+----------------------------------------------------------------------
+<ワーニングオプションの変更>
+
+C のソースをコンパイルする際のワーニングオプションを変更するには、
+次の変数を変更します。
+  PPU : PPU_CWARNFLAGS (Default: CWARNFLAGS_L2)
+  SPU : SPU_CWARNFLAGS (Default: CWARNFLAGS_L2)
+
+C++ のソースをコンパイルする際のワーニングオプションを変更するには、
+次の変数を変更します。
+  SPU : SPU_CXXWARNFLAGS (Default: CXXWARNFLAGS_L2)
+  PPU : PPU_CXXWARNFLAGS (Default: CXXWARNFLAGS_L2)
+
+C**WARNFLAGS は L1 〜 L4 まであり、数字が大きくなるにつれて
+付加するフラグの量が多くなっています。
+
+個別にオプションを設定する場合、例えば、ワーニングが出たときにコンパイル
+エラーになるように変更するには
+  PPU_CWARNFLAGS += -Werror
+と指定します。
+
+----------------------------------------------------------------------
+<最適化オプションの変更>
+
+C(*.c) および C++ (*.cpp/*.cc) のソースをコンパイルする際の
+最適化オプションを変更するには、次の変数を変更します。
+  PPU : PPU_OPTIMIZE_LV
+  SPU : SPU_OPTIMIZE_LV
+
+PPU_OPTIMIZE_LV, SPU_OPTIMIZE_LV のデフォルトは -O2 です。
+
+----------------------------------------------------------------------
+<インクルードパスの追加方法>
+
+C(*.c) および C++ (*.cpp/*.cc) のソースをコンパイルする際の
+インクルードパスを追加するには、次の変数を変更します。
+  PPU : PPU_INCDIRS
+  SPU : SPU_INCDIRS
+
+例えば lib_a/include とlib_b/include というディレクトリをインクルードパス
+に追加したい場合、追加したいディレクトリのパスに -I オプションを付けて、
+以下の様に指定します。
+  PPU_INCDIRS = -Ilib_a/include -Ilib_b/include
+
+----------------------------------------------------------------------
+<C プリプロセッサオプションの追加方法>
+
+C(*.c) および C++ (*.cpp/*.cc) のソースをコンパイルする際の
+プリプロセッサオプションを追加するには、次の変数を変更します。
+
+  PPU : PPU_CPPFLAGS
+  SPU : SPU_CPPFLAGS
+
+例えばコンパイル時に CELL というマクロを 1 にしたい場合、
+以下の様に指定します。
+  PPU_CPPFLAGS = -DCELL=1
+
+----------------------------------------------------------------------
+<ELF にリンクするライブラリの追加方法>
+
+ELF をビルドする際に同時にリンクするライブラリを変更するには、
+次の変数を変更します。
+  PPU : PPU_LDLIBDIR, PPU_LDLIBS, PPU_LOADLIBS
+  SPU : SPU_LDLIBDIR, SPU_LDLIBS, SPU_LOADLIBS
+
+LDLIBS か LOADLIBS では *.a ファイル名あるいは -l オプションによって
+ライブラリを指定し、
+LDLIBDIR は -l オプションでライブラリを指定するときの検索パスを追加する
+ために使用します。
+
+LDLIBS と LOADLIBS の違いは、LOADLIBS は以下のオプションが
+付加されて使用されるという点です。
+  PPU_LOADLIBS := -Wl,--start-group $(PPU_LOADLIBS) -Wl,--end-group
+
+シンボルを循環参照するライブラリをリンクするときは start-group/end-group
+で囲う必要があるため、基本的には LOADLIBS を使用してください。
+
+----------------------------------------------------------------------
+<tips:ビルド時の特別な処理>
+
+ビルド時に特別な処理を行いたい場合、EXTRA_TARGET に追加のターゲットを
+指定します。
+例えば foo.elf, bar.elf をカレントディレクトリにコピーしたい場合、
+以下の様に指定します。
+
+EXTRA_TARGET が追加ターゲットの指定で、CLEANFILES には make clean 時に
+消去するファイルを指定できます。
+===========================================================
+EXTRA_TARGET = foo.elf bar.elf
+CLEANFILES   = $(EXTRA_TARGET)
+foo.elf: $(CELL_TARGET_PATH)/images/foo.elf
+	$(CP) $< $@
+bar.elf: $(CELL_TARGET_PATH)/images/bar.elf
+	$(CP) $< $@
+===========================================================
+
+----------------------------------------------------------------------
+<tips:デバッグビルドとリリースビルド>
+
+ビルドするときにデバッグビルドとリリースビルドとを分けて、
+デバッグビルド時には DEBUG マクロを define したい場合は、
+次のようにします。
+
+まず Makefile を二つ用意します。
+そして BUILD_TAG でオブジェクトを生成するサブディレクトリを指定できるので、
+それをデバッグビルドとリリースビルドで違うディレクトリにします。
+その後デバッグビルドのほうの [P|S]PU_CPPFLAGS に -DDEBUG を指定します。
+
+以上を踏まえると Makefile は次のようになります。
+
+===========================================================
+# Makefile.debug
+# オブジェクトファイルは objs/debug/ 以下に生成されます
+
+CELL_MK_DIR ?= $(CELL_SDK)/samples/mk
+include $(CELL_MK_DIR)/sdk.makedef.mk
+
+BUILD_TAG       = debug
+PPU_CPPFLAGS    = -DDEBUG
+
+PPU_SRCS        = ppu_main.c
+PPU_TARGET      = main.ppu.debug.elf
+
+include $(CELL_MK_DIR)/sdk.target.mk
+
+===========================================================
+# Makefile.release
+# オブジェクトファイルは objs/release/ 以下に生成されます
+
+CELL_MK_DIR ?= $(CELL_SDK)/samples/mk
+include $(CELL_MK_DIR)/sdk.makedef.mk
+
+BUILD_TAG       = release
+
+PPU_SRCS        = ppu_main.c
+PPU_TARGET      = main.ppu.release.elf
+
+include $(CELL_MK_DIR)/sdk.target.mk
+
+===========================================================
+
+----------------------------------------------------------------------
+<tips:GCCとSNCのビルドオプションの変更>
+
+GCC Toolchain と SNC PPU Toolchain とでビルド時の引数を切り替えたい場合、
+切り替えたい変数名の前に GCC_ / SNC_ を付けることで、
+それぞれのオプションを指定することができます。
+
+例えば
+  PPU_OPTIMIZE_LV = -O2
+を指定した場合、GCC/SNC どちらも -O2 でコンパイルされますが、
+  GCC_PPU_OPTIMIZE_LV = -O2
+  SNC_PPU_OPTIMIZE_LV = -O5
+を指定した場合、GCC では -O2 でコンパイルされ、
+SNC では -O5 でコンパイルされます。
+
+GCC と SNC とで、指定すべきオプションが違う場合、この仕組みを利用してください。
+

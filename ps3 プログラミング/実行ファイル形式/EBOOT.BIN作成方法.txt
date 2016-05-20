@@ -1,0 +1,31 @@
+プロパティ リンカで仮の著名付きELFからELFファイルに変更する。
+
+
+
+hdd起動ゲームパッケージの作成手順
+
+PlayStation3で実行できるHDD起動ゲームパッケージを作成するには、
+以下の手順を実行してください。
+
+(1)
+face_sync_macro.h の先頭にある
+#if0 を 1 に変更してから、プログラムをコンパイルします。
+HDD起動ゲームでは/app_home
+が使えなくなりますの
+で、絶対パスで
+/dev_hdd0/game/FSYN00001/USRDIR を使っています。
+
+(2)
+pkg/以下がパッケージングされるフォルダです。data/以下のモデルデータを pkg/USRDIR/以下に
+コピーします。
+
+(3)
+以下のコマンドにより、.elf ファイルから EBOOT.BIN をつくります。
+FaceSync > copy src/PS3_PPU_Release/FaceSync.ppu.elf
+FaceSync > make_fself_npdrm.exe FaceSync.ppu.elf EBOOT.BIN
+FaceSync > move EBOOT.BIN pkg/USRDIR
+
+(4)
+以下のコマンドにより、HDD 起動ゲームパッケージをつくります。
+FaceSync > make_package_npdrm.exe pkg.cfg pkg
+
