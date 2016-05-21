@@ -1,0 +1,19 @@
+	static float ti = 0;
+	static int srand(1);		//—”‚Ìí í‚ªˆê’è‚¾‚Æ“¯‚¶’l‚ª•Ô‚é í‚É‚ÍtimeŠÖ”‚ğg‚¤‚Æ‚¢‚¢
+	ti += DeltaTime;
+	if (ti>3)
+	{
+		int ransu;		//—”ó‚¯æ‚é•Ï”
+		ransu = rand() % 50;	//%x-1‚Ü‚Å‚Ì’l‚ª•Ô‚é %5‚È‚ç 0~4‚Ü‚Å
+		if (rand() % 2)
+		{
+
+			AddActorLocalRotation(FRotator(0, ransu, 0));
+		}
+		else
+		{
+
+			AddActorLocalRotation(FRotator(0, -ransu, 0));
+		}
+		ti = 0;
+	}

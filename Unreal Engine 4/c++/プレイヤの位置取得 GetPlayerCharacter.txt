@@ -1,0 +1,2 @@
+	ACharacter* myCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);//プレイヤキャラクター取得
+	FVector pl= myCharacter->GetActorLocation();//位置取得

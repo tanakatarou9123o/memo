@@ -1,0 +1,5 @@
+キャラクタークラス 地面との当たり判定をしてくれる
+
+
+
+AddActorLocalOffset(FVector(0, 800 * DeltaTime, 0));

@@ -1,0 +1,10 @@
+C:\Users\tanak\Source\Repos\ps3\ジョジョの奇妙な冒険 アイズオブヘブン ver1.02\ccapi\bin\Release\ccapi.exe.config
+C:\Users\tanak\Source\Repos\ps3\ジョジョの奇妙な冒険 アイズオブヘブン ver1.02\ccapi\bin\Release\ccapi.exe
+C:\Users\tanak\Source\Repos\ps3\ジョジョの奇妙な冒険 アイズオブヘブン ver1.02\ccapi\bin\Release\ccapi.pdb
+C:\Users\tanak\Source\Repos\ps3\ジョジョの奇妙な冒険 アイズオブヘブン ver1.02\ccapi\bin\Release\PS3Lib.dll
+C:\Users\tanak\Source\Repos\ps3\ジョジョの奇妙な冒険 アイズオブヘブン ver1.02\ccapi\obj\Release\ccapi.Form1.resources
+C:\Users\tanak\Source\Repos\ps3\ジョジョの奇妙な冒険 アイズオブヘブン ver1.02\ccapi\obj\Release\ccapi.Properties.Resources.resources
+C:\Users\tanak\Source\Repos\ps3\ジョジョの奇妙な冒険 アイズオブヘブン ver1.02\ccapi\obj\Release\ccapi.csproj.GenerateResource.Cache
+C:\Users\tanak\Source\Repos\ps3\ジョジョの奇妙な冒険 アイズオブヘブン ver1.02\ccapi\obj\Release\ccapi.exe
+C:\Users\tanak\Source\Repos\ps3\ジョジョの奇妙な冒険 アイズオブヘブン ver1.02\ccapi\obj\Release\ccapi.pdb
+C:\Users\tanak\Source\Repos\ps3\ジョジョの奇妙な冒険 アイズオブヘブン ver1.02\ccapi\obj\Release\ccapi.csprojResolveAssemblyReference.cache

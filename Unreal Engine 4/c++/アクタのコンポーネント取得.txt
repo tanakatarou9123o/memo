@@ -1,14 +1,4 @@
-	for (TActorIterator<ACharacter> It(GetWorld()); It; ++It)//アクター取得
-	{
-		pcamera[0] = *It;
-		if (pcamera[0]->ActorHasTag(FName("a")))//tag検索
-		{
-			//MessageBoxA(nullptr, "", "", MB_OK);
-			break;
-		}
-		i++;
-	}
-
-	TArray<UCameraComponent*> allMoveComp;//コンポーネントを入れる配列作成
-	pcamera[0]->GetComponents<UCameraComponent>(allMoveComp);//アクターのコンポーネント取得
-	allMoveComp[0]->FieldOfView;//カメラview
+		USkeletalMeshComponent* MyComp = pawn->FindComponentByClass<USkeletalMeshComponent>();//スケルタルメッシュコンポーネント取得
+		UStaticMeshComponent* a = pawn->FindComponentByClass<UStaticMeshComponent>();//スタティックメッシュコンポーネント取得
+		MyComp->SkeletalMesh;
+	

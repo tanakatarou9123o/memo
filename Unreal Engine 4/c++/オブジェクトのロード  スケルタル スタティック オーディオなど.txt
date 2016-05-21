@@ -1,0 +1,1 @@
+auto sk=LoadObject<USkeletalMesh>(NULL, TEXT("/Game/MixamoAnimPack/Mixamo_SWAT/Mesh/Maximo_SWAT.Maximo_SWAT"), NULL, LOAD_None, NULL);//スケルタルメッシュロード

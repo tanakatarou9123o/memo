@@ -1,0 +1,9 @@
+	ACharacter* myCharacter = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);//プレイヤキャラクター取得
+	FVector pl= myCharacter->GetActorLocation();//位置取得
+	for (size_t i = 0; i < 50; i++)
+	{
+
+
+		FVector location(pl.X+(1*100), pl.Y, pl.Z+80);//スポーン位置
+		AMyCharacter* pawn = Cast<AMyCharacter>(GetWorld()->SpawnActor(AMyCharacter::StaticClass(), &location));//スポーン
+	}
