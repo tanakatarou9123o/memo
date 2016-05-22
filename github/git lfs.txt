@@ -1,0 +1,34 @@
+インストール
+
+git lfs
+https://git-lfs.github.com/
+
+git lfs install
+
+git lfs version
+
+
+LFS に追加するファイルタイプを追加
+
+追加したいファイルタイプ
+git lfs track "*.uasset"
+git lfs track "*.umap"
+
+内容は .gitattributes に保存される
+
+設定できたか確認
+git lfs track
+
+
+
+
+
+git add .gitattributes
+git add Content
+git commit -m "a"
+
+git push origin master
+
+
+
+cd C:\Users\tanak\Documents\Unreal Projects\MyProject
