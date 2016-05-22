@@ -1,0 +1,6 @@
+		auto sk = LoadObject<UStaticMesh>(NULL, TEXT("/Engine/BasicShapes/Cube.Cube"), NULL, LOAD_None, NULL);//スタティックメッシュロード
+		UStaticMeshComponent* Component = NewObject<UStaticMeshComponent>(this);//コンポーネント作成
+		Component->SetStaticMesh(sk);//スタティックメッシュ設定
+		Component->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);//コリジョン設定
+		Component->AttachTo(this->GetRootComponent());//コンポーネントをアタッチ
+		Component->RegisterComponent();//表示

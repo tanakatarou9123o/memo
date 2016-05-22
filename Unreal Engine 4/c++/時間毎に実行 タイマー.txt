@@ -1,0 +1,11 @@
+FTimerHandle CountdownTimerHandle;//タイマーハンドル 終了時に必要
+
+
+GetWorldTimerManager().SetTimer(CountdownTimerHandle, this, &AMyProjectCharacter::AdvanceTimer, 1.0f, true);//タイマー作成
+
+void AMyProjectCharacter::AdvanceTimer()//時間毎に実行される関数
+{
+
+	GetWorldTimerManager().ClearTimer(CountdownTimerHandle);//タイマーを終了
+
+}
