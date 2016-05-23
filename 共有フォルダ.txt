@@ -23,8 +23,8 @@ $ git clone //XPS8700/sample.git
 $ git clone //192.168.1.100/sample.git # IPアドレスでも指定できる
 
 
-
-git remote add origin //XPS8700/sample.git
+//バックスラッシュを使う \ではなく/
+git remote add origin //DESKTOP-72AJ5GU/1.git
 git push origin master
 
 unc
