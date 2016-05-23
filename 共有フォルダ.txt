@@ -1,1 +1,31 @@
+ネットワークパス
 \\DESKTOP-72AJ5GU\1.git
+
+Gitサーバーとして初期化します。
+git-daemon-export-okも作成して、認証を省いて使いやすくします。
+LAN内専用なのでこれでかまいません。
+
+git init --bare --shared=true
+touch git-daemon-export-ok
+
+
+
+下記のコマンドでGitサーバーを起動します。
+
+git daemon --export-all --enable=receive-pack
+
+
+クローン
+
+開発メンバーがそれぞれのリポジトリにcloneします。
+
+$ git clone //XPS8700/sample.git
+$ git clone //192.168.1.100/sample.git # IPアドレスでも指定できる
+
+
+
+git remote add origin //XPS8700/sample.git
+git push origin master
+
+unc
+C:\YAMATO\ENGINE.LOG」というファイルを指し示す場合、「\\ISCANDAL\C$\YAMATO\ENGINE.LOG」
