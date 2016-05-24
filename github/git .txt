@@ -1,0 +1,35 @@
+git branch <branchname>
+
+ブランチを作成
+git branch test1
+
+引数を指定せずにbranchコマンドを実行すると、ブランチの一覧を表示することができます。
+頭に * のついているのが現在のブランチです。
+
+git branch
+
+リモートのブランチ
+git branch -a
+
+
+新しく作成したissue1ブランチにコミットを追加していくには、
+issue1ブランチをチェックアウトする必要があります。
+ブランチのチェックアウトはcheckoutコマンドで行います。
+
+$ git checkout <branch>
+
+issue1ブランチをチェックアウトします。
+
+git checkout test1
+
+
+ブランチの作成 チェックアウトをまとめて行う
+git checkout -b <branch>
+
+以降はチェックアウトされたブランチに記録される
+git add myfile.txt
+git commit -a -m "addの説明を追加"
+
+作成したブランチをプッシュ
+git push origin test1
+
