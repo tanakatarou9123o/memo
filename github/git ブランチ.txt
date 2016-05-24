@@ -33,3 +33,5 @@ git commit -a -m "addの説明を追加"
 作成したブランチをプッシュ
 git push origin test1
 
+プル
+git pull origin test1
