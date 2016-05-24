@@ -1,2 +1,8 @@
+Gitサーバー作成、起動
+cd /d e:\
+mkdir 1.git
+git init --bare --shared=true
+git daemon --export-all --enable=receive-pack
+
 Gitサーバーを起動します。
 git daemon --export-all --enable=receive-pack
