@@ -1,0 +1,2 @@
+Gitサーバーを起動します。
+git daemon --export-all --enable=receive-pack
