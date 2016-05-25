@@ -1,0 +1,141 @@
+IPマスカレードを設定する
+グローバルIP,ポート番号でローカルIPを結びつける
+
+rt-500ki
+ルータの設定画面を開く
+
+詳細設定
+静的IPマスカレード設定 
+編集をクリック
+プロトコルを設定
+変換対象ポートを設定 プログラムで指定した値
+12345
+
+宛先IPアドレスを設定 プログラムを起動するサーバ側のIPアドレス
+192.168.1.4
+
+宛先ポートを設定 プログラムで指定した値
+12345
+
+設定をクリック
+
+有効/無効にチェックする
+設定をクリック
+
+
+//saver
+#include <winsock2.h>
+#include <Windows.h>
+
+// Visual C++
+#ifdef _MSC_VER
+#pragma comment(lib, "ws2_32.lib")
+#endif
+
+int main()
+{
+	WSADATA wsaData;		//WSADATA構造体　バージョンなどが格納される
+	SOCKET sock;			//サーバソケット
+	SOCKET csock;			//クライアントソケット
+	struct sockaddr_in addr;	//sockaddr_in構造体　ipアドレス ポート番号など
+	struct sockaddr_in client;	//クライアントの情報が格納される
+	int len;					//クライアントの情報が格納される
+
+
+	WSAStartup(MAKEWORD(2, 2), &wsaData);	//winsockの初期化
+
+	sock = socket(AF_INET, SOCK_STREAM, 0);	//ソケット作成
+	if (INVALID_SOCKET == sock) //エラーチェック　ソケットが作成できたか
+	{ 
+		MessageBoxA(NULL, "ソケット作成失敗", "", MB_OK); return 1; 
+	}	
+
+	/*		ソケットの設定			*/
+	addr.sin_family = AF_INET;					//アドレスファミリ
+	addr.sin_port = htons(12345);				//ポート番号
+	addr.sin_addr.S_un.S_addr = INADDR_ANY;		//ipアドレス
+	/*		ソケットの設定			*/
+
+	if (SOCKET_ERROR == bind(sock, (struct sockaddr *)&addr, sizeof(addr)))	//ソケットにアドレスなどを関連付ける
+	{
+		MessageBoxA(NULL, "ソケット関連付け失敗", "", MB_OK); return 2;
+	}
+
+	if (SOCKET_ERROR == listen(sock, 5))							//ソケットを接続待ちにする
+	{
+		MessageBoxA(NULL, "ソケット接続待ち失敗 ", "", MB_OK); return 3;
+	}
+
+
+	len = sizeof(client);			//クライアントの変数　初期化
+
+	char tt[2];
+	DWORD a=0;
+	TOKEN_PRIVILEGES tokenPrivileges;
+	HANDLE hToken;
+	LUID luid;
+
+	auto bRet = OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken); //特権取得
+	if (!bRet) 
+	{ 
+		return FALSE; 
+	}
+
+	//2.LookupPrivilegeValue関数で、特権に対応するLUID(ローカル一意識別子)を取得する
+	bRet = LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME, &luid);
+	if (bRet) 
+	{
+		//3.TOKEN_PRIVILEGES型のオブジェクトに、LUID(ローカル一意識別子)と特権の属性(有効にするか無効にするか)を指定する
+		tokenPrivileges.PrivilegeCount = 1;
+		tokenPrivileges.Privileges[0].Luid = luid;
+		tokenPrivileges.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+
+		//4.AdjustTokenPrivileges関数で、特権を有効にする
+		AdjustTokenPrivileges(hToken,FALSE,&tokenPrivileges, 0, 0, 0);
+
+		bRet = GetLastError() == ERROR_SUCCESS;
+	}
+
+
+	while (true)
+	{
+		csock = accept(sock, (struct sockaddr *)&client, &len);			//クライアントソケットと接続　　ここからcsockに書き込み処理をしていく
+		if (csock == INVALID_SOCKET) //繋がったら実行される
+		{
+			MessageBoxA(NULL, "ソケットとの接続失敗 ", "", MB_OK);
+			return 4;
+		}
+
+		if (SOCKET_ERROR == recv(csock, tt, 2, 0))					//クライアントから受信
+		{
+			MessageBoxA(NULL, "クライアントから受信失敗 ", "", MB_OK); 
+			return 5;
+		}
+
+		switch (tt[0])
+		{
+		case '1':
+			ExitWindowsEx(EWX_REBOOT| EWX_FORCE,a);//再起動
+			break;
+		case '2':
+
+			break;
+		case '3':
+
+			break;
+		default:
+			break;
+		}
+
+
+	}
+
+
+
+	closesocket(csock);			//クライアントソケットを閉じる
+
+
+	WSACleanup();							//winsockを終了
+
+    return 0;
+}

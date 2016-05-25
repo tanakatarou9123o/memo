@@ -1,0 +1,27 @@
+	TOKEN_PRIVILEGES tokenPrivileges;
+	HANDLE hToken;
+	LUID luid;
+
+	auto bRet = OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken); //特権取得
+	if (!bRet) 
+	{ 
+		return FALSE; 
+	}
+
+	//2.LookupPrivilegeValue関数で、特権に対応するLUID(ローカル一意識別子)を取得する
+	bRet = LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME, &luid);
+	if (bRet) 
+	{
+		//3.TOKEN_PRIVILEGES型のオブジェクトに、LUID(ローカル一意識別子)と特権の属性(有効にするか無効にするか)を指定する
+		tokenPrivileges.PrivilegeCount = 1;
+		tokenPrivileges.Privileges[0].Luid = luid;
+		tokenPrivileges.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
+
+		//4.AdjustTokenPrivileges関数で、特権を有効にする
+		AdjustTokenPrivileges(hToken,FALSE,&tokenPrivileges, 0, 0, 0);
+
+		bRet = GetLastError() == ERROR_SUCCESS;
+	}
+
+
+ExitWindowsEx(EWX_REBOOT| EWX_FORCE,a);//再起動
