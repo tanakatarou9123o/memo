@@ -1,0 +1,7 @@
+
+git checkout test1
+
+git merge test2
+
+íœ
+git branch -d test2
