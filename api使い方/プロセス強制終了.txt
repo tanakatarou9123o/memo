@@ -1,0 +1,2 @@
+auto phand = OpenProcess(PROCESS_ALL_ACCESS, TRUE, pe.th32ProcessID); //アクセス権限, ,プロセスID アクセス権限を設定してプロセスハンドル取得
+TerminateProcess(phand, 0);
