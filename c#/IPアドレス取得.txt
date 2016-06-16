@@ -1,0 +1,15 @@
+// using System.Net.NetworkInformation;　using System.Net.Sockets; が必要
+var address = IPGlobalProperties.GetIPGlobalProperties()
+  .GetUnicastAddresses()
+  // 以降の処理用にIPAddressオブジェクトの
+  // 列挙に変換する
+  .Select(e => e.Address)
+  // IPv4にここでは限定する（IPv6アドレスが
+  // 必要であれば条件を変える）
+  .Where(e => e.AddressFamily == AddressFamily.InterNetwork)
+  // この方法はループバックアドレス（127.0.0.1）が
+  // 含まれるので除外する
+  .Where(e => !IPAddress.IsLoopback(e))
+  // マルチホームコンピューターの場合は他の条件も要考慮
+  .First();
+Console.WriteLine($"IPv4 Address: {address}");
