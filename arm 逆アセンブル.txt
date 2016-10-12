@@ -1,0 +1,2 @@
+ファイルに出力
+arm-none-eabi-objdump -b binary -m arm -D 1.bin >2.txt

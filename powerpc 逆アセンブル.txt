@@ -1,0 +1,7 @@
+ファイルに出力
+
+vdappc.exe EBOOT.elf > kaiseki.txt
+
+
+
+vdappc.exe kaiseki.txt > EBOOT.bin

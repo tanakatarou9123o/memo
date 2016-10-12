@@ -1,0 +1,1 @@
+string hairetu = Directory.GetDirectoryRoot(@" d");

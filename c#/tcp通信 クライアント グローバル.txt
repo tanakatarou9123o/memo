@@ -1,0 +1,14 @@
+            string ipAddress = "121.80.13.87";//グローバルアドレス,プライベートアドレス
+            int port = 5123;
+
+            TcpClient client = new TcpClient(ipAddress, port);//IPアドレスとポート番号を渡してサーバ側へ接続
+
+            string str = "Hello! C#";
+            byte[] tmp = Encoding.UTF8.GetBytes(str);//送信用にbyte型へ直します
+
+            NetworkStream stream = client.GetStream();//NWのデータを扱うストリームを作成
+
+            stream.Write(tmp, 0, tmp.Length);//引数は（データ , データ書き込み開始位置 , 書き込むバイト数）
+
+            //サーバとの接続を終了
+            client.Close();

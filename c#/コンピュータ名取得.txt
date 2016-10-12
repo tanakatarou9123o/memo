@@ -1,0 +1,5 @@
+            string machine = Environment.MachineName;
+            string user = Environment.UserName;
+
+            Console.WriteLine(machine+"\\tanakataro9123@hotmail.com"); // èoóÕó·ÅFTAKAMAIN
+            Console.ReadKey();

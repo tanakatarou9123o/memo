@@ -1,0 +1,43 @@
+        //連続音声認識のためのオブジェクト 
+        private SpeechRecognizer contSpeechRecognizer;
+        private CoreDispatcher dispatcher;
+
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            //ハックグラウンドスレッドからUIスレッドを呼び出すためのDispatcher
+            dispatcher = CoreWindow.GetForCurrentThread().Dispatcher;
+
+            //初期化
+            contSpeechRecognizer = new Windows.Media.SpeechRecognition.SpeechRecognizer();
+            await contSpeechRecognizer.CompileConstraintsAsync();
+
+            //認識中の処理定義
+            contSpeechRecognizer.HypothesisGenerated +=
+                ContSpeechRecognizer_HypothesisGenerated;
+            contSpeechRecognizer.ContinuousRecognitionSession.ResultGenerated +=
+                ContinuousRecognitionSession_ResultGenerated;
+
+            //認識開始
+            await contSpeechRecognizer.ContinuousRecognitionSession.StartAsync();
+
+        }
+
+        private async void ContSpeechRecognizer_HypothesisGenerated(SpeechRecognizer sender, SpeechRecognitionHypothesisGeneratedEventArgs args)
+        {         //認識途中に画面表示 
+            await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
+            {
+                textBox.Text = args.Hypothesis.Text;
+            }
+            );
+        }
+        private async void ContinuousRecognitionSession_ResultGenerated( SpeechContinuousRecognitionSession sender, SpeechContinuousRecognitionResultGeneratedEventArgs args)
+        {
+            //認識完了後に画面に表示 
+            await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => 
+            {
+                textBox.Text = "Waiting ...";
+                textBox1.Text += args.Result.Text + "。\n";
+            }
+            ); }
+
+        }

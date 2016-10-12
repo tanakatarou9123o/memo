@@ -1,0 +1,89 @@
+        [DllImport("user32.dll")]
+        public static extern uint keybd_event(byte bVk, byte bScan, uint dwFlags, UIntPtr dwExtraInfo);
+
+
+
+            //初期化
+            contSpeechRecognizer = new Windows.Media.SpeechRecognition.SpeechRecognizer();
+            await contSpeechRecognizer.CompileConstraintsAsync();
+
+            //認識中の処理定義
+            contSpeechRecognizer.HypothesisGenerated += (s, ee) =>
+            {
+            };
+
+            contSpeechRecognizer.ContinuousRecognitionSession.ResultGenerated += (s, ee) =>
+            {
+
+                if (ee.Result.Text.Contains("シャットダウン")| ee.Result.Text.Contains("しゃっとだうん"))
+                {
+                    System.Media.SystemSounds.Beep.Play();
+                    Application.Exit();
+                }
+                else if (ee.Result.Text.Contains("タイムワープ"))
+                {
+                    System.Media.SystemSounds.Beep.Play();
+
+
+                    //押し下げをシミュレートする。 
+                    keybd_event(0xA2, 0, 0, (System.UIntPtr)0);//lcontlol
+                    keybd_event(0x61, 0, 0, (System.UIntPtr)0);//num1
+
+                    System.Threading.Thread.Sleep(50);
+
+                    //解放をシミュレートする。 
+                    keybd_event(0x61, 0, 2, (System.UIntPtr)0);
+                    keybd_event(0xA2, 0, 2, (System.UIntPtr)0);
+                                        
+                }
+                else if (ee.Result.Text.Contains("オフ"))
+                {
+                    System.Media.SystemSounds.Beep.Play();
+
+                    //押し下げをシミュレートする。 
+                    keybd_event(0xA2, 0, 0, (System.UIntPtr)0);//lcontlol
+                    keybd_event(0x62, 0, 0, (System.UIntPtr)0);//num1
+
+                    System.Threading.Thread.Sleep(50);
+
+                    //解放をシミュレートする。 
+                    keybd_event(0x62, 0, 2, (System.UIntPtr)0);
+                    keybd_event(0xA2, 0, 2, (System.UIntPtr)0);
+                }
+                else if (ee.Result.Text.Contains("スペースワープ"))
+                {
+                    System.Media.SystemSounds.Beep.Play();
+
+                    //押し下げをシミュレートする。 
+                    keybd_event(0xA2, 0, 0, (System.UIntPtr)0);//lcontlol
+                    keybd_event(0x63, 0, 0, (System.UIntPtr)0);//num1
+
+                    System.Threading.Thread.Sleep(50);
+
+                    //解放をシミュレートする。 
+                    keybd_event(0x63, 0, 2, (System.UIntPtr)0);
+                    keybd_event(0xA2, 0, 2, (System.UIntPtr)0);
+                }
+                else if (ee.Result.Text.Contains("オート"))
+                {
+                    System.Media.SystemSounds.Beep.Play();
+
+                    //押し下げをシミュレートする。 
+                    keybd_event(0xA2, 0, 0, (System.UIntPtr)0);//lcontlol
+                    keybd_event(0x64, 0, 0, (System.UIntPtr)0);//num1
+
+                    System.Threading.Thread.Sleep(50);
+
+                    //解放をシミュレートする。 
+                    keybd_event(0x64, 0, 2, (System.UIntPtr)0);
+                    keybd_event(0xA2, 0, 2, (System.UIntPtr)0);
+                }
+
+
+                
+
+            };
+
+            //認識開始
+            await contSpeechRecognizer.ContinuousRecognitionSession.StartAsync();
+        

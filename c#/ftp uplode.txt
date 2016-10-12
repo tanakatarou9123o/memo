@@ -1,0 +1,6 @@
+            WebClient wclient = new WebClient();
+            //ログインユーザー名とパスワードを指定
+            wclient.Credentials = new System.Net.NetworkCredential("baharasan", "kouhei");//ログイン パス
+            //FTPサーバーにアップロード
+            wclient.UploadFile("ftp://www13.plala.or.jp/2.html", @"2.html");//ftp://ドメイン ファイル名
+            wclient.Dispose();

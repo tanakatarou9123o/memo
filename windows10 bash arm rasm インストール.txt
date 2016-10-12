@@ -1,0 +1,17 @@
+コントロールパネル起動
+プログラム
+Windows の機能の有効化または無効化
+
+Windows Subsystem for Linux (Beta)
+にチェックする
+再起動
+
+コマンドプロンプトを起動し
+bash 
+を入力
+
+ユーザー名
+パスワード
+を作成
+
+apt-get install

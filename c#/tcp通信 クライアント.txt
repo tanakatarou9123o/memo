@@ -1,0 +1,22 @@
+	    string ipAddress = "221.250.82.146";
+　　　　　　int port = 2222;
+
+　　　　　　//IPアドレスとポート番号を渡してサーバ側へ接続
+　　　　　　TcpClient client = new TcpClient(ipAddress, port);
+
+　　　　　　//表示するのは「Hello! C#」
+　　　　　　//これを送信用にbyte型へ直します
+　　　　　　string str = "Hello! C#";
+　　　　　　byte[] tmp = Encoding.UTF8.GetBytes(str);
+
+　　　　　　//NWのデータを扱うストリームを作成
+　　　　　　NetworkStream stream = client.GetStream();
+
+
+　　　　　　//送信
+　　　　　　//引数は（データ , データ書き込み開始位置 , 書き込むバイト数）
+　　　　　　//だそうです
+　　　　　　stream.Write(tmp, 0, tmp.Length);
+
+　　　　　　//サーバとの接続を終了
+　　　　　　client.Close();

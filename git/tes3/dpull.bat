@@ -1,3 +1,3 @@
 @echo off
-cd /d D:\1
+cd /d E:\1
 git pull origin master

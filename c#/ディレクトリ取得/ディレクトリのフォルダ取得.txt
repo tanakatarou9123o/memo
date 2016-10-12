@@ -1,0 +1,32 @@
+string[] hairetu = Directory.GetDirectories(@"c:\");
+
+            
+            var d = from z in hairetu where true  select z;
+            foreach (var item in d)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.ReadLine();
+
+
+
+
+
+
+//入力 ドライブのフォルダ取得
+
+            while (true)
+            {
+
+                var a = Console.ReadKey();
+                Console.WriteLine(" ");
+                string[] hairetu = Directory.GetDirectories(a.KeyChar + @":\");
+
+
+                var d = from z in hairetu where true select z;
+                foreach (var item in d)
+                {
+                    Console.WriteLine(item);
+                }
+            }

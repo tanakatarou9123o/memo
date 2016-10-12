@@ -1,0 +1,30 @@
+            int port = 5123;
+            IPAddress ip = IPAddress.Parse("192.168.11.9");//受け取るプライベートアドレス
+
+            TcpListener server = new TcpListener(ip, port);//クライアントからの接続を待機するサーバクラス設定
+            server.Start();//サーバの開始　クライアントから接続されるまで待機
+            TcpClient client = server.AcceptTcpClient();//接続があったらクライアント取得
+            NetworkStream stream = client.GetStream();//データをストリームへ取得
+
+            byte[] getData = new byte[1];//データを受け取るbyte型変数を定義（例では１バイトずつ受け取る）
+            int cnt;//データの取得と同時に、取得したデータのバイト数も得る
+
+            List<byte> bytelist = new List<byte>();//どれだけもらうかわからないので一時的に格納するリストを定義
+
+
+            //cntには受け取ったデータの長さが入る
+
+            while ((cnt = stream.Read(getData, 0, 1)) > 0)//配列,オフセット,サイズ
+            {
+                switch (getData[0])
+                {
+                    case 1://migi
+                        break;
+                    case 2://le
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            client.Close();//サーバの終了
